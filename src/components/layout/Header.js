@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, NavItem, Icon } from "react-materialize";
+import { Navbar, NavItem, Row, Input } from "react-materialize";
 
 class Header extends Component {
   render() {
@@ -9,6 +9,20 @@ class Header extends Component {
           Getting started
         </NavItem>
         <NavItem href="components.html">Components</NavItem>
+        <NavItem>
+          <Row>
+            <Input
+              s={12}
+              type="select"
+              label="Materialize Select"
+              defaultValue="2"
+            >
+              <option value="en-US">English</option>
+              <option value="uk-UK">Ukrainian</option>
+              <option value="ru-RU">Russian</option>
+            </Input>
+          </Row>
+        </NavItem>
       </Navbar>
     );
   }
