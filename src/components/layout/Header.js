@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Navbar, NavItem, Row, Input } from "react-materialize";
+import { setLanguage } from "../../actions/languageActions";
 
 class Header extends Component {
+  onChangeHandler = e => {
+    e.preventDefault();
+    this.props.setLanguage(e.target.value);
+  };
+
   render() {
     return (
       <Navbar brand="logo" right>
@@ -15,7 +22,8 @@ class Header extends Component {
               s={12}
               type="select"
               label="Materialize Select"
-              defaultValue="2"
+              defaultValue={this.props.lang.locale}
+              onChange={this.onChangeHandler}
             >
               <option value="en-US">English</option>
               <option value="uk-UK">Ukrainian</option>
@@ -28,4 +36,11 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  lang: state.lang
+});
+
+export default connect(
+  mapStateToProps,
+  { setLanguage }
+)(Header);
