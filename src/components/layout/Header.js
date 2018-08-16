@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
 import { Navbar, NavItem, Row, Input } from "react-materialize";
 import { setLanguage } from "../../actions/languageActions";
+import logo from "./img/logo.svg";
 
 class Header extends Component {
   onChangeHandler = e => {
@@ -9,18 +11,28 @@ class Header extends Component {
     this.props.setLanguage(e.target.value);
   };
 
-  onClickHandler = e => {
+  onClickHandler = link => {
+    // e.preventDefault();
+    this.props.history.push(link);
+  };
+
+  onSelectClickHandler = e => {
     e.preventDefault();
   };
 
   render() {
     return (
-      <Navbar brand="logo" right>
-        <NavItem onClick={() => console.log("test click")}>
-          Getting started
+      <Navbar brand={<img src={logo} />} right fixed>
+        <NavItem onClick={this.onClickHandler.bind(this, "/")}>
+          <FormattedMessage id="header.main" />
         </NavItem>
-        <NavItem href="components.html">Components</NavItem>
-        <NavItem onClick={this.onClickHandler}>
+        <NavItem onClick={this.onClickHandler.bind(this, "/news")}>
+          <FormattedMessage id="header.news" />
+        </NavItem>
+        <NavItem onClick={this.onClickHandler.bind(this, "/leagues")}>
+          <FormattedMessage id="header.leagues" />
+        </NavItem>
+        <NavItem onClick={this.onSelectClickHandler}>
           <Row>
             <Input
               s={12}
@@ -30,8 +42,8 @@ class Header extends Component {
               onChange={this.onChangeHandler}
             >
               <option value="en-US">English</option>
-              <option value="uk">Ukrainian</option>
-              <option value="ru-RU">Russian</option>
+              <option value="ru-RU">Русский</option>
+              <option value="uk">Українська</option>
             </Input>
           </Row>
         </NavItem>

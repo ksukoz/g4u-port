@@ -16,10 +16,6 @@ const initialState = {
     navigator.userLanguage ||
     "en-US",
   messages: ""
-  // messages: this.initialState.locale
-  // ?
-  //  flattenMessages(messages[initialState.locale])
-  // : ""
 };
 
 export default function(state = initialState, action) {
