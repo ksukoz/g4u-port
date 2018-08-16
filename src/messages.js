@@ -5,6 +5,14 @@ export default {
       news: "News",
       leagues: "Leagues"
     },
+    promo: {
+      heading: "Комфортная игра на лучших полях вашего города",
+      text:
+        "Футбольный турнир G4U (Game for You) это бескомпромисное качество игры с лучшими игроками Украины и внушительным призовым фондом."
+    },
+    news: {
+      heading: "News"
+    },
     detail: {
       toggle: "Toggle",
       purchase: "Purchase this book from:",
@@ -17,6 +25,14 @@ export default {
       news: "Новини",
       leagues: "Ліги"
     },
+    promo: {
+      heading: "Краща гра на кращих полях вашого міста",
+      text:
+        "Футбольний турнір MyGame4U (My Game for You) це безкомпромісна якість гри з кращими гравцями України та значним призовим фондом."
+    },
+    news: {
+      heading: "Новини"
+    },
     detail: {
       toggle: "Перемикач",
       purchase: "Compre este libro de:",
@@ -28,6 +44,14 @@ export default {
       main: "Главная",
       news: "Новости",
       leagues: "Лиги"
+    },
+    promo: {
+      heading: "Комфортная игра на лучших полях вашего города",
+      text:
+        "Футбольный турнир G4U (Game for You) это бескомпромисное качество игры с лучшими игроками Украины и внушительным призовым фондом."
+    },
+    news: {
+      heading: "Новости"
     },
     detail: {
       toggle: "Переключатель",

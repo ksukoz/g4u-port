@@ -1,4 +1,5 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import promo_bg from "./img/promo_bg.png";
 
 const Promo = () => {
@@ -10,10 +11,11 @@ const Promo = () => {
       <div className="container">
         <div className="row">
           <div className="col m9">
-            <h1>Комфортная игра на лучших полях вашего города</h1>
+            <h1>
+              <FormattedMessage id="promo.heading" />
+            </h1>
             <p>
-              Футбольный турнир G4U (Game for You) это бескомпромисное качество
-              игры с лучшими игроками Украины и внушительным призовым фондом.
+              <FormattedMessage id="promo.text" />
             </p>
           </div>
         </div>
