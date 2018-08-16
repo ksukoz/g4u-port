@@ -125,5 +125,9 @@
 }
 
 .section-home-news .slick-prev:before {
-  content: "\2190";
+  content: "\279C";
+  transform: rotate(90deg);
+}
+.section-home-news .slick-next:before {
+  content: "\2794";
 }

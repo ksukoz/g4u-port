@@ -1,7 +1,4 @@
-import React from "react";
+// import React from "react";
+// import { Icon } from "react-materialize";
 
-const PrevArrow = () => {
-  return <Icon>arrow_right_alt</Icon>;
-};
-
-export default PrevArrow;
+// export default PrevArrow;

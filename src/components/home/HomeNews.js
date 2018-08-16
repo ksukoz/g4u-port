@@ -4,10 +4,9 @@ import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import { Col, Card, CardTitle, Icon } from "react-materialize";
 import { getNews } from "../../actions/newsActions";
+// import PrevArrow from "../common/PrevArrow";
 
-const PrevArrow = () => {
-  return <Icon>arrow_right_alt</Icon>;
-};
+// const PrevArrow = props => <Icon onClick={props.onClick}>arrow_right_alt</Icon>;
 
 class HomeNews extends Component {
   componentWillMount() {
@@ -22,6 +21,7 @@ class HomeNews extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1
+      // prevArrow: <PrevArrow />
     };
 
     let newsList;
@@ -66,7 +66,7 @@ class HomeNews extends Component {
           <h2 className="heading">
             <FormattedMessage id="news.heading" />
           </h2>
-          <Slider {...settings} prevArrow={PrevArrow}>
+          <Slider {...settings} {...this.props}>
             {/* <div className="row">
               <div className="col s12 m10 offset-m1">
                 <div className="card">
