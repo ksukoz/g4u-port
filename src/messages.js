@@ -6,7 +6,7 @@ export default {
       reviewsHeading: "Reviews"
     }
   },
-  "uk-UK": {
+  uk: {
     detail: {
       toggle: "Перемикач",
       purchase: "Compre este libro de:",

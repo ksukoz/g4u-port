@@ -9,6 +9,10 @@ class Header extends Component {
     this.props.setLanguage(e.target.value);
   };
 
+  onClickHandler = e => {
+    e.preventDefault();
+  };
+
   render() {
     return (
       <Navbar brand="logo" right>
@@ -16,7 +20,7 @@ class Header extends Component {
           Getting started
         </NavItem>
         <NavItem href="components.html">Components</NavItem>
-        <NavItem>
+        <NavItem onClick={this.onClickHandler}>
           <Row>
             <Input
               s={12}
@@ -26,7 +30,7 @@ class Header extends Component {
               onChange={this.onChangeHandler}
             >
               <option value="en-US">English</option>
-              <option value="uk-UK">Ukrainian</option>
+              <option value="uk">Ukrainian</option>
               <option value="ru-RU">Russian</option>
             </Input>
           </Row>

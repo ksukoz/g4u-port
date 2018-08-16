@@ -7,6 +7,11 @@ import BookDetail from "./components/BookDetail";
 import logo from "./logo.svg";
 import "./App.css";
 
+// let i18nConfig = {
+//   locale: 'en',
+//   messages: intlMessages
+// };
+
 class App extends Component {
   render() {
     return (

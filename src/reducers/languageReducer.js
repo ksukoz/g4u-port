@@ -1,6 +1,13 @@
 import { SET_LANGUAGE } from "../actions/types";
 
 import messages from "../messages";
+import { addLocaleData } from "react-intl";
+import en from "react-intl/locale-data/en";
+import uk from "react-intl/locale-data/uk";
+import ru from "react-intl/locale-data/ru";
+
+import { flattenMessages } from "../utils";
+addLocaleData([...en, ...uk, ...ru]);
 
 const initialState = {
   locale:
@@ -8,7 +15,11 @@ const initialState = {
     navigator.language ||
     navigator.userLanguage ||
     "en-US",
-  messages: messages
+  messages: ""
+  // messages: this.initialState.locale
+  // ?
+  //  flattenMessages(messages[initialState.locale])
+  // : ""
 };
 
 export default function(state = initialState, action) {
@@ -16,9 +27,13 @@ export default function(state = initialState, action) {
     case SET_LANGUAGE:
       return {
         ...state,
-        locale: action.payload
+        locale: action.payload,
+        messages: flattenMessages(messages[action.payload])
       };
     default:
-      return state;
+      return {
+        ...state,
+        messages: flattenMessages(messages[state.locale])
+      };
   }
 }
