@@ -5,42 +5,21 @@ class PageFooter extends Component {
   render() {
     return (
       <Footer
-        copyrights="&copy 2015 Copyright Text"
         moreLinks={
-          <a className="grey-text text-lighten-4 right" href="#!">
-            More Links
+          <a className="white-text" href="//notyteam.com.ua" target="_blank">
+            Разработано: Skvader&NotyTeam
           </a>
         }
-        links={
-          <ul>
-            <li>
-              <a className="grey-text text-lighten-3" href="#!">
-                Link 1
-              </a>
-            </li>
-            <li>
-              <a className="grey-text text-lighten-3" href="#!">
-                Link 2
-              </a>
-            </li>
-            <li>
-              <a className="grey-text text-lighten-3" href="#!">
-                Link 3
-              </a>
-            </li>
-            <li>
-              <a className="grey-text text-lighten-3" href="#!">
-                Link 4
-              </a>
-            </li>
-          </ul>
-        }
-        className="example"
+        className="black"
       >
-        <h5 className="white-text">Footer Content</h5>
-        <p className="grey-text text-lighten-4">
-          You can use rows and columns here to organize your footer content.
-        </p>
+        <div className="footer-wrap">
+          <a className="white-text" href="mailto:ua.football@mygame4u.com">
+            ua.football@mygame4u.com
+          </a>
+          <a className="white-text" href="tel:+380660365296">
+            +38 (066) 036 52 96
+          </a>
+        </div>
       </Footer>
     );
   }
