@@ -4,14 +4,9 @@ import ConnectedIntlProvider from "./components/common/ConnectedIntlProvider";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import BookDetail from "./components/BookDetail";
-import logo from "./logo.svg";
+import NewsItem from "./components/news/NewsItem";
 import "./App.css";
 import Home from "./components/home/Home";
-
-// let i18nConfig = {
-//   locale: 'en',
-//   messages: intlMessages
-// };
 
 class App extends Component {
   render() {
@@ -26,13 +21,9 @@ class App extends Component {
             <Switch>
               <Route path="/book/:bookId" component={BookDetail} />
             </Switch>
-            {/* <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
-            </header>
-            <p className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </p> */}
+            <Switch>
+              <Route path="/news/:id" component={NewsItem} />
+            </Switch>
             <Route path="/" component={Footer} />
           </div>
         </Router>

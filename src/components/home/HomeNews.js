@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import { Col, Card, CardTitle, Icon } from "react-materialize";
@@ -21,7 +22,6 @@ class HomeNews extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1
-      // prevArrow: <PrevArrow />
     };
 
     let newsList;
@@ -39,24 +39,11 @@ class HomeNews extends Component {
                 __html: `${newsItem.text.slice(0, 255)}...`
               }}
             />
+            <Link className="card-link" to={`/news/${newsItem.news_id}`}>
+              Читать далее
+            </Link>
           </Card>
         </Col>
-        // <div className="row" key={newsItem.news_id}>
-        //   <div className="col s12 m10 offset-m1">
-        //     <div className="card">
-        //       <div className="card-content">
-        //         <div className="card-title-wrap">
-        //           <h2 className="card-title">{newsItem.title}</h2>
-        //           <span>{newsItem.date}</span>
-        //         </div>
-        //         <p>{`${newsItem.text.slice(0, 255)}...`}</p>
-        //       </div>
-        //       <div className="card-image">
-        //         <img src={newsItem.photo} />
-        //       </div>
-        //     </div>
-        //   </div>
-        // </div>
       ));
     }
 
@@ -67,41 +54,6 @@ class HomeNews extends Component {
             <FormattedMessage id="news.heading" />
           </h2>
           <Slider {...settings} {...this.props}>
-            {/* <div className="row">
-              <div className="col s12 m10 offset-m1">
-                <div className="card">
-                  <div className="card-image">
-                    <img src="images/sample-1.jpg" />
-                    <span className="card-title">Card Title</span>
-                  </div>
-                  <div className="card-content">
-                    <p>
-                      I am a very simple card. I am good at containing small
-                      bits of information. I am convenient because I require
-                      little markup to use effectively.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-            {/* <div>
-              <h3>1</h3>
-            </div>
-            <div>
-              <h3>2</h3>
-            </div>
-            <div>
-              <h3>3</h3>
-            </div>
-            <div>
-              <h3>4</h3>
-            </div>
-            <div>
-              <h3>5</h3>
-            </div>
-            <div>
-              <h3>6</h3>
-            </div> */}
             {newsList}
           </Slider>
         </div>
