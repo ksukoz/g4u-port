@@ -5,19 +5,42 @@ import { FormattedMessage } from "react-intl";
 import { Row, Col, Card } from "react-materialize";
 import news_bg from "./img/news_bg.png";
 
-import { getNews } from "../../actions/newsActions";
+import { getNews, getMainNews } from "../../actions/newsActions";
 
 class News extends Component {
   componentWillMount() {
-    this.props.getNews();
+    this.props.getMainNews();
   }
 
   render() {
-    const { news } = this.props.news;
+    const { news, mainNews } = this.props.news;
     let newsList;
 
     if (news !== null) {
       newsList = news.map(newsItem => (
+        <Col s={12} className="news-item" key={newsItem.news_id}>
+          <Card>
+            <div className="news-content">
+              <h2 className="news-title">
+                <span>{newsItem.title}</span>
+                <small>{newsItem.date}</small>
+              </h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: `${newsItem.text.slice(0, 255)}...`
+                }}
+                className="news-text"
+              />
+              <Link className="news-card-link" to={`/news/${newsItem.news_id}`}>
+                <FormattedMessage id="news.link" />
+              </Link>
+            </div>
+            <img className="responsive-img" src={newsItem.photo} alt="" />
+          </Card>
+        </Col>
+      ));
+    } else if (news === null && mainNews !== null) {
+      newsList = mainNews.map(newsItem => (
         <Col s={12} className="news-item" key={newsItem.news_id}>
           <Card>
             <div className="news-content">
@@ -78,5 +101,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getNews }
+  { getMainNews }
 )(News);

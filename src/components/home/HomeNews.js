@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
 import { Col, Card, CardTitle } from "react-materialize";
-import { getNews } from "../../actions/newsActions";
+import { getMainNews } from "../../actions/newsActions";
 
 class HomeNews extends Component {
   componentWillMount() {
-    this.props.getNews();
+    this.props.getMainNews();
   }
 
   render() {
-    const { news } = this.props.news;
+    const { mainNews } = this.props.news;
     const settings = {
       dots: true,
       infinite: true,
@@ -23,8 +23,8 @@ class HomeNews extends Component {
 
     let newsList;
 
-    if (news !== null) {
-      newsList = news.map(newsItem => (
+    if (mainNews !== null) {
+      newsList = mainNews.map(newsItem => (
         <Col m={7} s={12} key={newsItem.news_id}>
           <Card
             horizontal
@@ -65,5 +65,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getNews }
+  { getMainNews }
 )(HomeNews);

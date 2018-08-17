@@ -6,15 +6,19 @@ import news_bg from "./img/news_bg.png";
 import { getNews } from "../../actions/newsActions";
 
 class NewsItem extends Component {
-  componentWillMount() {
-    this.props.getNews();
+  componentDidMount() {
+    // this.props.getNews();
+    this.props.getNews(`news_id=${this.props.match.url.replace(/\D/g, "")}`);
   }
   render() {
     const { news } = this.props.news;
     let newsCard;
 
     if (news !== null) {
-      newsCard = news.filter(
+      // newsCard = this.props.getNews(
+      //   `news_id=${this.props.match.url.replace(/\D/g, "")}`
+      // );
+      news.filter(
         newsItem => newsItem.news_id === this.props.match.url.replace(/\D/g, "")
       )[0];
     }
