@@ -36,8 +36,8 @@ class HomeNews extends Component {
                 __html: `${newsItem.text.slice(0, 255)}...`
               }}
             />
-            <Link className="card-link" to={`/news/${newsItem.news_id}`}>
-              Читать далее
+            <Link className="news-card-link" to={`/news/${newsItem.news_id}`}>
+              <FormattedMessage id="news.link" />
             </Link>
           </Card>
         </Col>
