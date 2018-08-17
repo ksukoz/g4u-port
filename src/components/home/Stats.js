@@ -78,7 +78,6 @@ class Stats extends Component {
                       {this.state.tournaments}
                     </span>
                     <span className="stats-text">
-                      {/* <FormattedMessage id="stats.tournaments" /> */}
                       <FormattedMessage
                         id="stats.tournaments"
                         values={{ count: tournaments }}
@@ -86,29 +85,8 @@ class Stats extends Component {
                     </span>
                   </Col>
                   <Col s={2}>
-                    <span className="stats-number">{this.state.commands}</span>
-                    <span className="stats-text">
-                      {/* <FormattedMessage id="stats.commands" /> */}
-                      <FormattedMessage
-                        id="stats.commands"
-                        values={{ count: commands }}
-                      />
-                    </span>
-                  </Col>
-                  <Col s={2}>
-                    <span className="stats-number">{this.state.players}</span>
-                    <span className="stats-text">
-                      {/* <FormattedMessage id="stats.players" /> */}
-                      <FormattedMessage
-                        id="stats.players"
-                        values={{ count: players }}
-                      />
-                    </span>
-                  </Col>
-                  <Col s={2}>
                     <span className="stats-number">{this.state.matchs}</span>
                     <span className="stats-text">
-                      {/* <FormattedMessage id="stats.matchs" /> */}
                       <FormattedMessage
                         id="stats.matchs"
                         values={{ count: matchs }}
@@ -118,10 +96,27 @@ class Stats extends Component {
                   <Col s={2}>
                     <span className="stats-number">{this.state.stadiums}</span>
                     <span className="stats-text">
-                      {/* <FormattedMessage id="stats.stadiums" /> */}
                       <FormattedMessage
                         id="stats.stadiums"
                         values={{ count: stadiums }}
+                      />
+                    </span>
+                  </Col>
+                  <Col s={2}>
+                    <span className="stats-number">{this.state.commands}</span>
+                    <span className="stats-text">
+                      <FormattedMessage
+                        id="stats.commands"
+                        values={{ count: commands }}
+                      />
+                    </span>
+                  </Col>
+                  <Col s={2}>
+                    <span className="stats-number">{this.state.players}</span>
+                    <span className="stats-text">
+                      <FormattedMessage
+                        id="stats.players"
+                        values={{ count: players }}
                       />
                     </span>
                   </Col>

@@ -6,7 +6,7 @@ const Promo = () => {
   return (
     <section
       className="section-promo"
-      style={{ background: `url(${promo_bg})` }}
+      style={{ background: `url(${promo_bg})`, backgroundSize: "cover" }}
     >
       <div className="container">
         <div className="row">

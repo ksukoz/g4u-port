@@ -17,6 +17,7 @@ footer {
 
 .header-select {
   padding-top: 1rem;
+  width: 120px;
 }
 
 .header-select .select-wrapper input.select-dropdown {
@@ -46,6 +47,11 @@ footer {
   color: #fff;
   margin-top: -64px;
   height: 100vh;
+}
+
+.section-news .section-promo,
+.news-item .section-promo {
+  height: calc(50vh + 100px);
 }
 
 .section-promo .row {
@@ -94,9 +100,15 @@ footer {
   padding-bottom: 2rem;
 }
 
-.section-home-news .card-content .news-card-link {
+.section-home-news .card-content .news-card-link,
+.section-news .card-content .news-card-link {
   border-bottom: 1px solid #259a4e;
   color: #259a4e;
+}
+
+.section-news .card-content .news-card-link {
+  display: inline-block;
+  margin-bottom: 2rem;
 }
 
 .section-home-news .slick-dots {
@@ -176,7 +188,16 @@ footer {
   margin-bottom: 5rem;
 }
 
+.section-news .row {
+  padding-top: 2rem;
+}
+
+.section-news .news-item {
+  margin-bottom: 2rem;
+}
+
 .news-item .card {
+  margin-top: 3rem;
   border-radius: 20px;
   box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.5);
 }
@@ -189,27 +210,32 @@ footer {
   padding: 2rem;
 }
 
-.news-item .responsive-img {
+.news-item .responsive-img,
+.section-news .news-item .responsive-img {
   margin-bottom: -6px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
-.news-title {
+.news-title,
+.section-news .news-title {
   display: flex;
   justify-content: space-between;
   margin-top: 0;
 }
 
-.news-title span {
+.news-title span,
+.section-news .news-title span {
   font-size: 30px;
 }
 
-.news-title small {
+.news-title small,
+.section-news .news-title small {
   font-size: 18px;
 }
 
-.news-text {
+.news-text,
+.section-news .news-text {
   font-size: 18px;
   text-align: justify;
   padding-bottom: 2.5rem;

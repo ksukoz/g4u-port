@@ -1,25 +1,48 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Card } from "react-materialize";
+import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { Row, Col, Card } from "react-materialize";
 import news_bg from "./img/news_bg.png";
+
 import { getNews } from "../../actions/newsActions";
 
-class NewsItem extends Component {
+class News extends Component {
   componentWillMount() {
     this.props.getNews();
   }
+
   render() {
     const { news } = this.props.news;
-    let newsCard;
+    let newsList;
 
     if (news !== null) {
-      newsCard = news.filter(
-        newsItem => newsItem.news_id === this.props.match.url.replace(/\D/g, "")
-      )[0];
+      newsList = news.map(newsItem => (
+        <Col s={12} className="news-item" key={newsItem.news_id}>
+          <Card>
+            <div className="news-content">
+              <h2 className="news-title">
+                <span>{newsItem.title}</span>
+                <small>{newsItem.date}</small>
+              </h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: `${newsItem.text.slice(0, 255)}...`
+                }}
+                className="news-text"
+              />
+              <Link className="news-card-link" to={`/news/${newsItem.news_id}`}>
+                <FormattedMessage id="news.link" />
+              </Link>
+            </div>
+            <img className="responsive-img" src={newsItem.photo} alt="" />
+          </Card>
+        </Col>
+      ));
     }
+
     return (
-      <section className="news-item">
+      <section className="section-news">
         <div
           className="section-promo"
           style={{
@@ -40,30 +63,9 @@ class NewsItem extends Component {
             </div>
           </div>
         </div>
+        {/* <img className="responsive-img" src={news_bg} alt="" /> */}
         <div className="container">
-          <Row>
-            <Col s={12}>
-              {newsCard ? (
-                <Card>
-                  <div className="news-content">
-                    <h2 className="news-title">
-                      <span>{newsCard.title}</span>
-                      <small>{newsCard.date}</small>
-                    </h2>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: newsCard.text
-                      }}
-                      className="news-text"
-                    />
-                  </div>
-                  <img className="responsive-img" src={newsCard.photo} alt="" />
-                </Card>
-              ) : (
-                ""
-              )}
-            </Col>
-          </Row>
+          <Row>{newsList}</Row>
         </div>
       </section>
     );
@@ -77,4 +79,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getNews }
-)(NewsItem);
+)(News);
