@@ -22,7 +22,7 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar brand={<img src={logo} />} right fixed>
+      <Navbar brand={<img src={logo} alt="" />} right fixed>
         <NavItem onClick={this.onClickHandler.bind(this, "/")}>
           <FormattedMessage id="header.main" />
         </NavItem>
@@ -33,7 +33,7 @@ class Header extends Component {
           <FormattedMessage id="header.leagues" />
         </NavItem>
         <NavItem onClick={this.onSelectClickHandler}>
-          <Row>
+          <Row className="header-select">
             <Input
               s={12}
               type="select"

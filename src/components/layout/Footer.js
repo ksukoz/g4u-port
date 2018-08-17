@@ -7,7 +7,7 @@ class PageFooter extends Component {
     return (
       <Footer
         moreLinks={
-          <a className="white-text" href="//notyteam.com.ua" target="_blank">
+          <a className="white-text" href="//notyteam.com.ua">
             <FormattedMessage id="footer.copyrights" />: Skvader&NotyTeam
           </a>
         }

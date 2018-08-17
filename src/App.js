@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ConnectedIntlProvider from "./components/common/ConnectedIntlProvider";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";

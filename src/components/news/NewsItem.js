@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
+import { Row, Col, Card } from "react-materialize";
 
 import { getNews } from "../../actions/newsActions";
 
@@ -14,7 +14,7 @@ class NewsItem extends Component {
 
     if (news !== null) {
       newsCard = news.filter(
-        newsItem => newsItem.news_id == this.props.match.url.replace(/\D/g, "")
+        newsItem => newsItem.news_id === this.props.match.url.replace(/\D/g, "")
       )[0];
     }
     return (

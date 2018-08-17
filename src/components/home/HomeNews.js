@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slick";
-import { Col, Card, CardTitle, Icon } from "react-materialize";
+import { Col, Card, CardTitle } from "react-materialize";
 import { getNews } from "../../actions/newsActions";
-// import PrevArrow from "../common/PrevArrow";
-
-// const PrevArrow = props => <Icon onClick={props.onClick}>arrow_right_alt</Icon>;
 
 class HomeNews extends Component {
   componentWillMount() {
