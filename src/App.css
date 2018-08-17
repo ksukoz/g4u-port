@@ -1,6 +1,20 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
 .header-select {
   padding-top: 1rem;
 }
@@ -43,12 +57,6 @@
 
 .section-promo h1 {
   margin-top: 0;
-}
-
-.slick-prev,
-.slick-next {
-  color: #000;
-  background: #000;
 }
 
 .section-home-news {
@@ -99,9 +107,30 @@
   background: #259a4e;
 }
 
+.section-home-news .slick-prev:before,
+.section-home-news .slick-next:before {
+  color: #616161;
+}
+.section-home-news .slick-prev {
+  left: -50px;
+}
+.section-home-news .slick-next {
+  right: -50px;
+}
+.section-home-news .slick-prev,
+.section-home-news .slick-next {
+  line-height: 0.5;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #616161;
+  border-radius: 50%;
+}
+.section-home-news .slick-prev {
+  transform: rotate(180deg) translate(0, 50%);
+}
 .section-home-news .slick-prev:before {
-  content: "\279C";
-  transform: rotate(90deg);
+  content: "\2794";
+  /* content: "\279C"; */
 }
 .section-home-news .slick-next:before {
   content: "\2794";
@@ -120,6 +149,10 @@
   margin-bottom: 5rem;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.5);
+}
+
+.stats-card .s2 {
+  text-align: center;
 }
 
 .stats-number {
@@ -182,4 +215,8 @@
   justify-content: space-between;
   width: 50%;
   margin: 0 auto;
+}
+
+footer.page-footer .footer-copyright {
+  text-align: center;
 }

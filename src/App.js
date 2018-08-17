@@ -15,15 +15,17 @@ class App extends Component {
         <Router>
           <div className="App">
             <Route path="/" component={Header} />
-            <Switch>
-              <Route exact path="/" component={Home} />
-            </Switch>
-            <Switch>
-              <Route path="/book/:bookId" component={BookDetail} />
-            </Switch>
-            <Switch>
-              <Route path="/news/:id" component={NewsItem} />
-            </Switch>
+            <main>
+              <Switch>
+                <Route exact path="/" component={Home} />
+              </Switch>
+              <Switch>
+                <Route path="/book/:bookId" component={BookDetail} />
+              </Switch>
+              <Switch>
+                <Route path="/news/:id" component={NewsItem} />
+              </Switch>
+            </main>
             <Route path="/" component={Footer} />
           </div>
         </Router>

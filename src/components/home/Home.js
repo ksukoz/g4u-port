@@ -7,11 +7,11 @@ import Stats from "./Stats";
 class Home extends Component {
   render() {
     return (
-      <main>
+      <div>
         <Promo />
         <HomeNews locale={this.props.lang.locale} />
         <Stats locale={this.props.lang.locale} />
-      </main>
+      </div>
     );
   }
 }

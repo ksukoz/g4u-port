@@ -28,7 +28,7 @@ class HomeNews extends Component {
         <Col m={7} s={12} key={newsItem.news_id}>
           <Card
             horizontal
-            header={<CardTitle image={newsItem.photo} />}
+            header={<CardTitle image={newsItem.photo ? newsItem.photo : ""} />}
             title={newsItem.title}
           >
             <p
