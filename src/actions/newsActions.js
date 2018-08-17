@@ -2,7 +2,7 @@ import axios from "axios";
 import { GET_ERRORS, GET_NEWS } from "./types";
 
 export const getNews = () => dispatch => {
-  axios.get("http://api.afl.lan/portal/news").then(res => {
+  axios.get("http://api.mygame4u.com/portal/news").then(res => {
     if (res.data.error) {
       dispatch({
         type: GET_ERRORS,

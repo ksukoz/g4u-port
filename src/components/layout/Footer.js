@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FormattedMessage } from "react-intl";
 import { Footer } from "react-materialize";
 
 class PageFooter extends Component {
@@ -7,7 +8,7 @@ class PageFooter extends Component {
       <Footer
         moreLinks={
           <a className="white-text" href="//notyteam.com.ua" target="_blank">
-            Разработано: Skvader&NotyTeam
+            <FormattedMessage id="footer.copyrights" />: Skvader&NotyTeam
           </a>
         }
         className="black"
