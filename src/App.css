@@ -155,6 +155,49 @@
   font-size: 24px;
 }
 
+.news-item {
+  margin-bottom: 5rem;
+}
+
+.news-item .card {
+  border-radius: 20px;
+  box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.5);
+}
+
+.news-item .card-content {
+  padding: 0;
+}
+
+.news-item .news-content {
+  padding: 2rem;
+}
+
+.news-item .responsive-img {
+  margin-bottom: -6px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.news-title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.news-title span {
+  font-size: 30px;
+}
+
+.news-title small {
+  font-size: 18px;
+}
+
+.news-text {
+  font-size: 18px;
+  text-align: justify;
+  padding-bottom: 2.5rem;
+}
+
 .page-footer .row .col.l6 {
   width: 100%;
 }

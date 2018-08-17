@@ -18,24 +18,28 @@ class NewsItem extends Component {
       )[0];
     }
     return (
-      <div className="container">
-        <Row>
-          <Col s={12}>
-            {newsCard ? (
-              <Card>
-                <h2 className="news-title">
-                  <span className="left">{newsCard.title}</span>
-                  <small className="right">{newsCard.date}</small>
-                </h2>
-                <p>{newsCard.text}</p>
-                <img className="responsive-img" src={newsCard.photo} alt="" />
-              </Card>
-            ) : (
-              ""
-            )}
-          </Col>
-        </Row>
-      </div>
+      <section className="news-item">
+        <div className="container">
+          <Row>
+            <Col s={12}>
+              {newsCard ? (
+                <Card>
+                  <div className="news-content">
+                    <h2 className="news-title">
+                      <span>{newsCard.title}</span>
+                      <small>{newsCard.date}</small>
+                    </h2>
+                    <p className="news-text">{newsCard.text}</p>
+                  </div>
+                  <img className="responsive-img" src={newsCard.photo} alt="" />
+                </Card>
+              ) : (
+                ""
+              )}
+            </Col>
+          </Row>
+        </div>
+      </section>
     );
   }
 }
