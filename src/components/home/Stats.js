@@ -7,12 +7,12 @@ import { getStats } from "../../actions/statsActions";
 
 class Stats extends Component {
   state = {
-    players: "",
-    commands: "",
-    leagues: "",
-    stadiums: "",
-    matchs: "",
-    tournaments: ""
+    players: 0,
+    commands: 0,
+    leagues: 0,
+    stadiums: 0,
+    matchs: 0,
+    tournaments: 0
   };
 
   componentWillMount() {
@@ -35,6 +35,8 @@ class Stats extends Component {
   }
 
   render() {
+    const leagues = this.state.leagues;
+
     return (
       <section
         style={{ background: `url(${stats_bg})` }}
@@ -43,12 +45,11 @@ class Stats extends Component {
         <div className="container">
           <Row>
             <Col s={12} m={8} offset="m2">
-              <h3>Аматорская футбольная лига MyGame4U</h3>
+              <h3>
+                <FormattedMessage id="stats.heading" />
+              </h3>
               <p>
-                MyGame4U - це 2,5 роки досвіду в організації матчів та турнірів.
-                За цей час було враховано і вирішено величезну кількість нюансів
-                і помилок. Тепер ми з упевненістю можемо сказати, що робимо
-                максимально круті турніри в Україні.
+                <FormattedMessage id="stats.paragraph" />
               </p>
             </Col>
           </Row>
@@ -58,29 +59,45 @@ class Stats extends Component {
                 <Row>
                   <Col s={2}>
                     <span className="stats-number">{this.state.leagues}</span>
-                    <span className="stats-text">Лиги</span>
+                    <span className="stats-text">
+                      <FormattedMessage id="stats.leagues" />
+                      <FormattedMessage
+                        id="stats.leagues"
+                        value={{ count: this.state.leagues }}
+                      />
+                    </span>
                   </Col>
                   <Col s={2}>
                     <span className="stats-number">
                       {this.state.tournaments}
                     </span>
-                    <span className="stats-text">Турниров</span>
+                    <span className="stats-text">
+                      <FormattedMessage id="stats.tournaments" />
+                    </span>
                   </Col>
                   <Col s={2}>
                     <span className="stats-number">{this.state.commands}</span>
-                    <span className="stats-text">Команд</span>
+                    <span className="stats-text">
+                      <FormattedMessage id="stats.commands" />
+                    </span>
                   </Col>
                   <Col s={2}>
                     <span className="stats-number">{this.state.players}</span>
-                    <span className="stats-text">Игроков</span>
+                    <span className="stats-text">
+                      <FormattedMessage id="stats.players" />
+                    </span>
                   </Col>
                   <Col s={2}>
                     <span className="stats-number">{this.state.matchs}</span>
-                    <span className="stats-text">Матчей</span>
+                    <span className="stats-text">
+                      <FormattedMessage id="stats.matchs" />
+                    </span>
                   </Col>
                   <Col s={2}>
                     <span className="stats-number">{this.state.stadiums}</span>
-                    <span className="stats-text">Поля</span>
+                    <span className="stats-text">
+                      <FormattedMessage id="stats.stadiums" />
+                    </span>
                   </Col>
                 </Row>
               </Card>

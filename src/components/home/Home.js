@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Promo from "./Promo";
 import HomeNews from "./HomeNews";
 import Stats from "./Stats";
@@ -8,11 +9,18 @@ class Home extends Component {
     return (
       <main>
         <Promo />
-        <HomeNews />
-        <Stats />
+        <HomeNews locale={this.props.lang.locale} />
+        <Stats locale={this.props.lang.locale} />
       </main>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  lang: state.lang
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Home);

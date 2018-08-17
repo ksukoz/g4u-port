@@ -13,6 +13,17 @@ export default {
     news: {
       heading: "News"
     },
+    stats: {
+      heading: "Аматорська футбольна ліга MyGame4U",
+      paragraph:
+        "MyGame4U - це 2,5 роки досвіду в організації матчів та турнірів. За цей час було враховано і вирішено величезну кількість нюансів і помилок. Тепер ми з вненістю можемо сказати, що робимо максимально круті турніри в Україні.",
+      players: "Players",
+      leagues: "Leagues",
+      tournaments: "Tournaments",
+      commands: "Commands",
+      matchs: "Matches",
+      stadiums: "Stadiums"
+    },
     detail: {
       toggle: "Toggle",
       purchase: "Purchase this book from:",
@@ -33,6 +44,17 @@ export default {
     news: {
       heading: "Новини"
     },
+    stats: {
+      heading: "Аматорська футбольна ліга MyGame4U",
+      paragraph:
+        "MyGame4U - це 2,5 роки досвіду в організації матчів та турнірів. За цей час було враховано і вирішено величезну кількість нюансів і помилок. Тепер ми з вненістю можемо сказати, що робимо максимально круті турніри в Україні.",
+      players: "Гравців",
+      leagues: "Ліги",
+      tournaments: "Турнірів",
+      commands: "Команд",
+      matchs: "Матчей",
+      stadiums: "Полей"
+    },
     detail: {
       toggle: "Перемикач",
       purchase: "Compre este libro de:",
@@ -52,6 +74,17 @@ export default {
     },
     news: {
       heading: "Новости"
+    },
+    stats: {
+      heading: "Аматорская футбольная лига MyGame4U",
+      paragraph:
+        "MyGame4U - це 2,5 роки досвіду в організації матчів та турнірів. За цей час було враховано і вирішено величезну кількість нюансів і помилок. Тепер ми з вненістю можемо сказати, що робимо максимально круті турніри в Україні.",
+      players: "Игроков",
+      leagues: "Лиги",
+      tournaments: "Турниров",
+      commands: "Команд",
+      matchs: "Матчей",
+      stadiums: "Поля"
     },
     detail: {
       toggle: "Переключатель",
