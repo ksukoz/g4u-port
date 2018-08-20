@@ -3,14 +3,38 @@ import { Button, Row, Input } from "react-materialize";
 
 class PromoForm extends Component {
   state = {
-    city: ""
+    city: 0,
+    how__know: "",
+    answer: "",
+    name: "",
+    tel: "",
+    age: "",
+    number: "",
+    [this.props.name]: ""
   };
-  onCityChangeHandler = e => {
+
+  onChangeHandler = e => {
     this.setState({
       ...this.state,
       [e.target.name]: e.target.value
     });
   };
+
+  onHowChangeHandler = e => {
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  onClickHandler = e => {
+    e.preventDefault();
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.innerText
+    });
+  };
+
   render() {
     return (
       <form className="tab-content">
@@ -19,81 +43,133 @@ class PromoForm extends Component {
             s={12}
             type="select"
             name="city"
-            defaultValue={0}
-            onChange={this.onCityChangeHandler}
+            defaultValue={this.state.city}
+            onChange={this.onChangeHandler}
           >
             <option value={0} disabled>
               Выбрать город
             </option>
-            <option value={1}>Киев</option>
-            <option value={2}>Сумы</option>
-            <option value={2}>Ирпень</option>
+            <option value="Киев">Киев</option>
+            <option value="Сумы">Сумы</option>
+            <option value="Ирпень">Ирпень</option>
           </Input>
         </Row>
         {this.props.name !== "open_league" ? (
           <div>
             <h6>Откуда узнали о MyGame4U?</h6>
             <Row>
-              <Input
-                s={12}
-                name="how__know"
-                type="checkbox"
-                value="vk"
-                label="Vkontakte"
-              />
-              <Input
-                s={12}
-                name="how__know"
-                type="checkbox"
-                value="fb"
-                label="Facebook"
-              />
-              <Input
-                s={12}
-                name="how__know"
-                type="checkbox"
-                value="inst"
-                label="Instagram"
-              />
-              <Input
-                s={12}
-                name="how__know"
-                type="checkbox"
-                value="friends"
-                label="Друзья"
-              />
-              <Input
-                s={12}
-                name="how__know"
-                type="checkbox"
-                value="other"
-                label="Другое"
-              />
+              <p>
+                <label>
+                  <input
+                    name="how__know"
+                    type="radio"
+                    value="vk"
+                    onChange={this.onHowChangeHandler}
+                  />
+                  <span>Vkontakte</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input
+                    name="how__know"
+                    type="radio"
+                    value="fb"
+                    onChange={this.onHowChangeHandler}
+                  />
+                  <span>Facebook</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input
+                    name="how__know"
+                    type="radio"
+                    value="inst"
+                    onChange={this.onHowChangeHandler}
+                  />
+                  <span>Instagram</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input
+                    name="how__know"
+                    type="radio"
+                    value="friends"
+                    onChange={this.onHowChangeHandler}
+                  />
+                  <span>Друзья</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input
+                    name="how__know"
+                    type="radio"
+                    value="other"
+                    onChange={this.onHowChangeHandler}
+                  />
+                  <span>Другое</span>
+                </label>
+              </p>
             </Row>
             <h6>Когда-нибудь играли до этого?</h6>
             <Row>
-              <Input s={12} label="Ваш ответ" />
+              <Input
+                s={12}
+                name="answer"
+                label="Ваш ответ"
+                value={this.state.answer}
+                onChange={this.onChangeHandler}
+              />
             </Row>
           </div>
         ) : (
           ""
         )}
         <Row>
-          <Input s={12} label="Ваше имя" />
+          <Input
+            s={12}
+            name="name"
+            label="Ваше имя"
+            value={this.state.name}
+            onChange={this.onChangeHandler}
+          />
         </Row>
         <Row>
-          <Input s={12} label="Номер телефона" />
+          <Input
+            s={12}
+            name="tel"
+            label="Номер телефона"
+            value={this.state.tel}
+            onChange={this.onChangeHandler}
+          />
         </Row>
         {this.props.name !== "create_command" ? (
           <Row>
-            <Input s={12} label="Возраст" type="number" />
+            <Input
+              s={12}
+              name="age"
+              label="Возраст"
+              type="number"
+              value={this.state.age}
+              onChange={this.onChangeHandler}
+            />
           </Row>
         ) : (
           ""
         )}
         {this.props.name === "find_command" ? (
           <Row>
-            <Input s={12} label="Позиция на поле" type="number" />
+            <Input
+              s={12}
+              name="number"
+              label="Позиция на поле"
+              type="number"
+              value={this.state.number}
+              onChange={this.onChangeHandler}
+            />
           </Row>
         ) : (
           ""
@@ -101,12 +177,24 @@ class PromoForm extends Component {
         {this.props.name === "open_league" ? (
           <Row>
             <h6>Наличие огранизаторского опыта</h6>
-            <Input s={12} label="Ваш ответ" />
+            <Input
+              s={12}
+              name="answer"
+              label="Ваш ответ"
+              value={this.state.answer}
+              onChange={this.onChangeHandler}
+            />
           </Row>
         ) : (
           ""
         )}
-        <Button className="btn btn--large" type="submit" waves="light">
+        <Button
+          className="btn btn--large"
+          type="submit"
+          waves="light"
+          name={this.props.name}
+          onClick={this.onClickHandler}
+        >
           {this.props.name === "find_command"
             ? "Найти команду"
             : this.props.name === "create_command"

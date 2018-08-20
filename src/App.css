@@ -142,7 +142,7 @@ footer {
   color: rgba(0, 0, 0, 0.3);
 }
 
-.modal--promo .tab-content [type="checkbox"] + label {
+.modal--promo .tab-content [type="radio"] + label {
   margin-bottom: 10px;
 }
 
@@ -154,9 +154,58 @@ footer {
   border-bottom: 1px solid #339933;
 }
 
-.modal--promo .tab-content [type="checkbox"]:checked + label:before {
+.modal--promo [type="radio"]:not(:checked) + span,
+.modal--promo [type="radio"]:checked + span {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.modal--promo [type="radio"]:checked + span:before {
+  top: -4px;
+  left: -5px;
+  width: 12px;
+  height: 22px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
   border-right: 2px solid #339933;
   border-bottom: 2px solid #339933;
+  -webkit-transform: rotate(40deg);
+  transform: rotate(40deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+
+.modal--promo [type="radio"] + span:before,
+.modal--promo [type="radio"] + span:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  z-index: 0;
+  border: 2px solid #5a5a5a;
+  border-radius: 1px;
+  margin-top: 3px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.modal--promo [type="radio"]:checked + span:after {
+  border: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
 }
 .modal--promo .modal-footer {
   position: fixed;
