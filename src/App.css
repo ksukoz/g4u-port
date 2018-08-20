@@ -241,6 +241,11 @@ footer {
   padding-bottom: 2.5rem;
 }
 
+.news-text img,
+.section-news .news-text img {
+  max-width: 100%;
+}
+
 .page-footer .row .col.l6 {
   width: 100%;
 }
