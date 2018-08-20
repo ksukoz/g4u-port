@@ -3,24 +3,18 @@ import { connect } from "react-redux";
 import { Row, Col, Card } from "react-materialize";
 import { FormattedMessage } from "react-intl";
 import news_bg from "./img/news_bg.png";
-import { getNews } from "../../actions/newsActions";
+import { getCurrentNews } from "../../actions/newsActions";
 
 class NewsItem extends Component {
   componentDidMount() {
-    // this.props.getNews();
-    this.props.getNews(`news_id=${this.props.match.url.replace(/\D/g, "")}`);
+    this.props.getCurrentNews(this.props.match.url.replace(/\D/g, ""));
   }
   render() {
-    const { news } = this.props.news;
+    const { currentNews } = this.props.news;
     let newsCard;
 
-    if (news !== null) {
-      // newsCard = this.props.getNews(
-      //   `news_id=${this.props.match.url.replace(/\D/g, "")}`
-      // );
-      news.filter(
-        newsItem => newsItem.news_id === this.props.match.url.replace(/\D/g, "")
-      )[0];
+    if (currentNews !== null) {
+      newsCard = currentNews[0];
     }
     return (
       <section className="news-item">
@@ -80,5 +74,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getNews }
+  { getCurrentNews }
 )(NewsItem);
