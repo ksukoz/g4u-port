@@ -23,7 +23,7 @@ export const getFranch = () => dispatch => {
 };
 
 export const getLeagues = frId => dispatch => {
-  axios.get(`http://api.mygame4u.com/portal/leagues?frId=${frId}`).then(res => {
+  axios.get("http://api.mygame4u.com/portal/leagues").then(res => {
     if (res.data.error) {
       dispatch({
         type: GET_ERRORS,

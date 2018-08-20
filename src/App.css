@@ -41,6 +41,7 @@ footer {
 .navbar-fixed .brand-logo img {
   height: 64px;
 }
+
 .section-main-promo,
 .section-promo {
   position: relative;
@@ -164,6 +165,10 @@ footer {
   padding: 5rem 0;
 }
 
+.section-stats .m8 {
+  text-align: center;
+}
+
 .stats-wrapper span {
   display: block;
 }
@@ -262,4 +267,31 @@ footer {
 
 footer.page-footer .footer-copyright {
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .nav-wrapper .select-wrapper input.select-dropdown,
+  nav .nav-wrapper ul a {
+    font-size: 0.7rem;
+  }
+
+  .header-select {
+    width: 110px;
+  }
+
+  .section-news .section-promo,
+  .news-item .section-promo {
+    height: calc(100vh + 64px);
+  }
+
+  .news-title span,
+  .section-news .news-title span {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .news-text,
+  .section-news .news-text {
+    font-size: 16px;
+  }
 }

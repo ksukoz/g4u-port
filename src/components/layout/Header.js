@@ -33,10 +33,10 @@ class Header extends Component {
 
   onLeagueChangeHandler = e => {
     this.props.history.push("/news");
-    if (e.target.name === "franch") {
-      this.props.getLeagues(e.target.value);
-      this.props.getNews(`frId=${e.target.value}`);
-    }
+    // if (e.target.name === "franch") {
+    //   // this.props.getLeagues(e.target.value);
+    //   // this.props.getNews(`frId=${e.target.value}`);
+    // }
 
     if (e.target.name === "leagues") {
       this.props.getSubLeagues(e.target.value);
@@ -54,23 +54,28 @@ class Header extends Component {
   };
 
   componentWillMount() {
-    this.props.getFranch();
+    // this.props.getFranch();
+    this.props.getLeagues();
   }
 
   render() {
-    const { franch, leagues, subLeagues } = this.props.leagues;
+    const {
+      // franch,
+      leagues,
+      subLeagues
+    } = this.props.leagues;
 
-    let franchList;
+    // let franchList;
     let leaguesList;
     let subLeaguesList;
 
-    if (franch !== null) {
-      franchList = franch.map(franchItem => (
-        <option key={franchItem.frId} value={franchItem.frId}>
-          {franchItem.name}
-        </option>
-      ));
-    }
+    // if (franch !== null) {
+    //   franchList = franch.map(franchItem => (
+    //     <option key={franchItem.frId} value={franchItem.frId}>
+    //       {franchItem.name}
+    //     </option>
+    //   ));
+    // }
     if (leagues !== null) {
       leaguesList = leagues.map(leaguesItem => (
         <option key={leaguesItem.lgId} value={leaguesItem.lgId}>
@@ -98,7 +103,7 @@ class Header extends Component {
         <NavItem onClick={this.onClickHandler.bind(this, "/leagues")}>
           <FormattedMessage id="header.leagues" />
         </NavItem>
-        <NavItem onClick={this.onSelectClickHandler}>
+        {/* <NavItem onClick={this.onSelectClickHandler}>
           <Row className="header-select">
             <Input
               s={12}
@@ -114,7 +119,7 @@ class Header extends Component {
               {franchList ? franchList : <option value={0} disabled />}
             </Input>
           </Row>
-        </NavItem>
+        </NavItem> */}
         <NavItem onClick={this.onSelectClickHandler}>
           <Row className="header-select">
             <Input
