@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Button, Row, Input } from "react-materialize";
+import { sendPromo } from "../../actions/commonActions";
 
 class PromoForm extends Component {
   state = {
@@ -29,10 +31,26 @@ class PromoForm extends Component {
 
   onClickHandler = e => {
     e.preventDefault();
+
+    let answer;
+
     this.setState({
       ...this.state,
       [e.target.name]: e.target.innerText
     });
+
+    answer = {
+      city: this.state.city,
+      how__know: this.state.how__know,
+      answer: this.state.answer,
+      name: this.state.name,
+      tel: this.state.tel,
+      age: this.state.age,
+      number: this.state.number,
+      [this.props.name]: e.target.innerText
+    };
+
+    this.props.sendPromo(answer);
   };
 
   render() {
@@ -206,4 +224,7 @@ class PromoForm extends Component {
   }
 }
 
-export default PromoForm;
+export default connect(
+  null,
+  { sendPromo }
+)(PromoForm);
