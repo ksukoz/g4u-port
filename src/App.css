@@ -41,19 +41,22 @@ footer {
 .navbar-fixed .brand-logo img {
   height: 64px;
 }
-
+.section-main-promo,
 .section-promo {
   position: relative;
   color: #fff;
   margin-top: -64px;
-  height: 100vh;
+}
+
+.section-main-promo {
+  height: calc(100vh + 64px);
 }
 
 .section-news .section-promo,
 .news-item .section-promo {
   height: calc(50vh + 100px);
 }
-
+.section-main-promo .row,
 .section-promo .row {
   position: absolute;
   top: 50%;

@@ -5,7 +5,7 @@ import promo_bg from "./img/promo_bg.png";
 const Promo = () => {
   return (
     <section
-      className="section-promo"
+      className="section-main-promo"
       style={{ background: `url(${promo_bg})`, backgroundSize: "cover" }}
     >
       <div className="container">

@@ -27,13 +27,23 @@ class News extends Component {
               </h2>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: `${newsItem.text.slice(0, 255)}...`
+                  __html:
+                    newsItem.text.length > 255
+                      ? `${newsItem.text.slice(0, 255)}...`
+                      : newsItem.text
                 }}
                 className="news-text"
               />
-              <Link className="news-card-link" to={`/news/${newsItem.news_id}`}>
-                <FormattedMessage id="news.link" />
-              </Link>
+              {newsItem.text.length > 255 ? (
+                <Link
+                  className="news-card-link"
+                  to={`/news/${newsItem.news_id}`}
+                >
+                  <FormattedMessage id="news.link" />
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
             <img className="responsive-img" src={newsItem.photo} alt="" />
           </Card>
@@ -50,13 +60,23 @@ class News extends Component {
               </h2>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: `${newsItem.text.slice(0, 255)}...`
+                  __html:
+                    newsItem.text.length > 255
+                      ? `${newsItem.text.slice(0, 255)}...`
+                      : newsItem.text
                 }}
                 className="news-text"
               />
-              <Link className="news-card-link" to={`/news/${newsItem.news_id}`}>
-                <FormattedMessage id="news.link" />
-              </Link>
+              {newsItem.text.length > 255 ? (
+                <Link
+                  className="news-card-link"
+                  to={`/news/${newsItem.news_id}`}
+                >
+                  <FormattedMessage id="news.link" />
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
             <img className="responsive-img" src={newsItem.photo} alt="" />
           </Card>
