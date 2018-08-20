@@ -126,7 +126,7 @@ class Header extends Component {
               s={12}
               type="select"
               name="leagues"
-              label="Materialize Select"
+              // label="Materialize Select"
               defaultValue={this.state.leagues}
               onChange={this.onLeagueChangeHandler}
             >
@@ -143,7 +143,7 @@ class Header extends Component {
               s={12}
               type="select"
               name="subLeagues"
-              label="Materialize Select"
+              // label="Materialize Select"
               defaultValue={this.state.subLeagues}
               onChange={this.onLeagueChangeHandler}
             >
@@ -159,7 +159,7 @@ class Header extends Component {
             <Input
               s={12}
               type="select"
-              label="Materialize Select"
+              // label="Materialize Select"
               defaultValue={this.props.lang.locale}
               onChange={this.onChangeHandler}
             >
