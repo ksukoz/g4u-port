@@ -21,6 +21,7 @@ class Header extends Component {
   onChangeHandler = e => {
     e.preventDefault();
     this.props.setLanguage(e.target.value);
+    localStorage.setItem("lang", e.target.value);
   };
 
   onClickHandler = link => {

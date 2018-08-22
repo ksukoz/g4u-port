@@ -11,10 +11,12 @@ addLocaleData([...en, ...uk, ...ru]);
 
 const initialState = {
   locale:
-    (navigator.languages && navigator.languages[0]) ||
-    navigator.language ||
-    navigator.userLanguage ||
-    "en-US",
+    localStorage.getItem("lang") !== null
+      ? localStorage.getItem("lang")
+      : (navigator.languages && navigator.languages[0]) ||
+        navigator.language ||
+        navigator.userLanguage ||
+        "en-US",
   messages: ""
 };
 
