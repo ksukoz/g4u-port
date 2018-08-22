@@ -211,7 +211,7 @@ footer {
   position: fixed;
   top: 0;
   width: max-content;
-  right: -25px;
+  right: 0;
   background-color: transparent;
   margin: 0;
   padding: 0;
