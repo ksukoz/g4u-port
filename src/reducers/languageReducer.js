@@ -10,13 +10,12 @@ import { flattenMessages } from "../utils";
 addLocaleData([...en, ...uk, ...ru]);
 
 const initialState = {
-  locale:
-    localStorage.getItem("lang") !== null
-      ? localStorage.getItem("lang")
-      : (navigator.languages && navigator.languages[0]) ||
-        navigator.language ||
-        navigator.userLanguage ||
-        "en-US",
+  locale: localStorage.lang
+    ? localStorage.getItem("lang")
+    : (navigator.languages && navigator.languages[0]) ||
+      navigator.language ||
+      navigator.userLanguage ||
+      "en-US",
   messages: ""
 };
 
