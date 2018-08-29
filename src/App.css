@@ -287,6 +287,10 @@ footer {
   margin-bottom: 2rem;
 }
 
+.section-home-news .slick-slide .col:focus {
+  outline: none;
+}
+
 .section-home-news .slick-dots {
   bottom: -50px;
 }
@@ -439,6 +443,13 @@ footer {
 
 footer.page-footer .footer-copyright {
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .section-home-news .slick-prev,
+  .section-home-news .slick-next {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1200px) {
