@@ -619,6 +619,12 @@ footer.page-footer .footer-copyright {
   font-size: 3rem;
 }
 
+.section-tournament .select-wrapper {
+  width: max-content;
+  margin-left: auto;
+  color: #fff;
+}
+
 @media (max-width: 767px) {
   .section-home-news .slick-prev,
   .section-home-news .slick-next {

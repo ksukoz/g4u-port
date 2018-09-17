@@ -10,7 +10,8 @@ import {
   Tab,
   Dropdown,
   NavItem,
-  Button
+  Button,
+  Input
 } from "react-materialize";
 import news_bg from "../news/img/news_bg.png";
 import ScoreBoard from "./img/scoreboard.svg";
@@ -20,6 +21,9 @@ import DateIcon from "./img/date.svg";
 import { getTourInfo } from "../../actions/tournamentActions";
 
 class TournamentMain extends Component {
+  state = {
+    tournament: null
+  };
   componentDidMount = () => {
     this.props.getTourInfo(this.props.match.params.id);
   };
@@ -28,6 +32,7 @@ class TournamentMain extends Component {
     const { tournament } = this.props.tournaments;
     let lastGamesList;
     let nextGamesList;
+    let tournamentsList;
 
     const settings = {
       className: "center",
@@ -81,6 +86,11 @@ class TournamentMain extends Component {
           </div>
         </div>
       ));
+      tournamentsList = tournament.tournirs.map(tour => (
+        <option key={tour.subId} value={tour.subId}>
+          {tour.title}
+        </option>
+      ));
     }
 
     return (
@@ -97,6 +107,25 @@ class TournamentMain extends Component {
           }}
         >
           <div className="container">
+            <Row>
+              <Input
+                s={12}
+                type="select"
+                name="leagues"
+                // label="Materialize Select"
+                defaultValue={this.state.tournament}
+                onChange={this.onLeagueChangeHandler}
+              >
+                <option value={0} disabled>
+                  Турнир
+                </option>
+                {tournamentsList ? (
+                  tournamentsList
+                ) : (
+                  <option value={0} disabled />
+                )}
+              </Input>
+            </Row>
             <Row>
               <Tabs className="tournament-tabs">
                 <Tab title="Последние матчи" active>
