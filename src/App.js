@@ -8,6 +8,7 @@ import NewsItem from "./components/news/NewsItem";
 import "./App.css";
 import Home from "./components/home/Home";
 import News from "./components/news/News";
+import Tournaments from "./components/tournaments/Tournaments";
 
 class App extends Component {
   render() {
@@ -28,6 +29,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <Route exact path="/news" component={News} />
+              </Switch>
+              <Switch>
+                <Route exact path="/tournaments/:id" component={Tournaments} />
               </Switch>
             </main>
             <Route path="/" component={Footer} />

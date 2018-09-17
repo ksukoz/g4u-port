@@ -9,4 +9,7 @@ export const GET_NEWS = "GET_NEWS";
 export const GET_MAIN_NEWS = "GET_MAIN_NEWS";
 export const GET_CURRENT_NEWS = "GET_CURRENT_NEWS";
 export const GET_STATS = "GET_STATS";
+
 export const GET_ERRORS = "GET_ERRORS";
+
+export const GET_TOUR_INFO = "GET_TOUR_INFO";

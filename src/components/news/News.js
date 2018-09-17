@@ -14,6 +14,7 @@ class News extends Component {
 
   render() {
     const { news, mainNews } = this.props.news;
+    const { tournaments } = this.props.leagues;
     let newsList;
 
     if (news !== null) {
@@ -89,18 +90,30 @@ class News extends Component {
         <div
           className="section-promo"
           style={{
-            background: `url(${news_bg}) no-repeat`,
-            backgroundSize: "cover"
+            background:
+              // tournaments && tournaments.photo
+              //   ? `url(${tournaments.photo}) 0% 0% / cover  no-repeat`
+              //   :
+              `url(${news_bg}) 0% 0% / cover  no-repeat`
+            // backgroundSize: "cover"
           }}
         >
           <div className="container">
             <div className="row">
               <div className="col m9">
                 <h1>
-                  <FormattedMessage id="promo.heading" />
+                  {tournaments && tournaments.name ? (
+                    tournaments.name
+                  ) : (
+                    <FormattedMessage id="promo.heading" />
+                  )}
                 </h1>
                 <p>
-                  <FormattedMessage id="promo.text" />
+                  {tournaments && tournaments.description ? (
+                    tournaments.description
+                  ) : (
+                    <FormattedMessage id="promo.text" />
+                  )}
                 </p>
               </div>
             </div>
@@ -116,7 +129,8 @@ class News extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news
+  news: state.news,
+  leagues: state.leagues
 });
 
 export default connect(

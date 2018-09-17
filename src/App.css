@@ -63,6 +63,7 @@ footer {
 }
 
 .section-news .section-promo,
+.section-tournaments .section-promo,
 .news-item .section-promo {
   height: calc(50vh + 100px);
 }

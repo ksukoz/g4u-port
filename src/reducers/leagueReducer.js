@@ -9,7 +9,7 @@ const initialState = {
   franch: null,
   leagues: null,
   subLeagues: null,
-  cities: null
+  tournaments: null
 };
 
 export default function(state = initialState, action) {
@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
     case GET_CITIES:
       return {
         ...state,
-        cities: action.payload
+        tournaments: action.payload
       };
     default:
       return state;

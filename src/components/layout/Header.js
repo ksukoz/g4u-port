@@ -50,7 +50,7 @@ class Header extends Component {
   }
 
   render() {
-    const { leagues, cities } = this.props.leagues;
+    const { leagues, tournaments } = this.props.leagues;
 
     let leaguesList;
     let citiesList;
@@ -63,8 +63,8 @@ class Header extends Component {
       ));
     }
 
-    if (cities) {
-      citiesList = cities.map(city => (
+    if (tournaments) {
+      citiesList = tournaments.cities.map(city => (
         <option key={city.cId} value={city.cId}>
           {city.name} ({city.tours})
         </option>
