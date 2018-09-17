@@ -396,6 +396,7 @@ footer {
 
 .news-item .responsive-img,
 .section-news .news-item .responsive-img {
+  width: 100%;
   margin-bottom: -6px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;

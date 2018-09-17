@@ -1,9 +1,15 @@
-import { GET_FRANCHISE, GET_LEAGUES, GET_SUBLEAGUES } from "../actions/types";
+import {
+  GET_FRANCHISE,
+  GET_LEAGUES,
+  GET_SUBLEAGUES,
+  GET_CITIES
+} from "../actions/types";
 
 const initialState = {
   franch: null,
   leagues: null,
-  subLeagues: null
+  subLeagues: null,
+  cities: null
 };
 
 export default function(state = initialState, action) {
@@ -22,6 +28,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         subLeagues: action.payload
+      };
+    case GET_CITIES:
+      return {
+        ...state,
+        cities: action.payload
       };
     default:
       return state;

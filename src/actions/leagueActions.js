@@ -3,7 +3,8 @@ import {
   GET_ERRORS,
   GET_FRANCHISE,
   GET_LEAGUES,
-  GET_SUBLEAGUES
+  GET_SUBLEAGUES,
+  GET_CITIES
 } from "./types";
 
 export const getFranch = () => dispatch => {
@@ -38,20 +39,18 @@ export const getLeagues = frId => dispatch => {
   });
 };
 
-export const getSubLeagues = lgId => dispatch => {
-  axios
-    .get(`http://api.mygame4u.com/portal/subleagues?lgId=${lgId}`)
-    .then(res => {
-      if (res.data.error) {
-        dispatch({
-          type: GET_ERRORS,
-          payload: res.data.message
-        });
-      } else {
-        dispatch({
-          type: GET_SUBLEAGUES,
-          payload: res.data.answer
-        });
-      }
-    });
+export const getCities = lgId => dispatch => {
+  axios.get(`http://api.mygame4u.com/portal/subleagues/${lgId}`).then(res => {
+    if (res.data.error) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: res.data.message
+      });
+    } else {
+      dispatch({
+        type: GET_CITIES,
+        payload: res.data.answer
+      });
+    }
+  });
 };

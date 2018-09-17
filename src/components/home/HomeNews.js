@@ -25,7 +25,7 @@ class HomeNews extends Component {
 
     if (mainNews !== null) {
       newsList = mainNews.map(newsItem => (
-        <Col m={7} s={7} key={newsItem.news_id}>
+        <Col m={7} s={12} key={newsItem.news_id}>
           <Card
             horizontal
             header={<CardTitle image={newsItem.photo ? newsItem.photo : ""} />}

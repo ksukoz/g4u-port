@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { Navbar, NavItem, Row, Input } from "react-materialize";
 import { setLanguage } from "../../actions/languageActions";
-import {
-  getFranch,
-  getLeagues,
-  getSubLeagues
-} from "../../actions/leagueActions";
+import { getFranch, getLeagues, getCities } from "../../actions/leagueActions";
 import { getNews } from "../../actions/newsActions";
 import logo from "./img/logo.svg";
 
@@ -15,7 +11,7 @@ class Header extends Component {
   state = {
     franch: 0,
     leagues: 0,
-    subLeagues: 0
+    city: 0
   };
 
   onChangeHandler = e => {
@@ -34,19 +30,14 @@ class Header extends Component {
 
   onLeagueChangeHandler = e => {
     this.props.history.push("/news");
-    // if (e.target.name === "franch") {
-    //   // this.props.getLeagues(e.target.value);
-    //   // this.props.getNews(`frId=${e.target.value}`);
-    // }
 
     if (e.target.name === "leagues") {
-      this.props.getSubLeagues(e.target.value);
+      this.props.getCities(e.target.value);
       this.props.getNews(`lgId=${e.target.value}`);
     }
-
-    // if (e.target.name === "subLeagues") {
-    //   this.props.getNews(`sub=${e.target.value}`);
-    // }
+    if (e.target.name === "city") {
+      this.props.history.push(`/tournaments/${e.target.value}`);
+    }
 
     this.setState({
       ...this.state,
@@ -55,28 +46,15 @@ class Header extends Component {
   };
 
   componentWillMount() {
-    // this.props.getFranch();
     this.props.getLeagues();
   }
 
   render() {
-    const {
-      // franch,
-      leagues,
-      subLeagues
-    } = this.props.leagues;
+    const { leagues, cities } = this.props.leagues;
 
-    // let franchList;
     let leaguesList;
-    let subLeaguesList;
+    let citiesList;
 
-    // if (franch !== null) {
-    //   franchList = franch.map(franchItem => (
-    //     <option key={franchItem.frId} value={franchItem.frId}>
-    //       {franchItem.name}
-    //     </option>
-    //   ));
-    // }
     if (leagues !== null) {
       leaguesList = leagues.map(leaguesItem => (
         <option key={leaguesItem.lgId} value={leaguesItem.lgId}>
@@ -85,10 +63,10 @@ class Header extends Component {
       ));
     }
 
-    if (subLeagues !== null) {
-      subLeaguesList = subLeagues.map(subLeaguesItem => (
-        <option key={subLeaguesItem.sblgId} value={subLeaguesItem.sblgId}>
-          {subLeaguesItem.name}
+    if (cities) {
+      citiesList = cities.map(city => (
+        <option key={city.cId} value={city.cId}>
+          {city.name} ({city.tours})
         </option>
       ));
     }
@@ -143,15 +121,15 @@ class Header extends Component {
             <Input
               s={12}
               type="select"
-              name="subLeagues"
+              name="city"
               // label="Materialize Select"
-              defaultValue={this.state.subLeagues}
+              defaultValue={this.state.city}
               onChange={this.onLeagueChangeHandler}
             >
               <option value={0} disabled>
                 Выбрать подлигу
               </option>
-              {subLeaguesList ? subLeaguesList : <option value={0} disabled />}
+              {citiesList ? citiesList : <option value={0} disabled />}
             </Input>
           </Row>
         </NavItem>
@@ -182,5 +160,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setLanguage, getFranch, getLeagues, getSubLeagues, getNews }
+  { setLanguage, getFranch, getLeagues, getCities, getNews }
 )(Header);
