@@ -12,6 +12,17 @@ import DateIcon from "./img/date.svg";
 import { getTourInfo } from "../../actions/tournamentActions";
 
 class Tournaments extends Component {
+  state = {
+    seasonsList: null
+  };
+
+  onSlideClickHandler = (array, index) => {
+    this.setState({
+      ...this.state,
+      seasonsList: array[index].seasons
+    });
+  };
+
   componentDidMount = () => {
     this.props.getTourInfo(this.props.match.params.id);
   };
@@ -19,6 +30,8 @@ class Tournaments extends Component {
   render() {
     const { subLeagues } = this.props.tournaments;
     let currentList;
+    let internationalList;
+    let arhiveList;
 
     const settings = {
       dots: false,
@@ -29,8 +42,33 @@ class Tournaments extends Component {
     };
 
     if (subLeagues) {
-      currentList = subLeagues.current.map(tournament => (
-        <div key={tournament.tId}>
+      currentList = subLeagues.current.map((tournament, i) => (
+        <div
+          key={tournament.tId}
+          onClick={this.onSlideClickHandler.bind(this, subLeagues.current, i)}
+        >
+          <img src={tournament.logo} alt="" />
+          {tournament.title}
+        </div>
+      ));
+      internationalList = subLeagues.international.map((tournament, i) => (
+        <div
+          key={tournament.tId}
+          onClick={this.onSlideClickHandler.bind(
+            this,
+            subLeagues.international,
+            i
+          )}
+        >
+          <img src={tournament.logo} alt="" />
+          {tournament.title}
+        </div>
+      ));
+      arhiveList = subLeagues.arhive.map((tournament, i) => (
+        <div
+          key={tournament.tId}
+          onClick={this.onSlideClickHandler.bind(this, subLeagues.arhive, i)}
+        >
           <img src={tournament.logo} alt="" />
           {tournament.title}
         </div>
@@ -76,11 +114,23 @@ class Tournaments extends Component {
                     Текущие
                   </div>
                 }
+                active
               >
-                <Row>
+                <Row class="tournaments-slider z-depth-1">
                   <Slider {...settings} {...this.props}>
                     {currentList}
                   </Slider>
+                  <ul>
+                    {this.state.seasonsList
+                      ? this.state.seasonsList.map(season => (
+                          <li key={season.sId}>
+                            <Link to={`/seasons/${season.sId}`}>
+                              {season.title}
+                            </Link>
+                          </li>
+                        ))
+                      : ""}
+                  </ul>
                 </Row>
               </Tab>
               <Tab

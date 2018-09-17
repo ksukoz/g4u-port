@@ -316,13 +316,17 @@ footer {
   color: #616161;
   line-height: 0.5;
 }
-.section-home-news .slick-prev,
-.section-tournaments .slick-prev {
+.section-home-news .slick-prev {
   left: -50px;
 }
-.section-home-news .slick-next,
-.section-tournaments .slick-next {
+.section-tournaments .slick-prev {
+  left: -40px;
+}
+.section-home-news .slick-next {
   right: -50px;
+}
+.section-tournaments .slick-next {
+  right: -40px;
 }
 .section-home-news .slick-prev,
 .section-home-news .slick-next,
@@ -507,6 +511,36 @@ footer.page-footer .footer-copyright {
 .tournaments-tabs.tabs .tab a:hover img,
 .tournaments-tabs.tabs .tab a.active img {
   filter: grayscale(0);
+}
+
+.tournaments-slider {
+  padding: 5rem;
+  border-radius: 15px;
+}
+
+.tournaments-slider ul {
+  padding-top: 3rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.tournaments-slider li a {
+  font-size: 1.8rem;
+  color: #000;
+  transition: 0.3s;
+}
+
+.tournaments-slider .slick-initialized .slick-slide {
+  text-align: center;
+}
+
+.tournaments-slider .slick-initialized .slick-slide img {
+  margin: 0 auto;
+}
+
+.tournaments-slider li a:hover,
+.tournaments-slider li a:active {
+  color: #2c9d54;
 }
 
 @media (max-width: 767px) {
