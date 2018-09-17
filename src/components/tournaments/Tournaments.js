@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { Row, Col, Card } from "react-materialize";
+import { Row, Col, Tabs, Tab } from "react-materialize";
 import news_bg from "../news/img/news_bg.png";
+import ScoreBoard from "./img/scoreboard.svg";
+import Football from "./img/football.svg";
+import DateIcon from "./img/date.svg";
 
 import { getTourInfo } from "../../actions/tournamentActions";
 
@@ -38,6 +41,49 @@ class Tournaments extends Component {
               </Col>
             </Row>
           </div>
+        </div>
+
+        <div className="container">
+          <Row>
+            <Tabs className="tournaments-tabs">
+              <Tab
+                title={
+                  <div>
+                    <div class="img-wrap">
+                      <img src={ScoreBoard} alt="" />
+                    </div>
+                    Текущие
+                  </div>
+                }
+              >
+                Test 1
+              </Tab>
+              <Tab
+                title={
+                  <div>
+                    <div class="img-wrap">
+                      <img src={Football} alt="" />
+                    </div>
+                    Международные
+                  </div>
+                }
+              >
+                Test 2
+              </Tab>
+              <Tab
+                title={
+                  <div>
+                    <div class="img-wrap">
+                      <img src={DateIcon} alt="" />
+                    </div>
+                    Архив
+                  </div>
+                }
+              >
+                Test 3
+              </Tab>
+            </Tabs>
+          </Row>
         </div>
       </section>
     );

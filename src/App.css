@@ -447,6 +447,59 @@ footer.page-footer .footer-copyright {
   text-align: center;
 }
 
+.tournaments-tabs {
+  width: 50%;
+  height: 200px;
+  padding-top: 6rem;
+}
+.tournaments-tabs.tabs .indicator {
+  display: none;
+}
+
+.tournaments-tabs .img-wrap {
+  margin: 0 auto;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  padding-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.tournaments-tabs.tabs .tab a {
+  height: auto;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.tournaments-tabs.tabs .tab a div {
+  text-align: center;
+}
+
+.tournaments-tabs.tabs .tab a:hover,
+.tournaments-tabs.tabs .tab a.active {
+  color: #000;
+}
+
+.tournaments-tabs.tabs .tab a:hover .img-wrap,
+.tournaments-tabs.tabs .tab a.active .img-wrap {
+  border-color: #2c9d54;
+}
+
+.tournaments-tabs li {
+  width: 30%;
+}
+
+.tournaments-tabs img {
+  height: 45px;
+  filter: grayscale(10);
+  transition: 0.3s;
+}
+
+.tournaments-tabs.tabs .tab a:hover img,
+.tournaments-tabs.tabs .tab a.active img {
+  filter: grayscale(0);
+}
+
 @media (max-width: 767px) {
   .section-home-news .slick-prev,
   .section-home-news .slick-next {
