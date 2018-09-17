@@ -57,6 +57,11 @@ footer {
   height: calc(100vh + 64px);
 }
 
+.section-tournament .promo {
+  height: 100vh;
+  padding-top: 64px;
+}
+
 .section-main-promo p {
   padding-bottom: 2rem;
   font-size: 1.5rem;
@@ -541,6 +546,77 @@ footer.page-footer .footer-copyright {
 .tournaments-slider li a:hover,
 .tournaments-slider li a:active {
   color: #2c9d54;
+}
+
+.section-tournament .tournament-tabs {
+  margin-top: 64px;
+  width: 40%;
+  justify-content: space-between;
+  display: flex;
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+.section-tournament .tournament-tabs.tabs .tab a:hover,
+.section-tournament .tournament-tabs.tabs .tab a.active,
+.section-tournament .tournament-tabs.tabs .tab a {
+  color: #fff;
+  text-transform: initial;
+  font-size: 2.4rem;
+}
+
+.section-tournament .tournament-tabs.tabs .indicator {
+  background-color: #fff;
+}
+
+.section-tournament .section-promo {
+  padding-top: 64px;
+}
+
+.section-tournament .tournament-slider-wrap {
+  margin-top: 64px;
+  color: #000;
+}
+
+.tournament-slide {
+  height: 280px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 40px;
+  text-align: center;
+  transform: scale(0.8) translateX(5px);
+  border-radius: 10px;
+  outline: none;
+}
+
+.section-tournament .slick-center .tournament-slide {
+  background: #fff;
+  transform: scale(1.2, 1);
+}
+
+.section-tournament .slick-center + .slick-slide .tournament-slide {
+  transform: scale(0.8) translateX(-5px);
+}
+
+.tournament-slide-date {
+  color: #000;
+}
+
+.tournament-slide-game-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.tournament-slide-game img {
+  height: 75px;
+  margin: 0 auto;
+}
+
+.tournament-slide-game-wrap .tournament-slide-score {
+  display: block;
+  padding: 0 50px;
+  font-size: 3rem;
 }
 
 @media (max-width: 767px) {

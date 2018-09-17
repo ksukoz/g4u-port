@@ -9,6 +9,7 @@ import "./App.css";
 import Home from "./components/home/Home";
 import News from "./components/news/News";
 import Tournaments from "./components/tournaments/Tournaments";
+import TournamentMain from "./components/tournaments/TournamentMain";
 
 class App extends Component {
   render() {
@@ -32,6 +33,13 @@ class App extends Component {
               </Switch>
               <Switch>
                 <Route exact path="/tournaments/:id" component={Tournaments} />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/:id"
+                  component={TournamentMain}
+                />
               </Switch>
             </main>
             <Route path="/" component={Footer} />

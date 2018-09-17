@@ -12,4 +12,5 @@ export const GET_STATS = "GET_STATS";
 
 export const GET_ERRORS = "GET_ERRORS";
 
+export const GET_SEASONS_INFO = "GET_SEASONS_INFO";
 export const GET_TOUR_INFO = "GET_TOUR_INFO";

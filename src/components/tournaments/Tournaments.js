@@ -17,7 +17,7 @@ import ScoreBoard from "./img/scoreboard.svg";
 import Football from "./img/football.svg";
 import DateIcon from "./img/date.svg";
 
-import { getTourInfo } from "../../actions/tournamentActions";
+import { getSeasonsInfo } from "../../actions/tournamentActions";
 
 class Tournaments extends Component {
   state = {
@@ -32,7 +32,7 @@ class Tournaments extends Component {
   };
 
   componentDidMount = () => {
-    this.props.getTourInfo(this.props.match.params.id);
+    this.props.getSeasonsInfo(this.props.match.params.id);
   };
 
   render() {
@@ -196,5 +196,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getTourInfo }
+  { getSeasonsInfo }
 )(Tournaments);
