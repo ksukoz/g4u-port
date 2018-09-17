@@ -583,7 +583,7 @@ footer.page-footer .footer-copyright {
   background: rgba(255, 255, 255, 0.5);
   padding: 40px;
   text-align: center;
-  transform: scale(0.8) translateX(5px);
+  transform: scale(0.9) translateX(5px);
   border-radius: 10px;
   outline: none;
 }
@@ -594,7 +594,7 @@ footer.page-footer .footer-copyright {
 }
 
 .section-tournament .slick-center + .slick-slide .tournament-slide {
-  transform: scale(0.8) translateX(-5px);
+  transform: scale(0.9) translateX(-5px);
 }
 
 .tournament-slide-date {
