@@ -3,7 +3,15 @@ import { connect } from "react-redux";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { Row, Col, Tabs, Tab } from "react-materialize";
+import {
+  Row,
+  Col,
+  Tabs,
+  Tab,
+  Dropdown,
+  NavItem,
+  Button
+} from "react-materialize";
 import news_bg from "../news/img/news_bg.png";
 import ScoreBoard from "./img/scoreboard.svg";
 import Football from "./img/football.svg";
@@ -123,11 +131,27 @@ class Tournaments extends Component {
                   <ul>
                     {this.state.seasonsList
                       ? this.state.seasonsList.map(season => (
-                          <li key={season.sId}>
-                            <Link to={`/seasons/${season.sId}`}>
-                              {season.title}
-                            </Link>
-                          </li>
+                          <Dropdown
+                            trigger={
+                              <Button className="white black-text">
+                                {season.title}
+                              </Button>
+                            }
+                            key={season.sId}
+                          >
+                            {season.tours.map(tour => (
+                              <NavItem key={tour.stId}>
+                                <Link to={`/tournament/${tour.stId}`}>
+                                  {tour.title}
+                                </Link>
+                              </NavItem>
+                            ))}
+                          </Dropdown>
+                          // <li>
+                          //   <Link to={`/seasons/${season.sId}`}>
+                          //     {season.title}
+                          //   </Link>
+                          // </li>
                         ))
                       : ""}
                   </ul>
@@ -143,7 +167,7 @@ class Tournaments extends Component {
                   </div>
                 }
               >
-                Test 2
+                {internationalList}
               </Tab>
               <Tab
                 title={
@@ -155,7 +179,7 @@ class Tournaments extends Component {
                   </div>
                 }
               >
-                Test 3
+                {arhiveList}
               </Tab>
             </Tabs>
           </Row>
