@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { Row, Col, Tabs, Tab } from "react-materialize";
@@ -16,6 +17,26 @@ class Tournaments extends Component {
   };
 
   render() {
+    const { subLeagues } = this.props.tournaments;
+    let currentList;
+
+    const settings = {
+      dots: false,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 6,
+      slidesToScroll: 1
+    };
+
+    if (subLeagues) {
+      currentList = subLeagues.current.map(tournament => (
+        <div key={tournament.tId}>
+          <img src={tournament.logo} alt="" />
+          {tournament.title}
+        </div>
+      ));
+    }
+
     return (
       <section className="section-tournaments">
         <div
@@ -49,14 +70,18 @@ class Tournaments extends Component {
               <Tab
                 title={
                   <div>
-                    <div class="img-wrap">
+                    <div className="img-wrap">
                       <img src={ScoreBoard} alt="" />
                     </div>
                     Текущие
                   </div>
                 }
               >
-                Test 1
+                <Row>
+                  <Slider {...settings} {...this.props}>
+                    {currentList}
+                  </Slider>
+                </Row>
               </Tab>
               <Tab
                 title={
@@ -91,7 +116,7 @@ class Tournaments extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news,
+  tournaments: state.tournaments,
   leagues: state.leagues
 });
 

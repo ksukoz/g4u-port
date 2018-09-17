@@ -310,31 +310,40 @@ footer {
 }
 
 .section-home-news .slick-prev:before,
-.section-home-news .slick-next:before {
+.section-home-news .slick-next:before,
+.section-tournaments .slick-prev:before,
+.section-tournaments .slick-next:before {
   color: #616161;
   line-height: 0.5;
 }
-.section-home-news .slick-prev {
+.section-home-news .slick-prev,
+.section-tournaments .slick-prev {
   left: -50px;
 }
-.section-home-news .slick-next {
+.section-home-news .slick-next,
+.section-tournaments .slick-next {
   right: -50px;
 }
 .section-home-news .slick-prev,
-.section-home-news .slick-next {
+.section-home-news .slick-next,
+.section-tournaments .slick-prev,
+.section-tournaments .slick-next {
   line-height: 0.5;
   width: 40px;
   height: 40px;
   border: 1px solid #616161;
   border-radius: 50%;
 }
-.section-home-news .slick-prev {
+.section-home-news .slick-prev,
+.section-tournaments .slick-prev {
   transform: rotate(180deg) translate(0, 50%);
 }
-.section-home-news .slick-prev:before {
+.section-home-news .slick-prev:before,
+.section-tournaments .slick-prev:before {
   content: "\2794";
 }
-.section-home-news .slick-next:before {
+.section-home-news .slick-next:before,
+.section-tournaments .slick-next:before {
   content: "\2794";
 }
 
