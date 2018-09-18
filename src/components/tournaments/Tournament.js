@@ -11,6 +11,7 @@ import {
   Tab,
   Dropdown,
   NavItem,
+  Navbar,
   Button,
   Input
 } from "react-materialize";
@@ -25,6 +26,10 @@ import TournamentMain from "./TournamentMain";
 class Tournament extends Component {
   state = {
     tournament: null
+  };
+
+  onTourNavClick = e => {
+    e.preventDefault();
   };
 
   onLeagueChangeHandler = e => {
@@ -183,6 +188,37 @@ class Tournament extends Component {
                 </Tab>
               </Tabs>
             </Row>
+          </div>
+          <div className="container">
+            <Navbar className="transparent">
+              <NavItem onClick={this.onTourNavClick} name="main">
+                Главная
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="news">
+                Новости
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="table">
+                Таблица
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="calendar">
+                Календарь
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="stats">
+                Статистика
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="results">
+                Результаты
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="teams">
+                Клубы
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="stadiums">
+                Поля
+              </NavItem>
+              <NavItem onClick={this.onTourNavClick} name="contacts">
+                Контакты
+              </NavItem>
+            </Navbar>
           </div>
         </div>
         <TournamentMain />
