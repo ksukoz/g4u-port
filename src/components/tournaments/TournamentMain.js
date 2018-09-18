@@ -8,10 +8,8 @@ import {
   Col,
   Tabs,
   Tab,
-  Dropdown,
-  NavItem,
-  Button,
-  Input,
+  Collection,
+  CollectionItem,
   CardPanel
 } from "react-materialize";
 
@@ -19,6 +17,8 @@ class TournamentMain extends Component {
   render() {
     const { tournament } = this.props.tournaments;
     let commandsList;
+    let topPlayersList;
+    let assistPlayersList;
 
     if (tournament) {
       commandsList = tournament.commands.map((command, i) => (
@@ -37,6 +37,40 @@ class TournamentMain extends Component {
           <td>{command.pts}</td>
         </tr>
       ));
+
+      topPlayersList = tournament.topplayers.top.map((player, i) => (
+        <CollectionItem key={i + Date.now()}>
+          <div className="tournament-player-wrap">
+            <img
+              src={player.player.photo}
+              alt=""
+              className="tournament-player-photo"
+            />
+            <div>
+              <h5>{player.player.name}</h5>
+              <span>{player.command ? player.command.title : ""}</span>
+            </div>
+          </div>
+          <span className="tournament-player-goal">{player.goal}</span>
+        </CollectionItem>
+      ));
+
+      assistPlayersList = tournament.topplayers.assist.map((player, i) => (
+        <CollectionItem key={i + Date.now()}>
+          <div className="tournament-player-wrap">
+            <img
+              src={player.player.photo}
+              alt=""
+              className="tournament-player-photo"
+            />
+            <div>
+              <h5>{player.player.name}</h5>
+              <span>{player.command ? player.command.title : ""}</span>
+            </div>
+          </div>
+          <span className="tournament-player-goal">{player.goal}</span>
+        </CollectionItem>
+      ));
     }
 
     return (
@@ -44,7 +78,7 @@ class TournamentMain extends Component {
         <div className="container">
           <Row>
             <Col m={6}>
-              <table className="responsive-table  z-depth-2">
+              <table className="responsive-table  z-depth-2 highlight">
                 <thead>
                   <tr className="tournament-table-head">
                     <th colSpan={5}>Таблица</th>
@@ -66,20 +100,16 @@ class TournamentMain extends Component {
                   <h3>Топ</h3>
                 </div>
                 <CardPanel>
-                  <Tabs className="tournament-table-tabs">
-                    <Tab title="Последние матчи" active>
-                      <div className="tournament-slider-wrap">
-                        {/* <Slider {...settings} {...this.props}>
-                          {lastGamesList}
-                        </Slider> */}
-                      </div>
+                  <Tabs
+                    className="tournament-table-tabs"
+                    defaultValue="tab_120"
+                    key={"tabs" + Date.now()}
+                  >
+                    <Tab title="Бомбардиры" active>
+                      <Collection>{topPlayersList}</Collection>
                     </Tab>
-                    <Tab title="Ближайшие матчи">
-                      <div className="tournament-slider-wrap">
-                        {/* <Slider {...settings} {...this.props}>
-                          {nextGamesList}
-                        </Slider> */}
-                      </div>
+                    <Tab title="Ассистенты">
+                      <Collection>{assistPlayersList}</Collection>
                     </Tab>
                   </Tabs>
                 </CardPanel>

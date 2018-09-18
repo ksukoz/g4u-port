@@ -128,7 +128,7 @@ class Tournament extends Component {
               </Input>
             </Row>
             <Row>
-              <Tabs className="tournament-tabs">
+              <Tabs className="tournament-tabs" key={"tabs" + Date.now()}>
                 <Tab title="Последние матчи" active>
                   <div className="tournament-slider-wrap">
                     <Slider {...settings} {...this.props}>
