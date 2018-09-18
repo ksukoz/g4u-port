@@ -117,7 +117,7 @@ class Tournament extends Component {
               // tournaments && tournaments.photo
               //   ? `url(${tournaments.photo}) 0% 0% / cover  no-repeat`
               //   :
-              `url(${news_bg}) 0% 0% / cover  no-repeat`
+              `url(${news_bg}) 50% 50% / cover  no-repeat`
             // backgroundSize: "cover"
           }}
         >

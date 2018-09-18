@@ -20,8 +20,11 @@ footer {
   width: 150px;
 }
 
-.header-select .select-wrapper input.select-dropdown {
+.header-select .select-wrapper input.select-dropdown,
+.section-tournament .select-wrapper input.select-dropdown {
   height: 2rem;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 .navbar-fixed {
@@ -42,6 +45,10 @@ footer {
   left: 0;
 }
 
+.navbar-fixed nav a {
+  font-size: 1.5rem;
+}
+
 .navbar-fixed .brand-logo img {
   height: 64px;
 }
@@ -58,7 +65,7 @@ footer {
 }
 
 .section-tournament .promo {
-  height: 100vh;
+  height: 75vh;
   padding-top: 64px;
 }
 
@@ -321,13 +328,22 @@ footer {
   color: #616161;
   line-height: 0.5;
 }
-.section-home-news .slick-prev {
+
+.tournament-slider-wrap .slick-prev:before,
+.tournament-slider-wrap .slick-next:before {
+  color: #fff;
+  line-height: 0.5;
+}
+
+.section-home-news .slick-prev,
+.tournament-slider-wrap .slick-prev {
   left: -50px;
 }
 .section-tournaments .slick-prev {
   left: -40px;
 }
-.section-home-news .slick-next {
+.section-home-news .slick-next,
+.tournament-slider-wrap .slick-next {
   right: -50px;
 }
 .section-tournaments .slick-next {
@@ -336,7 +352,9 @@ footer {
 .section-home-news .slick-prev,
 .section-home-news .slick-next,
 .section-tournaments .slick-prev,
-.section-tournaments .slick-next {
+.section-tournaments .slick-next,
+.tournament-slider-wrap .slick-prev,
+.tournament-slider-wrap .slick-next {
   line-height: 0.5;
   width: 40px;
   height: 40px;
@@ -344,15 +362,18 @@ footer {
   border-radius: 50%;
 }
 .section-home-news .slick-prev,
-.section-tournaments .slick-prev {
+.section-tournaments .slick-prev,
+.tournament-slider-wrap .slick-prev {
   transform: rotate(180deg) translate(0, 50%);
 }
 .section-home-news .slick-prev:before,
-.section-tournaments .slick-prev:before {
+.section-tournaments .slick-prev:before,
+.tournament-slider-wrap .slick-prev:before {
   content: "\2794";
 }
 .section-home-news .slick-next:before,
-.section-tournaments .slick-next:before {
+.section-tournaments .slick-next:before,
+.tournament-slider-wrap .slick-next:before {
   content: "\2794";
 }
 
@@ -550,7 +571,7 @@ footer.page-footer .footer-copyright {
 
 .section-tournament .tournament-tabs {
   margin-top: 64px;
-  width: 40%;
+  width: 50%;
   justify-content: space-between;
   display: flex;
   margin: 0 auto;
@@ -562,7 +583,7 @@ footer.page-footer .footer-copyright {
 .section-tournament .tournament-tabs.tabs .tab a {
   color: #fff;
   text-transform: initial;
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
 .section-tournament .tournament-tabs.tabs .indicator {
@@ -583,22 +604,25 @@ footer.page-footer .footer-copyright {
   background: rgba(255, 255, 255, 0.5);
   padding: 40px;
   text-align: center;
-  transform: scale(0.9) translateX(5px);
+  transform: scale(0.95);
   border-radius: 10px;
   outline: none;
 }
 
 .section-tournament .slick-center .tournament-slide {
   background: #fff;
-  transform: scale(1.2, 1);
+  /* transform: scale(1.2, 1); */
 }
 
 .section-tournament .slick-center + .slick-slide .tournament-slide {
-  transform: scale(0.9) translateX(-5px);
+  /* transform: scale(0.9); */
 }
 
 .tournament-slide-date {
   color: #000;
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 4rem;
 }
 
 .tournament-slide-game-wrap {
@@ -615,7 +639,7 @@ footer.page-footer .footer-copyright {
 
 .tournament-slide-game-wrap .tournament-slide-score {
   display: block;
-  padding: 0 5rem;
+  padding: 0 1rem;
   font-size: 3rem;
 }
 

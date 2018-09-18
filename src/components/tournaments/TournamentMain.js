@@ -34,7 +34,7 @@ class TournamentMain extends Component {
             />
             <span>{command.title}</span>
           </td>
-          <td />
+          <td>{command.games}</td>
           <td>{command.disgoals}</td>
           <td>{command.pts}</td>
         </tr>
