@@ -278,6 +278,7 @@ footer {
 
 .section-home-news .card {
   border-radius: 10px;
+  font-size: 1.6rem;
 }
 
 .section-home-news .card.horizontal .card-image img {
@@ -396,6 +397,10 @@ footer {
   text-align: center;
 }
 
+.section-stats .m8 p span {
+  font-size: 1.6rem;
+}
+
 .stats-wrapper span {
   display: block;
 }
@@ -491,10 +496,12 @@ footer {
   justify-content: space-between;
   width: 50%;
   margin: 0 auto;
+  font-size: 1.6rem;
 }
 
 footer.page-footer .footer-copyright {
   text-align: center;
+  font-size: 1.6rem;
 }
 
 .tournaments-tabs {
@@ -561,10 +568,16 @@ footer.page-footer .footer-copyright {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.tournaments-slider li a {
+.tournaments-slider li a,
+.tournaments-slider option {
   font-size: 1.8rem;
   color: #000;
   transition: 0.3s;
+}
+
+.tournaments-slider option {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .tournaments-slider .slick-initialized .slick-slide {
@@ -578,6 +591,11 @@ footer.page-footer .footer-copyright {
 
 .tournaments-slider .slick-initialized .slick-slide img {
   margin: 0 auto;
+}
+
+.tournaments-slider .slick-initialized .slick-slide,
+.tournaments-slider .dropdown-button {
+  font-size: 1.8rem;
 }
 
 .tournaments-slider li a:hover,

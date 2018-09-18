@@ -112,7 +112,7 @@ class Tournaments extends Component {
 
         <div className="container">
           <Row>
-            <Tabs className="tournaments-tabs">
+            <Tabs className="tournaments-tabs" key={"tabs" + Date.now()}>
               <Tab
                 title={
                   <div>
@@ -139,6 +139,9 @@ class Tournaments extends Component {
                             }
                             key={season.sId}
                           >
+                            <option value="" disabled>
+                              Выбрать сезон
+                            </option>
                             {season.tours.map(tour => (
                               <Link
                                 to={`/tournament/${tour.stId}`}
