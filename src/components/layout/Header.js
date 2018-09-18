@@ -127,7 +127,7 @@ class Header extends Component {
               onChange={this.onLeagueChangeHandler}
             >
               <option value={0} disabled>
-                Выбрать подлигу
+                Выбрать город
               </option>
               {citiesList ? citiesList : <option value={0} disabled />}
             </Input>

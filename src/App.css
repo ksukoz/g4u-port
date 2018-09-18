@@ -614,10 +614,6 @@ footer.page-footer .footer-copyright {
   /* transform: scale(1.2, 1); */
 }
 
-.section-tournament .slick-center + .slick-slide .tournament-slide {
-  /* transform: scale(0.9); */
-}
-
 .tournament-slide-date {
   color: #000;
   font-size: 1.6rem;
@@ -659,8 +655,9 @@ footer.page-footer .footer-copyright {
   padding-bottom: 6rem;
 }
 
-.section-tournament-main .responsive-table {
+.section-tournament-main table {
   border-radius: 10px;
+  margin-bottom: 2rem;
 }
 
 .tournament-table-head {
@@ -787,6 +784,12 @@ footer.page-footer .footer-copyright {
   .section-home-news .slick-prev,
   .section-home-news .slick-next {
     display: none !important;
+  }
+
+  .section-tournament .tournament-tabs {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
   }
 }
 

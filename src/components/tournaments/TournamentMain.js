@@ -152,8 +152,8 @@ class TournamentMain extends Component {
         <div className="container">
           {tournament ? <h3>{tournament.season.title}</h3> : ""}
           <Row>
-            <Col m={6}>
-              <table className="responsive-table  z-depth-2 highlight">
+            <Col s={12} l={6}>
+              <table className="z-depth-2 highlight">
                 <thead>
                   <tr className="tournament-table-head">
                     <th colSpan={5}>Таблица</th>
@@ -169,7 +169,7 @@ class TournamentMain extends Component {
                 <tbody>{commandsList}</tbody>
               </table>
             </Col>
-            <Col m={6}>
+            <Col s={12} l={6}>
               <div>
                 <div className="tournament-table-head">
                   <h3>Топ</h3>
@@ -192,7 +192,7 @@ class TournamentMain extends Component {
             </Col>
           </Row>
           <Row>
-            <Col m={6}>
+            <Col s={12} l={6}>
               <div>
                 <div className="tournament-table-head">
                   <h3>Ближайшие матчи</h3>
@@ -202,7 +202,7 @@ class TournamentMain extends Component {
                 </CardPanel>
               </div>
             </Col>
-            <Col m={6}>
+            <Col s={12} l={6}>
               <div>
                 <div className="tournament-table-head">
                   <h3>Последние матчи</h3>
