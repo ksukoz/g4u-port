@@ -150,6 +150,7 @@ class TournamentMain extends Component {
     return (
       <section className="section-tournament-main">
         <div className="container">
+          {tournament ? <h3>{tournament.season.title}</h3> : ""}
           <Row>
             <Col m={6}>
               <table className="responsive-table  z-depth-2 highlight">
