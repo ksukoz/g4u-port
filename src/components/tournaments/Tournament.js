@@ -55,10 +55,46 @@ class Tournament extends Component {
     const settings = {
       className: "center",
       centerMode: true,
-      infinite: true,
+      infinite: tournament && tournament.lastgames.length < 4 ? false : true,
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
+      initialSlide: 2,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true
+          }
+        },
+        {
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+          }
+        }
+      ]
+    };
+
+    const settings2 = {
+      className: "center",
+      centerMode: true,
+      infinite: tournament && tournament.begingames.length < 4 ? false : true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      initialSlide: 2,
       responsive: [
         {
           breakpoint: 1024,
@@ -181,7 +217,7 @@ class Tournament extends Component {
                 </Tab>
                 <Tab title="Ближайшие матчи">
                   <div className="tournament-slider-wrap">
-                    <Slider {...settings} {...this.props}>
+                    <Slider {...settings2} {...this.props}>
                       {nextGamesList}
                     </Slider>
                   </div>
