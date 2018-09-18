@@ -615,7 +615,7 @@ footer.page-footer .footer-copyright {
 
 .tournament-slide-game-wrap .tournament-slide-score {
   display: block;
-  padding: 0 50px;
+  padding: 0 5rem;
   font-size: 3rem;
 }
 
@@ -623,6 +623,10 @@ footer.page-footer .footer-copyright {
   width: max-content;
   margin-left: auto;
   color: #fff;
+}
+
+.tournament-table-head {
+  background-color: #2c9d54;
 }
 
 @media (max-width: 767px) {

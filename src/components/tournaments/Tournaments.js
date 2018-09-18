@@ -140,11 +140,12 @@ class Tournaments extends Component {
                             key={season.sId}
                           >
                             {season.tours.map(tour => (
-                              <NavItem key={tour.stId}>
-                                <Link to={`/tournament/${tour.stId}`}>
-                                  {tour.title}
-                                </Link>
-                              </NavItem>
+                              <Link
+                                to={`/tournament/${tour.stId}`}
+                                key={tour.stId}
+                              >
+                                <NavItem>{tour.title}</NavItem>
+                              </Link>
                             ))}
                           </Dropdown>
                           // <li>
