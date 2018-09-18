@@ -19,6 +19,8 @@ class TournamentMain extends Component {
     let commandsList;
     let topPlayersList;
     let assistPlayersList;
+    let begingamesList;
+    let lastgamesList;
 
     if (tournament) {
       commandsList = tournament.commands.map((command, i) => (
@@ -71,6 +73,78 @@ class TournamentMain extends Component {
           <span className="tournament-player-goal">{player.goal}</span>
         </CollectionItem>
       ));
+
+      begingamesList = tournament.begingames.slice(0, 2).map(game => (
+        <CollectionItem key={game.info.gameId}>
+          <div className="tournament-tour-wrap">
+            <span className="tournament-tour">{game.info.tour} тур</span>
+            {game.info.date ? (
+              <span className="tournament-date">{game.info.date}</span>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="tournament-game-wrap">
+            <div className="tournament-game">
+              <span className="tournament-game-title">
+                {game.info.in.title}
+              </span>
+              <img
+                src={game.info.in.logo}
+                alt=""
+                className="tournament-game-logo"
+              />
+            </div>
+            <span className="tournament-score">{game.info.score}</span>
+            <div className="tournament-game">
+              <img
+                src={game.info.out.logo}
+                alt=""
+                className="tournament-game-logo"
+              />
+              <span className="tournament-game-title">
+                {game.info.out.title}
+              </span>
+            </div>
+          </div>
+        </CollectionItem>
+      ));
+
+      lastgamesList = tournament.lastgames.slice(0, 2).map(game => (
+        <CollectionItem key={game.info.gameId}>
+          <div className="tournament-tour-wrap">
+            <span className="tournament-tour">{game.info.tour} тур</span>
+            {game.info.date ? (
+              <span className="tournament-date">{game.info.date}</span>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="tournament-game-wrap">
+            <div className="tournament-game">
+              <span className="tournament-game-title">
+                {game.info.in.title}
+              </span>
+              <img
+                src={game.info.in.logo}
+                alt=""
+                className="tournament-game-logo"
+              />
+            </div>
+            <span className="tournament-score">{game.info.score}</span>
+            <div className="tournament-game">
+              <img
+                src={game.info.out.logo}
+                alt=""
+                className="tournament-game-logo"
+              />
+              <span className="tournament-game-title">
+                {game.info.out.title}
+              </span>
+            </div>
+          </div>
+        </CollectionItem>
+      ));
     }
 
     return (
@@ -112,6 +186,29 @@ class TournamentMain extends Component {
                       <Collection>{assistPlayersList}</Collection>
                     </Tab>
                   </Tabs>
+                </CardPanel>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col m={6}>
+              <div>
+                <div className="tournament-table-head">
+                  <h3>Ближайшие матчи</h3>
+                </div>
+                <CardPanel className="tournament-game-card">
+                  {begingamesList}
+                </CardPanel>
+              </div>
+            </Col>
+            <Col m={6}>
+              <div>
+                <div className="tournament-table-head">
+                  <h3>Последние матчи</h3>
+                </div>
+
+                <CardPanel className="tournament-game-card">
+                  {lastgamesList}
                 </CardPanel>
               </div>
             </Col>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
@@ -25,8 +26,19 @@ class Tournament extends Component {
   state = {
     tournament: null
   };
+
+  onLeagueChangeHandler = e => {
+    this.props.history.push(`/tournament/${e.target.value}`);
+  };
+
   componentDidMount = () => {
     this.props.getTourInfo(this.props.match.params.id);
+  };
+
+  componentDidUpdate = nextProps => {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.props.getTourInfo(this.props.match.params.id);
+    }
   };
 
   render() {
@@ -88,9 +100,11 @@ class Tournament extends Component {
         </div>
       ));
       tournamentsList = tournament.tournirs.map(tour => (
+        // <Link to={`/tournament/${tour.subId}`} key={tour.subId}>
         <option key={tour.subId} value={tour.subId}>
           {tour.title}
         </option>
+        /* </Link> */
       ));
     }
 
