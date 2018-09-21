@@ -283,14 +283,46 @@ class Tournament extends Component {
           </div>
         </div>
         {this.state.main ? <TournamentMain /> : ""}
-        {this.state.news ? <TournamentNews /> : ""}
-        {this.state.table ? <TournamentTable /> : ""}
-        {this.state.calendar ? <TournamentCalendar /> : ""}
-        {this.state.stats ? <TournamentStats /> : ""}
-        {this.state.results ? <TournamentResults /> : ""}
-        {this.state.clubs ? <TournamentClubs /> : ""}
-        {this.state.stadiums ? <TournamentsStadiums /> : ""}
-        {this.state.contacts ? <TournamentContacts /> : ""}
+        {this.state.news ? (
+          <TournamentNews id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.table ? (
+          <TournamentTable id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.calendar ? (
+          <TournamentCalendar id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.stats ? (
+          <TournamentStats id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.results ? (
+          <TournamentResults id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.clubs ? (
+          <TournamentClubs id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.stadiums ? (
+          <TournamentsStadiums id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
+        {this.state.contacts ? (
+          <TournamentContacts id={this.props.match.params.id} />
+        ) : (
+          ""
+        )}
       </section>
     );
   }
