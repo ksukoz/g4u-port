@@ -1,5 +1,5 @@
 export default {
-  "en-US": {
+  en: {
     header: {
       main: "Main",
       news: "News",
@@ -74,7 +74,7 @@ export default {
       reviewsHeading: "Видгуки"
     }
   },
-  "ru-RU": {
+  ru: {
     header: {
       main: "Главная",
       news: "Новости",
