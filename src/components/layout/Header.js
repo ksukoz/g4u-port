@@ -79,9 +79,9 @@ class Header extends Component {
         <NavItem onClick={this.onClickHandler.bind(this, "/news")}>
           <FormattedMessage id="header.news" />
         </NavItem>
-        <NavItem onClick={this.onClickHandler.bind(this, "/leagues")}>
+        {/* <NavItem onClick={this.onClickHandler.bind(this, "/leagues")}>
           <FormattedMessage id="header.leagues" />
-        </NavItem>
+        </NavItem> */}
         {/* <NavItem onClick={this.onSelectClickHandler}>
           <Row className="header-select">
             <Input
@@ -142,8 +142,8 @@ class Header extends Component {
               defaultValue={this.props.lang.locale}
               onChange={this.onChangeHandler}
             >
-              <option value="en-US">English</option>
-              <option value="ru-RU">Русский</option>
+              <option value="en">English</option>
+              <option value="ru">Русский</option>
               <option value="uk">Українська</option>
             </Input>
           </Row>

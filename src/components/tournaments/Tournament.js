@@ -22,18 +22,43 @@ import DateIcon from "./img/date.svg";
 
 import { getTourInfo } from "../../actions/tournamentActions";
 import TournamentMain from "./TournamentMain";
+import TournamentNews from "./TournamentNews";
+import TournamentTable from "./TournamentTable";
+import TournamentCalendar from "./TournamentCalendar";
+import TournamentStats from "./TournamentStats";
+import TournamentResults from "./TournamentResults";
+import TournamentClubs from "./TournamentClubs";
+import TournamentsStadiums from "./TournamentsStadiums";
+import TournamentContacts from "./TournamentContacts";
+
+const initialState = {
+  main: true,
+  news: false,
+  table: false,
+  calendar: false,
+  stats: false,
+  results: false,
+  clubs: false,
+  stadiums: false,
+  contacts: false
+};
 
 class Tournament extends Component {
-  state = {
-    tournament: null
-  };
+  state = initialState;
 
-  onTourNavClick = e => {
+  onTourNavClick = (e, component) => {
     e.preventDefault();
+    this.clearState();
+
+    this.setState({ main: false, [component]: true });
   };
 
   onLeagueChangeHandler = e => {
     this.props.history.push(`/tournament/${e.target.value}`);
+  };
+
+  clearState = () => {
+    this.setState(initialState);
   };
 
   componentDidMount = () => {
@@ -227,37 +252,45 @@ class Tournament extends Component {
           </div>
           <div className="container">
             <Navbar className="transparent">
-              <NavItem onClick={this.onTourNavClick} name="main">
+              <NavItem onClick={e => this.onTourNavClick(e, "main")}>
                 Главная
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="news">
+              <NavItem onClick={e => this.onTourNavClick(e, "news")}>
                 Новости
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="table">
+              <NavItem onClick={e => this.onTourNavClick(e, "table")}>
                 Таблица
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="calendar">
+              <NavItem onClick={e => this.onTourNavClick(e, "calendar")}>
                 Календарь
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="stats">
+              <NavItem onClick={e => this.onTourNavClick(e, "stats")}>
                 Статистика
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="results">
+              <NavItem onClick={e => this.onTourNavClick(e, "results")}>
                 Результаты
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="teams">
+              <NavItem onClick={e => this.onTourNavClick(e, "clubs")}>
                 Клубы
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="stadiums">
+              <NavItem onClick={e => this.onTourNavClick(e, "stadiums")}>
                 Поля
               </NavItem>
-              <NavItem onClick={this.onTourNavClick} name="contacts">
+              <NavItem onClick={e => this.onTourNavClick(e, "contacts")}>
                 Контакты
               </NavItem>
             </Navbar>
           </div>
         </div>
-        <TournamentMain />
+        {this.state.main ? <TournamentMain /> : ""}
+        {this.state.news ? <TournamentNews /> : ""}
+        {this.state.table ? <TournamentTable /> : ""}
+        {this.state.calendar ? <TournamentCalendar /> : ""}
+        {this.state.stats ? <TournamentStats /> : ""}
+        {this.state.results ? <TournamentResults /> : ""}
+        {this.state.clubs ? <TournamentClubs /> : ""}
+        {this.state.stadiums ? <TournamentsStadiums /> : ""}
+        {this.state.contacts ? <TournamentContacts /> : ""}
       </section>
     );
   }

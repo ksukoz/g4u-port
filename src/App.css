@@ -69,6 +69,7 @@ footer {
 }
 
 .section-tournament .promo {
+  min-height: 650px;
   height: 75vh;
   flex-direction: column;
   justify-content: space-between;
