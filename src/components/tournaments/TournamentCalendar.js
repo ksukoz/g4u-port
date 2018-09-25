@@ -2,12 +2,35 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTourCalendar } from '../../actions/tournamentActions';
 
-import { Row, Col, Tabs, Tab, Collection, CollectionItem, CardPanel } from 'react-materialize';
+import { Row, Col, Input, Tab, Collection, CollectionItem, CardPanel } from 'react-materialize';
 import MatchesTable from '../common/MatchesTable';
 
 import MainTable from '../common/MainTable';
 
 class TournamentCalendar extends Component {
+	state = {
+		tour: 0,
+		club: 0,
+		stadium: 0
+	};
+
+	onChangeHandler = (e) => {
+		// this.props.history.push("/news");
+
+		// if (e.target.name === "leagues") {
+		//   this.props.getCities(e.target.value);
+		//   this.props.getNews(`lgId=${e.target.value}`);
+		// }
+		// if (e.target.name === "city") {
+		//   this.props.history.push(`/tournaments/${e.target.value}`);
+		// }
+
+		this.setState({
+			...this.state,
+			[e.target.name]: e.target.value
+		});
+	};
+
 	componentDidMount = () => {
 		this.props.getTourCalendar(this.props.id);
 	};
@@ -16,34 +39,81 @@ class TournamentCalendar extends Component {
 		const { calendar } = this.props.tournaments;
 		let tableList;
 
+		let toursList;
+		let clubsList;
+		let stadiumsList;
+
+		if (calendar !== null) {
+			toursList = calendar.calendar.filter.tour.map((tourItem) => (
+				<option key={tourItem} value={tourItem}>
+					{tourItem}
+				</option>
+			));
+			clubsList = calendar.calendar.filter.commands.map((command) => (
+				<option key={command.comId} value={command.comId}>
+					{command.title}
+				</option>
+			));
+			stadiumsList = calendar.calendar.filter.statiums.map((stadium) => (
+				<option key={stadium.id} value={stadium.id}>
+					{stadium.title}
+				</option>
+			));
+		}
+
 		return (
 			<section className="section-tournament-main">
 				<div className="container">
 					{/* {tournament ? <h3>{tournament.season.title}</h3> : ''} */}
 					<Row>
 						<Col s={12} l={8}>
-							<table className="z-depth-2 highlight">
-								<thead>
-									<tr className="tournament-table-head">
-										<th colSpan={12}>Таблица</th>
-									</tr>
-									<tr>
-										<th>Поз</th>
-										<th>Клуб</th>
-										<th>И</th>
-										<th>В</th>
-										<th>Н</th>
-										<th>П</th>
-										<th>ЗГ</th>
-										<th>ПГ</th>
-										<th>РГ</th>
-										<th>О</th>
-										<th>ОзМ</th>
-										<th>Форма</th>
-									</tr>
-								</thead>
-								{/* <tbody>{tableList}</tbody> */}
-							</table>
+							<div>
+								<Row>
+									<Input
+										s={3}
+										type="select"
+										name="tour"
+										// label="Materialize Select"
+										defaultValue={this.state.tour}
+										onChange={this.onChangeHandler}
+										className="black-text"
+									>
+										<option value={0} disabled>
+											Тур
+										</option>
+										{toursList ? toursList : <option value={0} disabled />}
+									</Input>
+									<Input
+										s={3}
+										type="select"
+										name="club"
+										// label="Materialize Select"
+										defaultValue={this.state.club}
+										onChange={this.onChangeHandler}
+										className="black-text"
+									>
+										<option value={0} disabled>
+											Команда
+										</option>
+										{clubsList ? clubsList : <option value={0} disabled />}
+									</Input>
+									<Input
+										s={3}
+										type="select"
+										name="stadium"
+										// label="Materialize Select"
+										defaultValue={this.state.stadium}
+										onChange={this.onChangeHandler}
+										className="black-text"
+									>
+										<option value={0} disabled>
+											Стадион
+										</option>
+										{stadiumsList ? stadiumsList : <option value={0} disabled />}
+									</Input>
+								</Row>
+							</div>
+							<table className="z-depth-2 highlight">{/* <tbody>{tableList}</tbody> */}</table>
 						</Col>
 						<MainTable
 							l={4}
