@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col, Tabs, Tab, Collection, CollectionItem, CardPanel } from 'react-materialize';
 import MatchesTable from '../common/MatchesTable';
+import MainTable from '../common/MainTable';
 
 class TournamentMain extends Component {
 	render() {
@@ -16,19 +17,6 @@ class TournamentMain extends Component {
 		let lastgamesList;
 
 		if (tournament) {
-			commandsList = tournament.commands.map((command, i) => (
-				<tr key={command.command_id}>
-					<td>{i + 1}</td>
-					<td className="tournament-command-row">
-						<img src={command.logo} alt="" style={{ height: 25, marginRight: 8 }} />
-						<span>{command.title}</span>
-					</td>
-					<td>{command.games}</td>
-					<td>{command.disgoals}</td>
-					<td>{command.pts}</td>
-				</tr>
-			));
-
 			topPlayersList = tournament.topplayers.top.map((player, i) => (
 				<CollectionItem key={i + Date.now()}>
 					<div className="tournament-player-wrap">
@@ -61,23 +49,17 @@ class TournamentMain extends Component {
 				<div className="container">
 					{tournament ? <h3>{tournament.season.title}</h3> : ''}
 					<Row>
-						<Col s={12} l={6}>
-							<table className="z-depth-2 highlight">
-								<thead>
-									<tr className="tournament-table-head">
-										<th colSpan={5}>Таблица</th>
-									</tr>
-									<tr>
-										<th>Позиция</th>
-										<th>Клуб</th>
-										<th>И</th>
-										<th>РГ</th>
-										<th>О</th>
-									</tr>
-								</thead>
-								<tbody>{commandsList}</tbody>
-							</table>
-						</Col>
+						<MainTable
+							l={6}
+							title="Таблица"
+							commands={
+								this.props.tournaments && this.props.tournaments.tournament ? (
+									this.props.tournaments.tournament.commands
+								) : (
+									[]
+								)
+							}
+						/>
 						<Col s={12} l={6}>
 							<div>
 								<div className="tournament-table-head">
