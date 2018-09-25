@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getTourTable } from '../../actions/tournamentActions';
 
 import { Row, Col, Tabs, Tab, Collection, CollectionItem, CardPanel } from 'react-materialize';
+import MatchesTable from '../common/MatchesTable';
 
 class TournamentTable extends Component {
 	componentDidMount = () => {
@@ -77,6 +78,28 @@ class TournamentTable extends Component {
 								<tbody>{tableList}</tbody>
 							</table>
 						</Col>
+						<MatchesTable
+							l={4}
+							title="Последние матчи"
+							games={
+								this.props.tournaments && this.props.tournaments.table ? (
+									this.props.tournaments.table.lastgames
+								) : (
+									[]
+								)
+							}
+						/>
+						<MatchesTable
+							l={4}
+							title="Ближайшие матчи"
+							games={
+								this.props.tournaments && this.props.tournaments.table ? (
+									this.props.tournaments.table.begingames
+								) : (
+									[]
+								)
+							}
+						/>
 					</Row>
 				</div>
 			</section>
