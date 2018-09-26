@@ -9,6 +9,7 @@ import {
 	GET_TOUR_CALENDAR_BY_FILTER,
 	GET_TOUR_STATS,
 	GET_TOUR_RESULTS,
+	GET_TOUR_RESULTS_BY_FILTER,
 	GET_TOUR_CLUBS,
 	GET_TOUR_STADIUMS,
 	GET_TOUR_CONTACTS
@@ -136,6 +137,22 @@ export const getTourResults = (id) => (dispatch) => {
 		} else {
 			dispatch({
 				type: GET_TOUR_RESULTS,
+				payload: res.data.answer
+			});
+		}
+	});
+};
+
+export const getFilteredResults = (id, stadId, comId, tour) => (dispatch) => {
+	axios.get(`http://api.mygame4u.com/portal/results/${id}?${stadId}&${comId}&${tour}`).then((res) => {
+		if (res.data.error) {
+			dispatch({
+				type: GET_ERRORS,
+				payload: res.data.message
+			});
+		} else {
+			dispatch({
+				type: GET_TOUR_RESULTS_BY_FILTER,
 				payload: res.data.answer
 			});
 		}
