@@ -26,13 +26,13 @@ class TournamentResults extends Component {
 	};
 
 	onClearClickHadler = () => {
-		this.props.getTourResults(this.props.id);
-
 		this.setState({
 			tour: 0,
 			club: 0,
 			stadium: 0
 		});
+
+		this.props.getTourResults(this.props.id);
 	};
 
 	componentDidMount = () => {

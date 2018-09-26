@@ -11,7 +11,7 @@ const ResultsTable = (props) => {
 						s={3}
 						type="select"
 						name="tour"
-						defaultValue={props.stateTour}
+						value={props.stateTour}
 						onChange={props.onChangeHandler}
 						className="black-text"
 					>
@@ -32,7 +32,7 @@ const ResultsTable = (props) => {
 						s={3}
 						type="select"
 						name="club"
-						defaultValue={props.stateClub}
+						value={props.stateClub}
 						onChange={props.onChangeHandler}
 						className="black-text"
 					>
@@ -54,7 +54,7 @@ const ResultsTable = (props) => {
 						type="select"
 						name="stadium"
 						// label="Materialize Select"
-						defaultValue={props.stateStadium}
+						value={props.stateStadium}
 						onChange={props.onChangeHandler}
 						className="black-text"
 					>
