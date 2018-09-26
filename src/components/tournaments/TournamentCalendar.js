@@ -6,6 +6,7 @@ import { Row, Col, Input, Button, Collection, CollectionItem, CardPanel } from '
 import MatchesTable from '../common/MatchesTable';
 
 import MainTable from '../common/MainTable';
+import ResultsTable from '../common/ResultsTable';
 
 class TournamentCalendar extends Component {
 	state = {
@@ -43,115 +44,24 @@ class TournamentCalendar extends Component {
 
 	render() {
 		const { calendar } = this.props.tournaments;
-		let calendarList;
-
-		let toursList;
-		let clubsList;
-		let stadiumsList;
-
-		if (calendar !== null) {
-			toursList = calendar.calendar.filter.tour.map((tourItem) => (
-				<option key={tourItem} value={tourItem}>
-					{tourItem}
-				</option>
-			));
-			clubsList = calendar.calendar.filter.commands.map((command) => (
-				<option key={command.comId} value={command.comId}>
-					{command.title}
-				</option>
-			));
-			stadiumsList = calendar.calendar.filter.statiums.map((stadium) => (
-				<option key={stadium.id} value={stadium.id}>
-					{stadium.title}
-				</option>
-			));
-			calendarList = calendar.calendar.gamelist.map((game, i) => (
-				<table className="highlight calendar-table" key={game.date + i}>
-					<thead>
-						<tr>
-							<th colSpan={12}>{game.date}</th>
-						</tr>
-					</thead>
-					<tbody>
-						{game.games.map((calendarGame) => (
-							<tr key={calendarGame.game_id}>
-								<td>{calendarGame.date}</td>
-								<td>
-									<span>{calendarGame.in.title}</span>
-									<img src={calendarGame.in.logo} alt="" style={{ height: 25, marginLeft: 8 }} />
-								</td>
-								<td>{calendarGame.score}</td>
-								<td>
-									<img src={calendarGame.out.logo} alt="" style={{ height: 25, marginRight: 8 }} />
-									<span>{calendarGame.out.title}</span>
-								</td>
-								<td>{calendarGame.stadium}</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			));
-		}
 
 		return (
 			<section className="section-tournament-main">
 				<div className="container">
-					{/* {tournament ? <h3>{tournament.season.title}</h3> : ''} */}
 					<Row>
-						<Col s={12} l={8}>
-							<div>
-								<Row>
-									<Input
-										s={3}
-										type="select"
-										name="tour"
-										// label="Materialize Select"
-										defaultValue={this.state.tour}
-										onChange={this.onChangeHandler}
-										className="black-text"
-									>
-										<option value={0} disabled>
-											Тур
-										</option>
-										{toursList ? toursList : <option value={0} disabled />}
-									</Input>
-									<Input
-										s={3}
-										type="select"
-										name="club"
-										// label="Materialize Select"
-										defaultValue={this.state.club}
-										onChange={this.onChangeHandler}
-										className="black-text"
-									>
-										<option value={0} disabled>
-											Команда
-										</option>
-										{clubsList ? clubsList : <option value={0} disabled />}
-									</Input>
-									<Input
-										s={3}
-										type="select"
-										name="stadium"
-										// label="Materialize Select"
-										defaultValue={this.state.stadium}
-										onChange={this.onChangeHandler}
-										className="black-text"
-									>
-										<option value={0} disabled>
-											Стадион
-										</option>
-										{stadiumsList ? stadiumsList : <option value={0} disabled />}
-									</Input>
-									<Col s={3}>
-										<Button waves="dark" className="btn--outline" onClick={this.onClearClickHadler}>
-											Сбросить
-										</Button>
-									</Col>
-								</Row>
-							</div>
-							<div className="z-depth-2 calendar-table-wrap">{calendarList}</div>
-						</Col>
+						<ResultsTable
+							l={8}
+							stateTour={this.state.tour}
+							onChangeHandler={this.onChangeHandler}
+							stateClub={this.state.club}
+							stateStadium={this.state.stadium}
+							tour={calendar !== null ? calendar.calendar.filter.tour : []}
+							clubs={calendar !== null ? calendar.calendar.filter.commands : []}
+							stadiums={calendar !== null ? calendar.calendar.filter.statiums : []}
+							onClearClickHadler={this.onClearClickHadler}
+							gamelist={calendar !== null ? calendar.calendar.gamelist : []}
+						/>
+
 						<Col s={12} l={4}>
 							<MainTable
 								l={12}
@@ -195,8 +105,7 @@ class TournamentCalendar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	tournaments: state.tournaments,
-	leagues: state.leagues
+	tournaments: state.tournaments
 });
 
 export default connect(mapStateToProps, { getTourCalendar, getFilteredCalendar })(TournamentCalendar);

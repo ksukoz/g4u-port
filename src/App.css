@@ -839,6 +839,7 @@ footer.page-footer .footer-copyright {
 
 .calendar-table-wrap {
 	border-radius: 10px;
+	margin-bottom: 2rem;
 }
 
 .section-tournament-main .calendar-table {
@@ -847,6 +848,14 @@ footer.page-footer .footer-copyright {
 
 .section-tournament-main .calendar-table td {
 	font-size: 1.4rem;
+}
+
+.section-tournament-main .calendar-table td.right-align {
+	text-align: right;
+}
+
+.section-tournament-main .calendar-table td.left-align {
+	text-align: left;
 }
 
 .section-tournament-main .calendar-table thead th {
