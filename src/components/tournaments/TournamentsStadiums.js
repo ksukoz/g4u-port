@@ -51,10 +51,13 @@ class TournamentsStadiums extends Component {
 								</div>
 								<MyMapComponent
 									isMarkerShown
-									// defaultCenter={this.state.defaultCenter}
+									defaultCenter={{
+										lat: parseFloat(stadium.latitude),
+										lng: parseFloat(stadium.longitude)
+									}}
 									googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwlzhR2g7O7r4r4pwVUz-Hc60Oz4T3GqY&language=en&libraries=geometry,drawing,places"
-									lat={+stadium.latitude}
-									lng={+stadium.longitude}
+									lat={parseFloat(stadium.latitude)}
+									lng={parseFloat(stadium.longitude)}
 								/>
 							</div>
 						</Col>
