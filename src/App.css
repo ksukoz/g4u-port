@@ -905,6 +905,28 @@ footer.page-footer .footer-copyright {
 	height: 100px;
 }
 
+.stadium-card {
+	border-radius: 20px;
+	margin-bottom: 2rem;
+}
+
+.stadium-card .stadium-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+}
+
+.stadium-card .stadium-header h4 {
+	color: #259a4e;
+}
+
+.stadium-card .stadium-header address {
+	width: 40%;
+	font-size: 1.4rem;
+	font-style: normal;
+}
+
 @media (max-width: 767px) {
 	.section-home-news .slick-prev,
 	.section-home-news .slick-next {
