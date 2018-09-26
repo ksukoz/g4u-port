@@ -6,6 +6,7 @@ import {
 	GET_TOUR_CALENDAR,
 	GET_TOUR_CALENDAR_BY_FILTER,
 	GET_TOUR_STATS,
+	GET_FILTERED_STATS,
 	GET_TOUR_RESULTS,
 	GET_TOUR_RESULTS_BY_FILTER,
 	GET_TOUR_CLUBS,
@@ -59,6 +60,11 @@ export default function(state = initialState, action) {
 				calendar: action.payload
 			};
 		case GET_TOUR_STATS:
+			return {
+				...state,
+				stats: action.payload
+			};
+		case GET_FILTERED_STATS:
 			return {
 				...state,
 				stats: action.payload

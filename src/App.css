@@ -285,8 +285,9 @@ footer {
 
 .btn--gray:hover,
 .btn--gray:active {
-	color: #fff;
-	background-color: rgba(0, 0, 0, .5);
+	color: #000;
+	background-color: transparent;
+	border: 2px solid #259a4e;
 }
 
 .section-home-news {
@@ -925,6 +926,34 @@ footer.page-footer .footer-copyright {
 	width: 40%;
 	font-size: 1.4rem;
 	font-style: normal;
+}
+
+.stats-pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.stats-pagination span {
+	font-weight: bold;
+	font-size: 1.6rem;
+}
+
+.stats-pagination-btn,
+.stats-pagination-btn.disabled[disabled],
+.stats-pagination-btn:hover {
+	background-color: transparent !important;
+	box-shadow: none;
+}
+
+.stats-pagination-btn i,
+.stats-pagination-btn.disabled:hover i {
+	font-size: 4rem;
+	color: rgba(0, 0, 0, .2);
+}
+
+.stats-pagination-btn:hover i {
+	color: #259a4e;
 }
 
 @media (max-width: 767px) {

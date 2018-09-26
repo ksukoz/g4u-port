@@ -8,6 +8,7 @@ import {
 	GET_TOUR_CALENDAR,
 	GET_TOUR_CALENDAR_BY_FILTER,
 	GET_TOUR_STATS,
+	GET_FILTERED_STATS,
 	GET_TOUR_RESULTS,
 	GET_TOUR_RESULTS_BY_FILTER,
 	GET_TOUR_CLUBS,
@@ -125,6 +126,26 @@ export const getTourStats = (id) => (dispatch) => {
 			});
 		}
 	});
+};
+
+export const getFilteredStats = (id, name, comId, posId, limit, offset, order, up) => (dispatch) => {
+	axios
+		.get(
+			`http://api.mygame4u.com/portal/statistic/${id}?${name}&${comId}&${posId}&${limit}&${offset}&${order}&${up}`
+		)
+		.then((res) => {
+			if (res.data.error) {
+				dispatch({
+					type: GET_ERRORS,
+					payload: res.data.message
+				});
+			} else {
+				dispatch({
+					type: GET_FILTERED_STATS,
+					payload: res.data.answer
+				});
+			}
+		});
 };
 
 export const getTourResults = (id) => (dispatch) => {
