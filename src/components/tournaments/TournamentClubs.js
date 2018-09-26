@@ -21,7 +21,7 @@ class TournamentClubs extends Component {
 
 		if (clubs !== null) {
 			clubsList = clubs.clubs.map((club) => (
-				<Col s={6} key={club.comId}>
+				<Col s={12} m={6} key={club.comId}>
 					<div className="z-depth-2 commands-card">
 						<img src={club.logo} alt="" />
 						<h4>{club.title}</h4>

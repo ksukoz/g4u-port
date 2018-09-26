@@ -48,7 +48,7 @@ export const getTourInfo = (id) => (dispatch) => {
 };
 
 export const getTourNews = (id) => (dispatch) => {
-	axios.get(`http://api.mygame4u.com/portal/news/${id}`).then((res) => {
+	axios.get(`http://api.mygame4u.com/portal/newssub/${id}`).then((res) => {
 		if (res.data.error) {
 			dispatch({
 				type: GET_ERRORS,
