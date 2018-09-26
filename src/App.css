@@ -261,6 +261,24 @@ footer {
 	font-size: 1.5rem;
 }
 
+.btn--outline {
+	color: #000;
+	text-transform: capitalize;
+	font-size: 1.6rem;
+	margin-top: 1rem;
+	width: 100%;
+	border-radius: 20px;
+	background-color: transparent;
+	border: 2px solid #259a4e;
+	box-shadow: none;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+	color: #fff;
+	background-color: #259a4e;
+}
+
 .section-home-news {
 	text-align: left;
 	padding: 5vh 0;
@@ -817,6 +835,23 @@ footer.page-footer .footer-copyright {
 .tournament-game-logo {
 	height: 5rem;
 	margin: 0 1rem;
+}
+
+.calendar-table-wrap {
+	border-radius: 10px;
+}
+
+.section-tournament-main .calendar-table {
+	margin-bottom: 0;
+}
+
+.section-tournament-main .calendar-table td {
+	font-size: 1.4rem;
+}
+
+.section-tournament-main .calendar-table thead th {
+	text-align: left;
+	padding-left: 1rem;
 }
 
 @media (max-width: 767px) {

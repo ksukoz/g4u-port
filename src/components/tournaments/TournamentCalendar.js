@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTourCalendar } from '../../actions/tournamentActions';
+import { getTourCalendar, getFilteredCalendar } from '../../actions/tournamentActions';
 
-import { Row, Col, Input, Tab, Collection, CollectionItem, CardPanel } from 'react-materialize';
+import { Row, Col, Input, Button, Collection, CollectionItem, CardPanel } from 'react-materialize';
 import MatchesTable from '../common/MatchesTable';
 
 import MainTable from '../common/MainTable';
@@ -15,19 +15,25 @@ class TournamentCalendar extends Component {
 	};
 
 	onChangeHandler = (e) => {
-		// this.props.history.push("/news");
-
-		// if (e.target.name === "leagues") {
-		//   this.props.getCities(e.target.value);
-		//   this.props.getNews(`lgId=${e.target.value}`);
-		// }
-		// if (e.target.name === "city") {
-		//   this.props.history.push(`/tournaments/${e.target.value}`);
-		// }
-
 		this.setState({
 			...this.state,
 			[e.target.name]: e.target.value
+		});
+		this.props.getFilteredCalendar(
+			this.props.id,
+			this.state.tour !== 0 ? `tour=${this.state.tour}` : '',
+			this.state.club !== 0 ? `comId=${this.state.club}` : '',
+			this.state.stadium !== 0 ? `stadId=${this.state.stadium}` : ''
+		);
+	};
+
+	onClearClickHadler = () => {
+		this.props.getTourCalendar(this.props.id);
+
+		this.setState({
+			tour: 0,
+			club: 0,
+			stadium: 0
 		});
 	};
 
@@ -37,7 +43,7 @@ class TournamentCalendar extends Component {
 
 	render() {
 		const { calendar } = this.props.tournaments;
-		let tableList;
+		let calendarList;
 
 		let toursList;
 		let clubsList;
@@ -58,6 +64,32 @@ class TournamentCalendar extends Component {
 				<option key={stadium.id} value={stadium.id}>
 					{stadium.title}
 				</option>
+			));
+			calendarList = calendar.calendar.gamelist.map((game, i) => (
+				<table className="highlight calendar-table" key={game.date + i}>
+					<thead>
+						<tr>
+							<th colSpan={12}>{game.date}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{game.games.map((calendarGame) => (
+							<tr key={calendarGame.game_id}>
+								<td>{calendarGame.date}</td>
+								<td>
+									<span>{calendarGame.in.title}</span>
+									<img src={calendarGame.in.logo} alt="" style={{ height: 25, marginLeft: 8 }} />
+								</td>
+								<td>{calendarGame.score}</td>
+								<td>
+									<img src={calendarGame.out.logo} alt="" style={{ height: 25, marginRight: 8 }} />
+									<span>{calendarGame.out.title}</span>
+								</td>
+								<td>{calendarGame.stadium}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			));
 		}
 
@@ -111,43 +143,50 @@ class TournamentCalendar extends Component {
 										</option>
 										{stadiumsList ? stadiumsList : <option value={0} disabled />}
 									</Input>
+									<Col s={3}>
+										<Button waves="dark" className="btn--outline" onClick={this.onClearClickHadler}>
+											Сбросить
+										</Button>
+									</Col>
 								</Row>
 							</div>
-							<table className="z-depth-2 highlight">{/* <tbody>{tableList}</tbody> */}</table>
+							<div className="z-depth-2 calendar-table-wrap">{calendarList}</div>
 						</Col>
-						<MainTable
-							l={4}
-							title="Таблица"
-							commands={
-								this.props.tournaments && this.props.tournaments.calendar ? (
-									this.props.tournaments.calendar.table
-								) : (
-									[]
-								)
-							}
-						/>
-						<MatchesTable
-							l={4}
-							title="Последние матчи"
-							games={
-								this.props.tournaments && this.props.tournaments.calendar ? (
-									this.props.tournaments.calendar.lastgames
-								) : (
-									[]
-								)
-							}
-						/>
-						<MatchesTable
-							l={4}
-							title="Ближайшие матчи"
-							games={
-								this.props.tournaments && this.props.tournaments.calendar ? (
-									this.props.tournaments.calendar.begingames
-								) : (
-									[]
-								)
-							}
-						/>
+						<Col s={12} l={4}>
+							<MainTable
+								l={12}
+								title="Таблица"
+								commands={
+									this.props.tournaments && this.props.tournaments.calendar ? (
+										this.props.tournaments.calendar.table
+									) : (
+										[]
+									)
+								}
+							/>
+							<MatchesTable
+								l={12}
+								title="Последние матчи"
+								games={
+									this.props.tournaments && this.props.tournaments.calendar ? (
+										this.props.tournaments.calendar.lastgames
+									) : (
+										[]
+									)
+								}
+							/>
+							<MatchesTable
+								l={12}
+								title="Ближайшие матчи"
+								games={
+									this.props.tournaments && this.props.tournaments.calendar ? (
+										this.props.tournaments.calendar.begingames
+									) : (
+										[]
+									)
+								}
+							/>
+						</Col>
 					</Row>
 				</div>
 			</section>
@@ -160,4 +199,4 @@ const mapStateToProps = (state) => ({
 	leagues: state.leagues
 });
 
-export default connect(mapStateToProps, { getTourCalendar })(TournamentCalendar);
+export default connect(mapStateToProps, { getTourCalendar, getFilteredCalendar })(TournamentCalendar);
