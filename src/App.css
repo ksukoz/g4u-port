@@ -279,6 +279,16 @@ footer {
 	background-color: #259a4e;
 }
 
+.btn--gray {
+	border: 2px solid rgba(0, 0, 0, .2);
+}
+
+.btn--gray:hover,
+.btn--gray:active {
+	color: #fff;
+	background-color: rgba(0, 0, 0, .5);
+}
+
 .section-home-news {
 	text-align: left;
 	padding: 5vh 0;
@@ -881,6 +891,18 @@ footer.page-footer .footer-copyright {
 	padding: 2rem 1rem;
 	margin: 0;
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.commands-card {
+	margin-bottom: 2rem;
+	padding: 2rem 20%;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.commands-card img {
+	width: 100px;
+	height: 100px;
 }
 
 @media (max-width: 767px) {
