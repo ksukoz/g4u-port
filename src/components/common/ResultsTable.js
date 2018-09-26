@@ -78,36 +78,41 @@ const ResultsTable = (props) => {
 					</Col>
 				</Row>
 			</div>
-			<div className="z-depth-2 calendar-table-wrap">
+			<div className="z-depth-2 result-table-wrap">
 				{props.gamelist.map((game, i) => (
-					<table className="highlight calendar-table" key={game.date + i}>
-						<thead>
-							<tr>
-								<th colSpan={12}>{game.date}</th>
-							</tr>
-						</thead>
-						<tbody>
+					<div className="highlight result-table" key={game.date + i}>
+						<div>
+							<h4>{game.date}</h4>
+						</div>
+						<div>
 							{game.games.map((calendarGame) => (
-								<tr key={calendarGame.game_id}>
-									<td>{calendarGame.date}</td>
-									<td className="right-align">
-										<span>{calendarGame.in.title}</span>
-										<img src={calendarGame.in.logo} alt="" style={{ height: 25, marginLeft: 8 }} />
-									</td>
-									<td>{calendarGame.score}</td>
-									<td className="left-align">
-										<img
-											src={calendarGame.out.logo}
-											alt=""
-											style={{ height: 25, marginRight: 8 }}
-										/>
-										<span>{calendarGame.out.title}</span>
-									</td>
-									<td>{calendarGame.stadium}</td>
-								</tr>
+								<div key={calendarGame.game_id} className="result-table-row">
+									<div className="result-table-date">{calendarGame.date}</div>
+									<div className="result-table-game">
+										<div className="result-table-col right">
+											<span className=" right-align">{calendarGame.in.title}</span>
+											<img
+												className=" right-align"
+												src={calendarGame.in.logo}
+												alt=""
+												style={{ height: 25, marginLeft: 8 }}
+											/>
+										</div>
+										<div className="result-table-score">{calendarGame.score}</div>
+										<div className="result-table-col">
+											<img
+												src={calendarGame.out.logo}
+												alt=""
+												style={{ height: 25, marginRight: 8 }}
+											/>
+											<span>{calendarGame.out.title}</span>
+										</div>
+									</div>
+									<div className="result-table-stadium">{calendarGame.stadium}</div>
+								</div>
 							))}
-						</tbody>
-					</table>
+						</div>
+					</div>
 				))}
 			</div>
 		</Col>

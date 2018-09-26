@@ -837,30 +837,50 @@ footer.page-footer .footer-copyright {
 	margin: 0 1rem;
 }
 
-.calendar-table-wrap {
+.result-table-wrap {
 	border-radius: 10px;
 	margin-bottom: 2rem;
 }
 
-.section-tournament-main .calendar-table {
+.section-tournament-main .result-table {
 	margin-bottom: 0;
 }
 
-.section-tournament-main .calendar-table td {
+.section-tournament-main .result-table-row {
+	display: flex;
+	padding: 2rem;
 	font-size: 1.4rem;
 }
 
-.section-tournament-main .calendar-table td.right-align {
-	text-align: right;
+.section-tournament-main .result-table-game {
+	display: flex;
+	justify-content: center;
+	width: calc(100% - 250px);
 }
 
-.section-tournament-main .calendar-table td.left-align {
-	text-align: left;
+.section-tournament-main .result-table-date,
+.section-tournament-main .result-table-stadium {
+	width: 125px;
 }
 
-.section-tournament-main .calendar-table thead th {
-	text-align: left;
-	padding-left: 1rem;
+.section-tournament-main .result-table-col {
+	display: flex;
+	width: 40%;
+}
+
+.section-tournament-main .result-table-col.right {
+	justify-content: flex-end;
+}
+
+.section-tournament-main .result-table-score {
+	width: 10%;
+	text-align: center;
+}
+
+.section-tournament-main .result-table h4 {
+	padding: 2rem 1rem;
+	margin: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 @media (max-width: 767px) {
@@ -873,6 +893,17 @@ footer.page-footer .footer-copyright {
 		flex-direction: column;
 		height: auto;
 		width: 100%;
+	}
+
+	.section-tournament-main .result-table-game {
+		display: flex;
+		justify-content: center;
+		width: calc(100% - 100px);
+	}
+
+	.section-tournament-main .result-table-date,
+	.section-tournament-main .result-table-stadium {
+		width: 50px;
 	}
 }
 
