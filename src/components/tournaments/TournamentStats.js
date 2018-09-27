@@ -9,9 +9,10 @@ class TournamentStats extends Component {
 		name: '',
 		club: 0,
 		position: 0,
-		limit: 0,
+		limit: 20,
 		up: 1,
-		order: 'name'
+		order: 'name',
+		offset: 1
 	};
 
 	onChangeHandler = (e) => {
@@ -25,8 +26,8 @@ class TournamentStats extends Component {
 				`name=${e.target.value}`,
 				this.state.club !== 0 ? `comId=${this.state.club}` : '',
 				this.state.position !== 0 ? `posId=${this.state.position}` : '',
-				this.state.limit !== 0 ? `posId=${this.state.limit}` : '',
-				`offset=1`,
+				`limit=${this.state.limit}`,
+				`offset=${this.state.offset}`,
 				`order=${this.state.order}`,
 				`up=${this.state.up}`
 			);
@@ -36,8 +37,8 @@ class TournamentStats extends Component {
 				this.state.name.length >= 3 ? `name=${this.state.name}` : '',
 				this.state.club !== 0 ? `comId=${this.state.club}` : '',
 				this.state.position !== 0 ? `posId=${this.state.position}` : '',
-				this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
-				`offset=1`,
+				`limit=${this.state.limit}`,
+				`offset=${this.state.offset}`,
 				`order=${this.state.order}`,
 				`up=${this.state.up}`
 			);
@@ -51,7 +52,7 @@ class TournamentStats extends Component {
 			name: '',
 			club: 0,
 			position: 0,
-			limit: 0
+			limit: 20
 		});
 	};
 
@@ -66,8 +67,8 @@ class TournamentStats extends Component {
 			this.state.name.length >= 3 ? `name=${this.state.name}` : '',
 			this.state.club !== 0 ? `comId=${this.state.club}` : '',
 			this.state.position !== 0 ? `posId=${this.state.position}` : '',
-			this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
-			`offset=1`,
+			`limit=${this.state.limit}`,
+			`offse=${this.state.offset}`,
 			`order=${this.state.order}`,
 			`up=${this.state.up}`
 		);
@@ -80,8 +81,8 @@ class TournamentStats extends Component {
 			this.state.name.length >= 3 ? `name=${this.state.name}` : '',
 			this.state.club !== 0 ? `comId=${this.state.club}` : '',
 			this.state.position !== 0 ? `posId=${this.state.position}` : '',
-			this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
-			`offset=1`,
+			`limit=${this.state.limit}`,
+			`offset=${this.state.offset}`,
 			`order=${orderName}`,
 			`up=${this.state.up}`
 		);
@@ -103,7 +104,7 @@ class TournamentStats extends Component {
 		if (stats !== null) {
 			statsList = stats.table.map((person, i) => (
 				<tr key={person.plId}>
-					<td>{i + 1}</td>
+					<td>{i + 1 + +this.state.limit * (+this.state.offset - 1)}</td>
 					<td>{person.name}</td>
 					<td className="tournament-command-row">
 						<img src={person.comLogo} alt="" style={{ height: 25, marginRight: 8 }} />
@@ -150,15 +151,18 @@ class TournamentStats extends Component {
 							icon="keyboard_arrow_left"
 							onClick={() =>
 								stats.filter.offset.prev
-									? this.props.getFilteredStats(
-											this.props.id,
-											this.state.name.length >= 3 ? `name=${this.state.name}` : '',
-											this.state.club !== 0 ? `comId=${this.state.club}` : '',
-											this.state.position !== 0 ? `posId=${this.state.position}` : '',
-											this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
-											`offset=${stats.filter.offset.prev}`,
-											`order=${this.state.order}`,
-											`up=${this.state.up}`
+									? this.setState(
+											{ ...this.state, offset: stats.filter.offset.prev },
+											this.props.getFilteredStats(
+												this.props.id,
+												this.state.name.length >= 3 ? `name=${this.state.name}` : '',
+												this.state.club !== 0 ? `comId=${this.state.club}` : '',
+												this.state.position !== 0 ? `posId=${this.state.position}` : '',
+												`limit=${this.state.limit}`,
+												`offset=${stats.filter.offset.prev}`,
+												`order=${this.state.order}`,
+												`up=${this.state.up}`
+											)
 										)
 									: ''}
 							disabled={!stats.filter.offset.prev}
@@ -172,15 +176,18 @@ class TournamentStats extends Component {
 							icon="keyboard_arrow_right"
 							onClick={() =>
 								stats.filter.offset.next
-									? this.props.getFilteredStats(
-											this.props.id,
-											this.state.name.length >= 3 ? `name=${this.state.name}` : '',
-											this.state.club !== 0 ? `comId=${this.state.club}` : '',
-											this.state.position !== 0 ? `posId=${this.state.position}` : '',
-											this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
-											`offset=${stats.filter.offset.next}`,
-											`order=${this.state.order}`,
-											`up=${this.state.up}`
+									? this.setState(
+											{ ...this.state, offset: stats.filter.offset.next },
+											this.props.getFilteredStats(
+												this.props.id,
+												this.state.name.length >= 3 ? `name=${this.state.name}` : '',
+												this.state.club !== 0 ? `comId=${this.state.club}` : '',
+												this.state.position !== 0 ? `posId=${this.state.position}` : '',
+												`limit=${this.state.limit}`,
+												`offset=${stats.filter.offset.next}`,
+												`order=${this.state.order}`,
+												`up=${this.state.up}`
+											)
 										)
 									: ''}
 							disabled={!stats.filter.offset.next}
@@ -275,16 +282,66 @@ class TournamentStats extends Component {
 								<thead>
 									<tr>
 										<th>Поз</th>
-										<th onClick={() => this.onOrderClickHandler('name')}>Имя</th>
-										<th onClick={() => this.onOrderClickHandler('comTitle')}>Клуб</th>
-										<th onClick={() => this.onOrderClickHandler('type')}>Позиция</th>
-										<th onClick={() => this.onOrderClickHandler('games')}>И</th>
-										<th onClick={() => this.onOrderClickHandler('goal')}>Г</th>
-										<th onClick={() => this.onOrderClickHandler('penalty')}>П</th>
-										<th onClick={() => this.onOrderClickHandler('assist')}>ПГ</th>
-										<th onClick={() => this.onOrderClickHandler('yellow')}>ЖК</th>
-										<th onClick={() => this.onOrderClickHandler('red')}>КК</th>
-										<th onClick={() => this.onOrderClickHandler('points')}>О</th>
+										<th
+											onClick={() => this.onOrderClickHandler('name')}
+											style={{ cursor: 'pointer' }}
+										>
+											Имя
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('comTitle')}
+											style={{ cursor: 'pointer' }}
+										>
+											Клуб
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('type')}
+											style={{ cursor: 'pointer' }}
+										>
+											Позиция
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('games')}
+											style={{ cursor: 'pointer' }}
+										>
+											И
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('goal')}
+											style={{ cursor: 'pointer' }}
+										>
+											Г
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('penalty')}
+											style={{ cursor: 'pointer' }}
+										>
+											П
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('assist')}
+											style={{ cursor: 'pointer' }}
+										>
+											ПГ
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('yellow')}
+											style={{ cursor: 'pointer' }}
+										>
+											ЖК
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('red')}
+											style={{ cursor: 'pointer' }}
+										>
+											КК
+										</th>
+										<th
+											onClick={() => this.onOrderClickHandler('points')}
+											style={{ cursor: 'pointer' }}
+										>
+											О
+										</th>
 										<th>
 											<span
 												onClick={this.onArrowClickHandler}
