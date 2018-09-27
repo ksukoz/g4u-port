@@ -9,7 +9,9 @@ class TournamentStats extends Component {
 		name: '',
 		club: 0,
 		position: 0,
-		limit: 0
+		limit: 0,
+		up: 1,
+		order: 'name'
 	};
 
 	onChangeHandler = (e) => {
@@ -23,7 +25,10 @@ class TournamentStats extends Component {
 				`name=${e.target.value}`,
 				this.state.club !== 0 ? `comId=${this.state.club}` : '',
 				this.state.position !== 0 ? `posId=${this.state.position}` : '',
-				this.state.limit !== 0 ? `posId=${this.state.limit}` : ''
+				this.state.limit !== 0 ? `posId=${this.state.limit}` : '',
+				`offset=1`,
+				`order=${this.state.order}`,
+				`up=${this.state.up}`
 			);
 		} else {
 			this.props.getFilteredStats(
@@ -31,7 +36,10 @@ class TournamentStats extends Component {
 				this.state.name.length >= 3 ? `name=${this.state.name}` : '',
 				this.state.club !== 0 ? `comId=${this.state.club}` : '',
 				this.state.position !== 0 ? `posId=${this.state.position}` : '',
-				this.state.limit !== 0 ? `limit=${this.state.limit}` : ''
+				this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
+				`offset=1`,
+				`order=${this.state.order}`,
+				`up=${this.state.up}`
 			);
 		}
 	};
@@ -45,6 +53,38 @@ class TournamentStats extends Component {
 			position: 0,
 			limit: 0
 		});
+	};
+
+	onArrowClickHandler = (e) => {
+		this.setState({
+			...this.state,
+			up: this.state.up === 0 ? 1 : 0
+		});
+
+		this.props.getFilteredStats(
+			this.props.id,
+			this.state.name.length >= 3 ? `name=${this.state.name}` : '',
+			this.state.club !== 0 ? `comId=${this.state.club}` : '',
+			this.state.position !== 0 ? `posId=${this.state.position}` : '',
+			this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
+			`offset=1`,
+			`order=${this.state.order}`,
+			`up=${this.state.up}`
+		);
+	};
+
+	onOrderClickHandler = (orderName) => {
+		this.setState({ ...this.state, order: orderName });
+		this.props.getFilteredStats(
+			this.props.id,
+			this.state.name.length >= 3 ? `name=${this.state.name}` : '',
+			this.state.club !== 0 ? `comId=${this.state.club}` : '',
+			this.state.position !== 0 ? `posId=${this.state.position}` : '',
+			this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
+			`offset=1`,
+			`order=${orderName}`,
+			`up=${this.state.up}`
+		);
 	};
 
 	componentDidMount = () => {
@@ -77,6 +117,7 @@ class TournamentStats extends Component {
 					<td>{person.yellow}</td>
 					<td>{person.red}</td>
 					<td>{parseFloat(person.points).toFixed(1)}</td>
+					<td />
 				</tr>
 			));
 
@@ -111,11 +152,13 @@ class TournamentStats extends Component {
 								stats.filter.offset.prev
 									? this.props.getFilteredStats(
 											this.props.id,
-											`offset=${stats.filter.offset.prev}`,
 											this.state.name.length >= 3 ? `name=${this.state.name}` : '',
 											this.state.club !== 0 ? `comId=${this.state.club}` : '',
 											this.state.position !== 0 ? `posId=${this.state.position}` : '',
-											this.state.limit !== 0 ? `limit=${this.state.limit}` : ''
+											this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
+											`offset=${stats.filter.offset.prev}`,
+											`order=${this.state.order}`,
+											`up=${this.state.up}`
 										)
 									: ''}
 							disabled={!stats.filter.offset.prev}
@@ -131,11 +174,13 @@ class TournamentStats extends Component {
 								stats.filter.offset.next
 									? this.props.getFilteredStats(
 											this.props.id,
-											`offset=${stats.filter.offset.next}`,
 											this.state.name.length >= 3 ? `name=${this.state.name}` : '',
 											this.state.club !== 0 ? `comId=${this.state.club}` : '',
 											this.state.position !== 0 ? `posId=${this.state.position}` : '',
-											this.state.limit !== 0 ? `limit=${this.state.limit}` : ''
+											this.state.limit !== 0 ? `limit=${this.state.limit}` : '',
+											`offset=${stats.filter.offset.next}`,
+											`order=${this.state.order}`,
+											`up=${this.state.up}`
 										)
 									: ''}
 							disabled={!stats.filter.offset.next}
@@ -230,16 +275,24 @@ class TournamentStats extends Component {
 								<thead>
 									<tr>
 										<th>Поз</th>
-										<th>Имя</th>
-										<th>Клуб</th>
-										<th>Позиция</th>
-										<th>И</th>
-										<th>Г</th>
-										<th>П</th>
-										<th>ПГ</th>
-										<th>ЖК</th>
-										<th>КК</th>
-										<th>О</th>
+										<th onClick={() => this.onOrderClickHandler('name')}>Имя</th>
+										<th onClick={() => this.onOrderClickHandler('comTitle')}>Клуб</th>
+										<th onClick={() => this.onOrderClickHandler('type')}>Позиция</th>
+										<th onClick={() => this.onOrderClickHandler('games')}>И</th>
+										<th onClick={() => this.onOrderClickHandler('goal')}>Г</th>
+										<th onClick={() => this.onOrderClickHandler('penalty')}>П</th>
+										<th onClick={() => this.onOrderClickHandler('assist')}>ПГ</th>
+										<th onClick={() => this.onOrderClickHandler('yellow')}>ЖК</th>
+										<th onClick={() => this.onOrderClickHandler('red')}>КК</th>
+										<th onClick={() => this.onOrderClickHandler('points')}>О</th>
+										<th>
+											<span
+												onClick={this.onArrowClickHandler}
+												style={{ cursor: 'pointer', fontSize: '2rem' }}
+											>
+												{this.state.up ? '\u2191' : '\u2193'}
+											</span>
+										</th>
 									</tr>
 								</thead>
 								<tbody>{statsList}</tbody>
