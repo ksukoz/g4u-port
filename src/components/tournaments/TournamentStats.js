@@ -75,7 +75,11 @@ class TournamentStats extends Component {
 	};
 
 	onOrderClickHandler = (orderName) => {
-		this.setState({ ...this.state, order: orderName });
+		this.setState({
+			...this.state,
+			order: orderName,
+			up: this.state.up === 1 ? 0 : 1
+		});
 		this.props.getFilteredStats(
 			this.props.id,
 			this.state.name.length >= 3 ? `name=${this.state.name}` : '',
@@ -102,6 +106,7 @@ class TournamentStats extends Component {
 		let pagesList;
 
 		if (stats !== null) {
+			// console.log(stats.table);
 			statsList = stats.table.map((person, i) => (
 				<tr key={person.plId}>
 					<td>{i + 1 + +this.state.limit * (+this.state.offset - 1)}</td>
