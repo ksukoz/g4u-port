@@ -10,6 +10,7 @@ import Home from "./components/home/Home";
 import News from "./components/news/News";
 import Tournaments from "./components/tournaments/Tournaments";
 import Tournament from "./components/tournaments/Tournament";
+import Game from "./components/tournaments/Game";
 
 class App extends Component {
   render() {
@@ -36,6 +37,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <Route exact path="/tournament/:id" component={Tournament} />
+              </Switch>
+              <Switch>
+                <Route exact path="/game/:id" component={Game} />
               </Switch>
             </main>
             <Route path="/" component={Footer} />
