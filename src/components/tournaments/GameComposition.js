@@ -13,9 +13,10 @@ import {
   NavItem,
   Navbar,
   Button,
-  Input
+  Input,
+  Collection
 } from "react-materialize";
-import news_bg from "../news/img/news_bg.png";
+import CollectionItem from "react-materialize/lib/CollectionItem";
 
 class GameComposition extends Component {
   componentDidMount = () => {
@@ -23,22 +24,72 @@ class GameComposition extends Component {
   };
 
   render() {
+    const { composition } = this.props.tournaments;
+
     return (
-      <div>
-        <ul>
-          <li />
-          <li />
-          <li />
-          <li />
-          <li />
-        </ul>
+      <div className="game-composition">
+        <Row>
+          <Col m={4}>
+            {composition ? (
+              // console.log(composition.in)
+              <Collection>
+                {composition.in.map(item => (
+                  // <ListItem img={item.photo} key={item.plId} />
+                  <CollectionItem key={item.plid}>
+                    <img src={item.photo} alt="" />
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>{item.type}</p>
+                    </div>
+                  </CollectionItem>
+                ))}
+              </Collection>
+            ) : (
+              ""
+            )}
+          </Col>
+          <Col m={4}>
+            {composition ? (
+              <img
+                className="game-composition-field"
+                src={composition.field}
+                alt=""
+              />
+            ) : (
+              ""
+            )}
+          </Col>
+          <Col m={4}>
+            {composition ? (
+              // console.log(composition.in)
+              <Collection>
+                {composition.out.map(item => (
+                  // <ListItem img={item.photo} key={item.plId} />
+                  <CollectionItem key={item.plid}>
+                    <img src={item.photo} alt="" />
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>{item.type}</p>
+                    </div>
+                  </CollectionItem>
+                ))}
+              </Collection>
+            ) : (
+              ""
+            )}
+          </Col>
+        </Row>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  tournaments: state.tournaments
+});
+
 export default connect(
-  // mapStateToProps,
-  null,
+  mapStateToProps,
+  // null,
   { getTourGameComposition }
 )(GameComposition);
