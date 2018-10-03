@@ -14,7 +14,9 @@ import {
   GET_TOUR_CLUBS,
   GET_TOUR_STADIUMS,
   GET_TOUR_CONTACTS,
-  GET_TOUR_GAME
+  GET_TOUR_GAME,
+  GET_TOUR_GAME_COMPOSITION,
+  GET_TOUR_GAME_MEDIA
 } from "./types";
 
 export const getSeasonsInfo = id => dispatch => {
@@ -256,6 +258,38 @@ export const getTourGame = id => dispatch => {
     } else {
       dispatch({
         type: GET_TOUR_GAME,
+        payload: res.data.answer
+      });
+    }
+  });
+};
+
+export const getTourGameComposition = id => dispatch => {
+  axios.get(`http://api.mygame4u.com/portal/gameconsist/${id}`).then(res => {
+    if (res.data.error) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: res.data.message
+      });
+    } else {
+      dispatch({
+        type: GET_TOUR_GAME_COMPOSITION,
+        payload: res.data.answer
+      });
+    }
+  });
+};
+
+export const getTourGameMedia = id => dispatch => {
+  axios.get(`http://api.mygame4u.com/portal/gamemedia/${id}`).then(res => {
+    if (res.data.error) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: res.data.message
+      });
+    } else {
+      dispatch({
+        type: GET_TOUR_GAME_MEDIA,
         payload: res.data.answer
       });
     }

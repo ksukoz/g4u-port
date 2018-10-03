@@ -17,6 +17,7 @@ import {
   Input
 } from "react-materialize";
 import news_bg from "../news/img/news_bg.png";
+import GameComposition from "./GameComposition";
 
 const initialState = {
   compositions: false,
@@ -32,7 +33,7 @@ class Game extends Component {
   };
 
   onClickHandler = name => e => {
-    this.setState({ [name]: true });
+    this.setState({ ...initialState, [name]: true });
   };
 
   componentDidMount = () => {
@@ -94,43 +95,33 @@ class Game extends Component {
           <Row>
             <Navbar className="transparent z-depth-0">
               <NavItem onClick={this.onClickHandler("compositions")}>
-                <div className="img-wrap">Составы</div>
+                <div
+                  className={`img-wrap ${
+                    this.state.compositions ? "active" : ""
+                  }`}
+                >
+                  Составы
+                </div>
               </NavItem>
               <NavItem onClick={this.onClickHandler("events")}>
-                <div class="img-wrap">События</div>
+                <div
+                  className={`img-wrap ${this.state.events ? "active" : ""}`}
+                >
+                  События
+                </div>
               </NavItem>
               <NavItem onClick={this.onClickHandler("media")}>
-                <div class="img-wrap">Медиа</div>
+                <div className={`img-wrap ${this.state.media ? "active" : ""}`}>
+                  Медиа
+                </div>
               </NavItem>
             </Navbar>
-            {/* <Tabs className="tournaments-tabs" key={"tabs" + Date.now()}>
-              <Tab
-                title={
-                  <div>
-                    <div className="img-wrap">Составы</div>
-                  </div>
-                }
-                onChange={this.onClickHandler("compositions")}
-                active
-              />
-              <Tab
-                title={
-                  <div>
-                    <div class="img-wrap">События</div>
-                  </div>
-                }
-                onChange={this.onClickHandler("events")}
-              />
-              <Tab
-                title={
-                  <div>
-                    <div class="img-wrap">Медиа</div>
-                  </div>
-                }
-                onChange={this.onClickHandler("media")}
-              />
-            </Tabs> */}
           </Row>
+          {this.state.compositions ? (
+            <GameComposition id={this.props.match.params.id} />
+          ) : (
+            ""
+          )}
         </div>
       </section>
     );

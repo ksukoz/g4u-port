@@ -12,7 +12,9 @@ import {
   GET_TOUR_CLUBS,
   GET_TOUR_STADIUMS,
   GET_TOUR_CONTACTS,
-  GET_TOUR_GAME
+  GET_TOUR_GAME,
+  GET_TOUR_GAME_COMPOSITION,
+  GET_TOUR_GAME_MEDIA
 } from "../actions/types";
 
 const initialState = {
@@ -26,7 +28,9 @@ const initialState = {
   clubs: null,
   stadiums: null,
   contacts: null,
-  game: null
+  game: null,
+  compoition: null,
+  media: null
 };
 
 export default function(state = initialState, action) {
@@ -100,6 +104,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         game: action.payload
+      };
+    case GET_TOUR_GAME_COMPOSITION:
+      return {
+        ...state,
+        composition: action.payload
+      };
+    case GET_TOUR_GAME_MEDIA:
+      return {
+        ...state,
+        media: action.payload
       };
 
     default:

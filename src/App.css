@@ -545,6 +545,7 @@ footer.page-footer .footer-copyright {
 .section-game .nav-wrapper {
   width: 50%;
   margin: 0 auto;
+  padding: 6rem 0;
 }
 
 .section-game .nav-wrapper ul {
@@ -567,13 +568,19 @@ footer.page-footer .footer-copyright {
   transition: 0.3s;
 }
 
+.section-game .img-wrap {
+  padding-top: 10px;
+  font-size: 1.4rem;
+}
+
 .tournaments-tabs.tabs .tab a,
 .section-game a {
   height: auto;
   color: rgba(0, 0, 0, 0.5);
 }
 
-.tournaments-tabs.tabs .tab a div {
+.tournaments-tabs.tabs .tab a div,
+.section-game .img-wrap {
   text-align: center;
 }
 
@@ -583,8 +590,14 @@ footer.page-footer .footer-copyright {
 }
 
 .tournaments-tabs.tabs .tab a:hover .img-wrap,
-.tournaments-tabs.tabs .tab a.active .img-wrap {
+.tournaments-tabs.tabs .tab a.active .img-wrap,
+.section-game .img-wrap.active,
+.section-game .img-wrap:hover {
   border-color: #2c9d54;
+}
+
+.section-game nav ul a:hover {
+  background-color: transparent;
 }
 
 .tournaments-tabs li {
