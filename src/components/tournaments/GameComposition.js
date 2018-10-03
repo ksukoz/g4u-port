@@ -17,6 +17,7 @@ import {
   Collection
 } from "react-materialize";
 import CollectionItem from "react-materialize/lib/CollectionItem";
+import EventsGraph from "../common/EventsGraph";
 
 class GameComposition extends Component {
   componentDidMount = () => {
@@ -29,10 +30,21 @@ class GameComposition extends Component {
     return (
       <div className="game-composition">
         <Row>
+          <Col s={12}>
+            <EventsGraph
+              end={
+                this.props.tournaments.composition
+                  ? this.props.tournaments.composition.maxmin
+                  : 60
+              }
+            />
+          </Col>
+        </Row>
+        <Row>
           <Col m={4}>
             {composition ? (
               // console.log(composition.in)
-              <Collection>
+              <Collection className="z-depth-1">
                 {composition.in.map(item => (
                   // <ListItem img={item.photo} key={item.plId} />
                   <CollectionItem key={item.plid}>
