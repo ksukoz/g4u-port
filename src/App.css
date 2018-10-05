@@ -839,6 +839,11 @@ footer.page-footer .footer-copyright {
 	background-color: #2c9d54;
 }
 
+.tournament-game-card a {
+	color: #000;
+	text-decoration: none;
+}
+
 .tournament-game-card .collection-item {
 	flex-direction: column;
 	align-items: baseline;
@@ -1161,6 +1166,35 @@ footer.page-footer .footer-copyright {
 	color: #fff;
 	text-transform: uppercase;
 	text-align: center;
+}
+
+.player-wrap {
+	padding: 5rem 0;
+}
+
+.player-data {
+	padding: 0 2rem;
+	border-radius: 10px;
+}
+
+.player-data hr {
+	border-color: #259a4e;
+}
+
+.collection.player-data-list {
+	border: none;
+}
+
+.collection .collection-item.player-data-item {
+	padding: 1.5rem 0;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.6rem;
+	border: none;
+}
+
+.player-data-item .title {
+	color: rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 767px) {

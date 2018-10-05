@@ -108,7 +108,7 @@ class TournamentStats extends Component {
 		if (stats !== null) {
 			// console.log(stats.table);
 			statsList = stats.table.map((person, i) => (
-				<tr key={person.plId} onClick={this.props.onClickHandler(person.plId)}>
+				<tr key={person.plId} onClick={this.props.onClickHandler(person.plId)} style={{ cursor: 'pointer' }}>
 					<td>{i + 1 + +this.state.limit * (+this.state.offset - 1)}</td>
 					<td>{person.name}</td>
 					<td className="tournament-command-row">

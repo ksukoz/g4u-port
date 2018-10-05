@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 import { Col, Tabs, Tab, Collection, CollectionItem, CardPanel } from 'react-materialize';
 
 const MatchesTable = (props) => {
@@ -12,23 +13,25 @@ const MatchesTable = (props) => {
 
 				<CardPanel className="tournament-game-card">
 					{props.games.slice(0, 2).map((game) => (
-						<CollectionItem key={game.info.gameId}>
-							<div className="tournament-tour-wrap">
-								<span className="tournament-tour">{game.info.tour} тур</span>
-								{game.info.date ? <span className="tournament-date">{game.info.date}</span> : ''}
-							</div>
-							<div className="tournament-game-wrap">
-								<div className="tournament-game">
-									<span className="tournament-game-title">{game.info.in.title}</span>
-									<img src={game.info.in.logo} alt="" className="tournament-game-logo" />
+						<Link key={game.info.gameId} to={`/game/${game.info.gameId}`}>
+							<CollectionItem key={game.info.gameId}>
+								<div className="tournament-tour-wrap">
+									<span className="tournament-tour">{game.info.tour} тур</span>
+									{game.info.date ? <span className="tournament-date">{game.info.date}</span> : ''}
 								</div>
-								<span className="tournament-score">{game.info.score}</span>
-								<div className="tournament-game">
-									<img src={game.info.out.logo} alt="" className="tournament-game-logo" />
-									<span className="tournament-game-title">{game.info.out.title}</span>
+								<div className="tournament-game-wrap">
+									<div className="tournament-game">
+										<span className="tournament-game-title">{game.info.in.title}</span>
+										<img src={game.info.in.logo} alt="" className="tournament-game-logo" />
+									</div>
+									<span className="tournament-score">{game.info.score}</span>
+									<div className="tournament-game">
+										<img src={game.info.out.logo} alt="" className="tournament-game-logo" />
+										<span className="tournament-game-title">{game.info.out.title}</span>
+									</div>
 								</div>
-							</div>
-						</CollectionItem>
+							</CollectionItem>
+						</Link>
 					))}
 				</CardPanel>
 			</div>
