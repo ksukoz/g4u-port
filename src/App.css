@@ -70,7 +70,8 @@ footer {
 }
 
 .section-tournament .promo,
-.section-game .promo {
+.section-game .promo,
+.section-player .promo {
 	min-height: 650px;
 	height: 75vh;
 	flex-direction: column;
@@ -1122,6 +1123,44 @@ footer.page-footer .footer-copyright {
 .events-item img {
 	width: 30px;
 	height: 30px;
+}
+
+.player-info {
+	position: relative;
+	height: 100%;
+}
+
+.player-info .container {
+	height: 100%;
+}
+
+.player-info .row {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.player-info .col.m10 {
+	margin: 0 auto;
+	background-color: rgba(225, 225, 225, 0.4);
+	padding-top: 11rem;
+	padding-bottom: 5rem;
+	border-radius: 20px;
+}
+
+.player-info img {
+	position: absolute;
+	top: calc(2rem + 145px / 2);
+	left: calc(50% - 145px / 2);
+	border-radius: 50%;
+	width: 145px;
+	height: 145px;
+}
+
+.player-info h1 {
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
 }
 
 @media (max-width: 767px) {
