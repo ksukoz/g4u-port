@@ -17,7 +17,7 @@ const EventsGraph = (props) => {
 				<div className="events-wrap">
 					{props.events.map((event) => (
 						<div
-							className={`events-item ${event.type === 'up' ? 'up' : 'down'}`}
+							className={`events-item ${event.evType === 'up' ? 'up' : 'down'}`}
 							style={{ left: `calc(${+event.minute / props.end * 100}% - 15px)` }}
 						>
 							<img src={event.icon} alt="" />

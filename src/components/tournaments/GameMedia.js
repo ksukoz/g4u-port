@@ -15,12 +15,18 @@ class GameMedia extends Component {
 
 	render() {
 		return (
-			<div className="game-composition">
+			<div className="game-media">
 				<Row>
 					<Col s={12}>
 						<EventsGraph
-							end={this.props.tournaments.composition ? this.props.tournaments.composition.maxmin : 60}
-							events={this.props.tournaments.composition ? this.props.tournaments.composition.events : []}
+							end={
+								this.props.tournaments.media && this.props.tournaments.media.maxmin ? (
+									this.props.tournaments.media.maxmin
+								) : (
+									'60'
+								)
+							}
+							events={this.props.tournaments.media ? this.props.tournaments.media.events : []}
 						/>
 					</Col>
 				</Row>
