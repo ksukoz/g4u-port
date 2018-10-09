@@ -1146,6 +1146,7 @@ footer.page-footer .footer-copyright {
 }
 
 .player-info .col.m10 {
+  position: relative;
   margin: 0 auto;
   background-color: rgba(225, 225, 225, 0.4);
   padding-top: 11rem;
@@ -1153,10 +1154,21 @@ footer.page-footer .footer-copyright {
   border-radius: 20px;
 }
 
+.player-info .player-number {
+  position: absolute;
+  font-size: 20rem;
+  line-height: 0;
+  color: rgba(0, 0, 0, 0.2);
+  top: 13rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .player-info img {
   position: absolute;
-  top: calc(2rem + 145px / 2);
-  left: calc(50% - 145px / 2);
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   width: 145px;
   height: 145px;

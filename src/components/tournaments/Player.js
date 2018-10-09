@@ -63,6 +63,11 @@ class Player extends Component {
             <div className="container">
               <Row>
                 <Col m={10}>
+                  {player ? (
+                    <span className="player-number">{player.info.number}</span>
+                  ) : (
+                    ""
+                  )}
                   <img
                     src={player ? player.header.photo : ""}
                     className="z-depth-2"
