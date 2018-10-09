@@ -18,6 +18,7 @@ import {
   Collection
 } from "react-materialize";
 import playerBg from "./img/player-bg.png";
+import PlayerIcon from "./img/player.svg";
 import CollectionItem from "react-materialize/lib/CollectionItem";
 
 class Player extends Component {
@@ -35,8 +36,10 @@ class Player extends Component {
         <tr key={i}>
           <td>{game.seaTitle}</td>
           <td>{game.tourTitle}</td>
-          <td />
-          <td />
+          <td>
+            <img src={game.comLogo} alt="" /> {game.comTitle}
+          </td>
+          <td>{game.plPos}</td>
           <td>{game.gCount}</td>
           <td>
             {game.goal}({game.penalty})
@@ -69,7 +72,11 @@ class Player extends Component {
                     ""
                   )}
                   <img
-                    src={player ? player.header.photo : ""}
+                    src={
+                      player && player.header.photo
+                        ? player.header.photo
+                        : PlayerIcon
+                    }
                     className="z-depth-2"
                     alt=""
                   />
