@@ -39,7 +39,7 @@ class Player extends Component {
           <td />
           <td>{game.gCount}</td>
           <td>
-            {game.goal} ({game.penalty})
+            {game.goal}({game.penalty})
           </td>
           <td>{game.assist}</td>
           <td>{game.score}</td>
