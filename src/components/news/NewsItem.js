@@ -4,6 +4,7 @@ import { Row, Col, Card } from "react-materialize";
 import { FormattedMessage } from "react-intl";
 import news_bg from "./img/news_bg.png";
 import { getCurrentNews } from "../../actions/newsActions";
+import { Helmet } from "react-helmet";
 
 class NewsItem extends Component {
   componentDidMount() {
@@ -12,12 +13,21 @@ class NewsItem extends Component {
   render() {
     const { currentNews } = this.props.news;
     let newsCard;
+    let newsTitle;
+    let newsDesc;
 
     if (currentNews !== null) {
       newsCard = currentNews[0];
+      newsTitle = newsCard.title;
+      newsDesc = newsCard.text.slice(0, 300);
     }
     return (
       <section className="news-item">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{newsTitle}</title>
+          <meta name="description" content={newsDesc} />
+        </Helmet>
         <div
           className="section-promo"
           style={{
