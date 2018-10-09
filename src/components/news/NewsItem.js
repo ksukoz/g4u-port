@@ -15,11 +15,13 @@ class NewsItem extends Component {
     let newsCard;
     let newsTitle;
     let newsDesc;
+    let newsImage;
 
     if (currentNews !== null) {
       newsCard = currentNews[0];
       newsTitle = newsCard.title;
-      newsDesc = newsCard.text.slice(0, 300);
+      newsDesc = newsCard.text.slice(0, 300).replace(/<\/?[^>]+>/g, "");
+      newsImage = newsCard.photo;
     }
     return (
       <section className="news-item">
@@ -27,6 +29,13 @@ class NewsItem extends Component {
           <meta charSet="utf-8" />
           <title>{newsTitle}</title>
           <meta name="description" content={newsDesc} />
+          <meta
+            property="og:url"
+            content={"mygame4u.com" + this.props.match.url}
+          />
+          <meta property="og:title" content={newsTitle} />
+          <meta property="og:description" content={newsDesc} />
+          <meta property="og:image" content={newsImage} />
         </Helmet>
         <div
           className="section-promo"
@@ -64,6 +73,35 @@ class NewsItem extends Component {
                       }}
                       className="news-text"
                     />
+                    <a
+                      href={`http://vk.com/share.php?url=${"mygame4u.com" +
+                        this.props.match.url}&title=${
+                        newsCard.title
+                      }&description=${newsCard.text
+                        .slice(0, 300)
+                        .replace(/<\/?[^>]+>/g, "")}&image=${
+                        newsCard.photo
+                      }&noparse=true`}
+                      target="_blank"
+                    >
+                      Vk
+                    </a>
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${"mygame4u.com" +
+                        this.props.match.url}`}
+                      target="_blank"
+                    >
+                      Fb
+                    </a>
+                    <a
+                      href={`https://twitter.com/share?url=${"mygame4u.com" +
+                        this.props.match.url}&text=${newsCard.text
+                        .slice(0, 300)
+                        .replace(/<\/?[^>]+>/g, "")}`}
+                      target="_blank"
+                    >
+                      Twitter
+                    </a>
                   </div>
                   <img className="responsive-img" src={newsCard.photo} alt="" />
                 </Card>
