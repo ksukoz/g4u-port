@@ -27,6 +27,19 @@ footer {
   margin-top: 1rem;
 }
 
+.section-tournament .nav-wrapper {
+  overflow-x: scroll;
+}
+
+.section-tournament .button-collapse {
+  display: none;
+}
+
+.section-tournament .hide-on-med-and-down {
+  display: block !important;
+  width: max-content;
+}
+
 .section-tournament nav ul a {
   font-size: 1.5rem;
 }
@@ -90,12 +103,23 @@ footer {
 .news-item .section-promo {
   height: calc(50vh + 100px);
 }
+
+.section-main-promo .container,
+.section-promo .container {
+  height: 100%;
+}
+
 .section-main-promo .row,
 .section-promo .row {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.section-main-promo .row .col.m9,
+.section-promo .row .col.m9 {
+  margin-left: 0;
 }
 
 .modal--promo {
@@ -1247,6 +1271,14 @@ footer.page-footer .footer-copyright {
     display: none !important;
   }
 
+  .stats-number {
+    font-size: 2rem;
+  }
+
+  .stats-text {
+    font-size: 1rem;
+  }
+
   .section-tournament .tournament-tabs {
     flex-direction: column;
     height: auto;
@@ -1263,12 +1295,37 @@ footer.page-footer .footer-copyright {
   .section-tournament-main .result-table-stadium {
     width: 50px;
   }
+
+  .footer-wrap {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1200px) {
+  .section-tournament .transparent {
+    box-shadow: none;
+  }
   .nav-wrapper .select-wrapper input.select-dropdown,
   nav .nav-wrapper ul a {
     font-size: 0.7rem;
+  }
+
+  .section-promo h1 {
+    font-size: 2rem;
+  }
+
+  .tournaments-tabs {
+    width: 100%;
+  }
+
+  .tournaments-tabs.tabs .tab a,
+  .section-game a {
+    font-size: 1rem;
+  }
+
+  .tournaments-slider .slick-initialized .slick-slide,
+  .tournaments-slider .dropdown-button {
+    font-size: 1rem;
   }
 
   .header-select {
