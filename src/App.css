@@ -1314,6 +1314,11 @@ footer.page-footer .footer-copyright {
     font-size: 2rem;
   }
 
+  .section-tournament-main .col.s12.l8,
+  .section-tournament-main .col.l12 {
+    overflow-x: scroll;
+  }
+
   .tournaments-tabs {
     width: 100%;
   }
