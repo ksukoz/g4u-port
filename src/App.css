@@ -469,6 +469,25 @@ footer {
   margin-bottom: 2rem;
 }
 
+.news-item .news-dropdown {
+  margin-left: auto;
+  width: max-content;
+}
+
+.news-item .news-dropdown a {
+  padding: 0;
+}
+
+.news-item .news-dropdown .news-link {
+  display: block;
+  padding: 14px 16px;
+  color: #26a69a;
+}
+
+.news-item .material-icons {
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .news-item .card {
   margin-top: 3rem;
   border-radius: 20px;

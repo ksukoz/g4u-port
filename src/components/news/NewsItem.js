@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Card } from "react-materialize";
+import { Row, Col, Card, Dropdown, Button } from "react-materialize";
 import { FormattedMessage } from "react-intl";
 import news_bg from "./img/news_bg.png";
 import { getCurrentNews } from "../../actions/newsActions";
 import { Helmet } from "react-helmet";
+import NavItem from "react-materialize/lib/NavItem";
 
 class NewsItem extends Component {
   componentDidMount() {
@@ -73,35 +74,57 @@ class NewsItem extends Component {
                       }}
                       className="news-text"
                     />
-                    <a
-                      href={`http://vk.com/share.php?url=${"mygame4u.com" +
-                        this.props.match.url}&title=${
-                        newsCard.title
-                      }&description=${newsCard.text
-                        .slice(0, 300)
-                        .replace(/<\/?[^>]+>/g, "")}&image=${
-                        newsCard.photo
-                      }&noparse=true`}
-                      target="_blank"
-                    >
-                      Vk
-                    </a>
-                    <a
-                      href={`https://www.facebook.com/sharer/sharer.php?u=${"mygame4u.com" +
-                        this.props.match.url}`}
-                      target="_blank"
-                    >
-                      Fb
-                    </a>
-                    <a
-                      href={`https://twitter.com/share?url=${"mygame4u.com" +
-                        this.props.match.url}&text=${newsCard.text
-                        .slice(0, 300)
-                        .replace(/<\/?[^>]+>/g, "")}`}
-                      target="_blank"
-                    >
-                      Twitter
-                    </a>
+                    <div className="news-dropdown">
+                      <Dropdown
+                        trigger={
+                          <Button
+                            floating
+                            className="white"
+                            icon="
+    more_vert"
+                          />
+                        }
+                      >
+                        <NavItem>
+                          <a
+                            className="news-link"
+                            href={`http://vk.com/share.php?url=${"mygame4u.com" +
+                              this.props.match.url}&title=${
+                              newsCard.title
+                            }&description=${newsCard.text
+                              .slice(0, 300)
+                              .replace(/<\/?[^>]+>/g, "")}&image=${
+                              newsCard.photo
+                            }&noparse=true`}
+                            target="_blank"
+                          >
+                            Vk
+                          </a>
+                        </NavItem>
+                        <NavItem>
+                          <a
+                            className="news-link"
+                            href={`https://www.facebook.com/sharer/sharer.php?u=${"mygame4u.com" +
+                              this.props.match.url}`}
+                            target="_blank"
+                          >
+                            Fb
+                          </a>
+                        </NavItem>
+                        <NavItem>
+                          <a
+                            className="news-link"
+                            href={`https://twitter.com/share?url=${"mygame4u.com" +
+                              this.props.match.url}&text=${newsCard.text
+                              .slice(0, 300)
+                              .replace(/<\/?[^>]+>/g, "")}`}
+                            target="_blank"
+                          >
+                            Twitter
+                          </a>
+                        </NavItem>
+                      </Dropdown>
+                    </div>
                   </div>
                   <img className="responsive-img" src={newsCard.photo} alt="" />
                 </Card>
