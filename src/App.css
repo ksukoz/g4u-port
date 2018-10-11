@@ -27,10 +27,6 @@ footer {
   margin-top: 1rem;
 }
 
-.section-tournament .nav-wrapper {
-  overflow-x: scroll;
-}
-
 .section-tournament .button-collapse {
   display: none;
 }
@@ -1266,6 +1262,9 @@ footer.page-footer .footer-copyright {
 }
 
 @media (max-width: 767px) {
+  .section-tournament .nav-wrapper {
+    overflow-x: scroll;
+  }
   .section-home-news .slick-prev,
   .section-home-news .slick-next {
     display: none !important;
