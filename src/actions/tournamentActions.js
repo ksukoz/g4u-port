@@ -315,7 +315,7 @@ export const getTourPlayer = id => dispatch => {
 };
 
 export const getTourCommand = id => dispatch => {
-  axios.get(`http://api.mygame4u.com/portal/command/${id}`).then(res => {
+  axios.get(`http://api.mygame4u.com/portal/command?id=${id}`).then(res => {
     if (res.data.error) {
       dispatch({
         type: GET_ERRORS,

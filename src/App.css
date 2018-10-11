@@ -80,7 +80,8 @@ footer {
 
 .section-tournament .promo,
 .section-game .promo,
-.section-player .promo {
+.section-player .promo,
+.section-command .promo {
   min-height: 650px;
   height: 75vh;
   flex-direction: column;
@@ -1168,22 +1169,26 @@ footer.page-footer .footer-copyright {
   height: 30px;
 }
 
-.player-info {
+.player-info,
+.command-info {
   position: relative;
   height: 100%;
 }
 
-.player-info .container {
+.player-info .container,
+.command-info .container {
   height: 100%;
 }
 
-.player-info .row {
+.player-info .row,
+.command-info .row {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.player-info .col.m10 {
+.player-info .col.m10,
+.command-info .col.m10 {
   position: relative;
   margin: 0 auto;
   background-color: rgba(225, 225, 225, 0.4);
@@ -1202,7 +1207,8 @@ footer.page-footer .footer-copyright {
   transform: translateX(-50%);
 }
 
-.player-info img {
+.player-info img,
+.command-info img {
   position: absolute;
   background-color: #fff;
   top: 0;
@@ -1213,7 +1219,8 @@ footer.page-footer .footer-copyright {
   height: 145px;
 }
 
-.player-info h1 {
+.player-info h1,
+.command-info h1 {
   position: relative;
   color: #fff;
   text-transform: uppercase;
@@ -1258,6 +1265,10 @@ footer.page-footer .footer-copyright {
 
 .player-data-item .title {
   color: rgba(0, 0, 0, 0.5);
+}
+
+.section-command {
+  margin-top: -64px;
 }
 
 @media (max-width: 767px) {

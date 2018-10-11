@@ -35,7 +35,7 @@ class TournamentClubs extends Component {
             <img src={club.logo} alt="" />
             <h4>{club.title}</h4>
             <Link
-              to={`/command/${club.comId}`}
+              to={`/command/${this.props.match.params.id}:${club.comId}`}
               className="btn btn--outline btn--gray"
             >
               Подробнее

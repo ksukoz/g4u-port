@@ -21,15 +21,6 @@ import Football from "./img/football.svg";
 import DateIcon from "./img/date.svg";
 
 import { getTourInfo } from "../../actions/tournamentActions";
-import TournamentMain from "./TournamentMain";
-import TournamentNews from "./TournamentNews";
-import TournamentTable from "./TournamentTable";
-import TournamentCalendar from "./TournamentCalendar";
-import TournamentStats from "./TournamentStats";
-import TournamentResults from "./TournamentResults";
-import TournamentClubs from "./TournamentClubs";
-import TournamentsStadiums from "./TournamentsStadiums";
-import TournamentContacts from "./TournamentContacts";
 
 class TournamentHeader extends Component {
   onLeagueChangeHandler = e => {

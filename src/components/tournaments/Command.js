@@ -27,7 +27,41 @@ class Command extends Component {
   };
 
   render() {
-    return <h1>hi</h1>;
+    const { command } = this.props.tournaments;
+
+    let gamesList;
+
+    return (
+      <section className="section-command">
+        <div
+          className="promo"
+          style={{
+            // tournaments && tournaments.photo
+            //   ? `url(${tournaments.photo}) 0% 0% / cover  no-repeat`
+            //   :
+            background: `url(${playerBg}) 50% 50% / cover  no-repeat`
+            // backgroundSize: "cover"
+          }}
+        >
+          <div className="command-info">
+            <div className="container">
+              <Row>
+                <Col m={10}>
+                  <img
+                    src={
+                      command && command.header.logo ? command.header.logo : ""
+                    }
+                    className="z-depth-2"
+                    alt=""
+                  />
+                  <h1>{command ? command.header.title : ""}</h1>
+                </Col>
+              </Row>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
   }
 }
 
