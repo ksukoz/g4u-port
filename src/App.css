@@ -797,7 +797,8 @@ footer.page-footer .footer-copyright {
   margin-bottom: 2rem;
 }
 
-.tournament-table-head {
+.tournament-table-head,
+.command-header {
   background-color: #2c9d54;
   color: #fff;
   font-size: 2.4rem;
@@ -1233,11 +1234,21 @@ footer.page-footer .footer-copyright {
 }
 
 .player-data,
-.player-game {
+.player-game,
+.command-data {
   padding: 0 2rem;
   border-radius: 10px;
   font-size: 1.6rem;
   margin-bottom: 2rem;
+}
+
+.command-data {
+  padding: 0;
+}
+
+.command-data .collection,
+.collection.command-data-list {
+  padding: 0 2rem;
 }
 
 .player-game img {
@@ -1250,12 +1261,14 @@ footer.page-footer .footer-copyright {
   border-color: #259a4e;
 }
 
-.collection.player-data-list {
+.collection.player-data-list,
+.collection.command-data-list {
   border: none;
   margin-top: 0;
 }
 
-.collection .collection-item.player-data-item {
+.collection .collection-item.player-data-item,
+.collection .collection-item.command-data-item {
   padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
@@ -1263,12 +1276,26 @@ footer.page-footer .footer-copyright {
   border: none;
 }
 
-.player-data-item .title {
+.player-data-item .title,
+.command-data-item .title {
   color: rgba(0, 0, 0, 0.5);
 }
 
 .section-command {
   margin-top: -64px;
+}
+
+.command-data-list h3 {
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.command-data-list.collection .collection-item.command-data-item {
+  padding: 0.5rem 0;
+}
+
+.command-header {
+  margin-top: 0;
 }
 
 @media (max-width: 767px) {

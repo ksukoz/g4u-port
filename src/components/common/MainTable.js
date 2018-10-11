@@ -22,7 +22,8 @@ const MainTable = props => {
               <th style={{ textAlign: "center" }}>Позиция</th>
               <th>Клуб</th>
               <th>И</th>
-              <th>РГ</th>
+              {props.goals ? <th>З</th> : ""}
+              {props.missed ? <th>П</th> : <th>РГ</th>}
               <th>О</th>
             </tr>
           </thead>
@@ -39,7 +40,13 @@ const MainTable = props => {
                   <span>{command.title}</span>
                 </td>
                 <td>{command.games}</td>
-                <td>{command.disgoals}</td>
+                {props.goals ? <td>{command.goals}</td> : ""}
+                {props.missed ? (
+                  <td>{command.missed}</td>
+                ) : (
+                  <td>{command.disgoals}</td>
+                )}
+
                 <td>{command.pts}</td>
               </tr>
             ))}
