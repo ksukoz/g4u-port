@@ -13,6 +13,16 @@ import Tournaments from "./components/tournaments/Tournaments";
 import Tournament from "./components/tournaments/Tournament";
 import Game from "./components/tournaments/Game";
 import Player from "./components/tournaments/Player";
+import Command from "./components/tournaments/Command";
+import TournamentMain from "./components/tournaments/TournamentMain";
+import TournamentNews from "./components/tournaments/TournamentNews";
+import TournamentTable from "./components/tournaments/TournamentTable";
+import TournamentCalendar from "./components/tournaments/TournamentCalendar";
+import TournamentStats from "./components/tournaments/TournamentStats";
+import TournamentResults from "./components/tournaments/TournamentResults";
+import TournamentClubs from "./components/tournaments/TournamentClubs";
+import TournamentsStadiums from "./components/tournaments/TournamentsStadiums";
+import TournamentContacts from "./components/tournaments/TournamentContacts";
 
 class App extends Component {
   render() {
@@ -43,13 +53,76 @@ class App extends Component {
                 <Route exact path="/tournaments/:id" component={Tournaments} />
               </Switch>
               <Switch>
-                <Route exact path="/tournament/:id" component={Tournament} />
+                <Route
+                  exact
+                  path="/tournament/main/:id"
+                  component={TournamentMain}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/news/:id"
+                  component={TournamentNews}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/table/:id"
+                  component={TournamentTable}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/calendar/:id"
+                  component={TournamentCalendar}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/stats/:id"
+                  component={TournamentStats}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/results/:id"
+                  component={TournamentResults}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/clubs/:id"
+                  component={TournamentClubs}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/stadiums/:id"
+                  component={TournamentsStadiums}
+                />
+              </Switch>
+              <Switch>
+                <Route
+                  exact
+                  path="/tournament/contacts/:id"
+                  component={TournamentContacts}
+                />
               </Switch>
               <Switch>
                 <Route exact path="/game/:id" component={Game} />
               </Switch>
               <Switch>
                 <Route exact path="/player/:id" component={Player} />
+              </Switch>
+              <Switch>
+                <Route exact path="/command/:id" component={Command} />
               </Switch>
             </main>
             <Route path="/" component={Footer} />

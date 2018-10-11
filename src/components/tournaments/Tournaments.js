@@ -144,7 +144,7 @@ class Tournaments extends Component {
                             </option>
                             {season.tours.map(tour => (
                               <Link
-                                to={`/tournament/${tour.stId}`}
+                                to={`/tournament/main/${tour.stId}`}
                                 key={tour.stId}
                               >
                                 <NavItem>{tour.title}</NavItem>

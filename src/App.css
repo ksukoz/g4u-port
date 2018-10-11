@@ -787,9 +787,8 @@ footer.page-footer .footer-copyright {
   font-size: 1.6rem;
 }
 
-.section-tournament-main .container {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+.section-tournament {
+  margin-bottom: 6rem;
 }
 
 .section-tournament-main table {
