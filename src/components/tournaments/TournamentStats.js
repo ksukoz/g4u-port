@@ -14,6 +14,7 @@ import {
   CollectionItem,
   CardPanel
 } from "react-materialize";
+import TournamentHeader from "./TournamentHeader";
 
 class TournamentStats extends Component {
   state = {
@@ -33,7 +34,7 @@ class TournamentStats extends Component {
     });
     if (e.target.name === "name" && e.target.value.length >= 3) {
       this.props.getFilteredStats(
-        this.props.id,
+        this.props.match.params.id,
         `name=${e.target.value}`,
         this.state.club !== 0 ? `comId=${this.state.club}` : "",
         this.state.position !== 0 ? `posId=${this.state.position}` : "",
@@ -44,7 +45,7 @@ class TournamentStats extends Component {
       );
     } else {
       this.props.getFilteredStats(
-        this.props.id,
+        this.props.match.params.id,
         this.state.name.length >= 3 ? `name=${this.state.name}` : "",
         this.state.club !== 0 ? `comId=${this.state.club}` : "",
         this.state.position !== 0 ? `posId=${this.state.position}` : "",
@@ -57,7 +58,7 @@ class TournamentStats extends Component {
   };
 
   onClearClickHadler = () => {
-    this.props.getTourStats(this.props.id);
+    this.props.getTourStats(this.props.match.params.id);
 
     this.setState({
       name: "",
@@ -74,7 +75,7 @@ class TournamentStats extends Component {
     });
 
     this.props.getFilteredStats(
-      this.props.id,
+      this.props.match.params.id,
       this.state.name.length >= 3 ? `name=${this.state.name}` : "",
       this.state.club !== 0 ? `comId=${this.state.club}` : "",
       this.state.position !== 0 ? `posId=${this.state.position}` : "",
@@ -92,7 +93,7 @@ class TournamentStats extends Component {
       up: this.state.up === 1 ? 0 : 1
     });
     this.props.getFilteredStats(
-      this.props.id,
+      this.props.match.params.id,
       this.state.name.length >= 3 ? `name=${this.state.name}` : "",
       this.state.club !== 0 ? `comId=${this.state.club}` : "",
       this.state.position !== 0 ? `posId=${this.state.position}` : "",
@@ -103,8 +104,12 @@ class TournamentStats extends Component {
     );
   };
 
+  onClickHandler = id => e => {
+    this.props.history.push(`/player/${id}`);
+  };
+
   componentDidMount = () => {
-    this.props.getTourStats(this.props.id);
+    this.props.getTourStats(this.props.match.params.id);
   };
 
   render() {
@@ -121,10 +126,12 @@ class TournamentStats extends Component {
       statsList = stats.table.map((person, i) => (
         <tr
           key={person.plId}
-          onClick={this.props.onClickHandler(person.plId)}
+          onClick={this.onClickHandler(person.plId)}
           style={{ cursor: "pointer" }}
         >
-          <td>{i + 1 + +this.state.limit * (+this.state.offset - 1)}</td>
+          <td style={{ textAlign: "center" }}>
+            {i + 1 + +this.state.limit * (+this.state.offset - 1)}
+          </td>
           <td>{person.name}</td>
           <td className="tournament-command-row">
             <img
@@ -178,7 +185,7 @@ class TournamentStats extends Component {
                   ? this.setState(
                       { ...this.state, offset: stats.filter.offset.prev },
                       this.props.getFilteredStats(
-                        this.props.id,
+                        this.props.match.params.id,
                         this.state.name.length >= 3
                           ? `name=${this.state.name}`
                           : "",
@@ -208,7 +215,7 @@ class TournamentStats extends Component {
                   ? this.setState(
                       { ...this.state, offset: stats.filter.offset.next },
                       this.props.getFilteredStats(
-                        this.props.id,
+                        this.props.match.params.id,
                         this.state.name.length >= 3
                           ? `name=${this.state.name}`
                           : "",
@@ -233,6 +240,7 @@ class TournamentStats extends Component {
 
     return (
       <section className="section-tournament-main">
+        <TournamentHeader id={this.props.match.params.id} />
         <div className="container">
           {/* {tournament ? <h3>{tournament.season.title}</h3> : ''} */}
           <Row>
@@ -323,7 +331,7 @@ class TournamentStats extends Component {
               <table className="z-depth-2 highlight">
                 <thead>
                   <tr>
-                    <th>Поз</th>
+                    <th style={{ textAlign: "center" }}>Поз</th>
                     <th
                       onClick={() => this.onOrderClickHandler("name")}
                       style={{ cursor: "pointer" }}
