@@ -1327,6 +1327,45 @@ footer.page-footer .footer-copyright {
   border-bottom-right-radius: 10px;
 }
 
+.player-top-list {
+  border-radius: 2rem;
+}
+
+.player-top-list.collection.with-header .collection-header {
+  background-color: #259a4e;
+  color: #fff;
+}
+
+.player-top-list .player-flex-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-top-list .player-top-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.6rem;
+}
+
+.player-top-list .player-top-img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.player-top-list .player-top-img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.player-top-list .player-top-number {
+  font-size: 2.5rem;
+  color: #f8fb00;
+}
+
 @media (max-width: 767px) {
   .section-tournament .nav-wrapper {
     overflow-x: scroll;

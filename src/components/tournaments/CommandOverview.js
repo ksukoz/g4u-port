@@ -22,6 +22,7 @@ import PlayerIcon from "./img/player.svg";
 import CollectionItem from "react-materialize/lib/CollectionItem";
 import MainTable from "../common/MainTable";
 import MatchesTable from "../common/MatchesTable";
+import PlayersTop from "../common/PlayersTop";
 
 class CommandOverview extends Component {
   componentDidMount = () => {
@@ -66,15 +67,116 @@ class CommandOverview extends Component {
                 : []
             }
           />
-          <MatchesTable
-            l={6}
-            title="Последние матчи"
-            games={
-              this.props.tournaments && this.props.tournaments.command
-                ? this.props.tournaments.command.lastgames
-                : []
-            }
-          />
+          <Row>
+            <MatchesTable
+              l={6}
+              title="Календарь"
+              games={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.begingames
+                  : []
+              }
+            />
+            <MatchesTable
+              l={6}
+              title="Последние матчи"
+              games={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.lastgames
+                  : []
+              }
+            />
+          </Row>
+          <Col s={12} l={6}>
+            <h2 className="command-top-title">Гол</h2>
+            <PlayersTop
+              header={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.goal[0]
+                  : ""
+              }
+              players={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.goal.slice(1)
+                  : []
+              }
+            />
+          </Col>
+          <Col s={12} l={6}>
+            <h2 className="command-top-title">Ассистенты</h2>
+            <PlayersTop
+              header={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.assist[0]
+                  : ""
+              }
+              players={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.assist.slice(1)
+                  : []
+              }
+            />
+          </Col>
+          {/* <Col s={12} l={6}>
+            <h2 className="command-top-title">Гол + Пас</h2>
+            <PlayersTop
+              header={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.goal[0]
+                  : ""
+              }
+              players={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.goal.slice(1)
+                  : []
+              }
+            />
+          </Col>
+          <Col s={12} l={6}>
+            <h2 className="command-top-title">Очки</h2>
+            <PlayersTop
+              header={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.goal[0]
+                  : ""
+              }
+              players={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.goal.slice(1)
+                  : []
+              }
+            />
+          </Col> */}
+          <Col s={12} l={6}>
+            <h2 className="command-top-title">Матчи</h2>
+            <PlayersTop
+              header={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.game[0]
+                  : ""
+              }
+              players={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.game.slice(1)
+                  : []
+              }
+            />
+          </Col>
+          <Col s={12} l={6}>
+            <h2 className="command-top-title">Карточки</h2>
+            <PlayersTop
+              header={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.cart[0]
+                  : ""
+              }
+              players={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.top.cart.slice(1)
+                  : []
+              }
+            />
+          </Col>
         </Col>
         <Col s={12} l={4}>
           <div className="command-data z-depth-1">
