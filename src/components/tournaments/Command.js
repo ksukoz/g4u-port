@@ -25,6 +25,7 @@ import MatchesTable from "../common/MatchesTable";
 import CommandOverview from "./CommandOverview";
 import CommandTeam from "./CommandTeam";
 import CommandCalendar from "./CommandCalendar";
+import CommandResult from "./CommandResult";
 
 const initialState = {
   overview: false,
@@ -147,6 +148,11 @@ class Command extends Component {
           )}
           {this.state.calendar ? (
             <CommandCalendar id={this.props.match.params.id} />
+          ) : (
+            ""
+          )}
+          {this.state.results ? (
+            <CommandResult id={this.props.match.params.id} />
           ) : (
             ""
           )}
