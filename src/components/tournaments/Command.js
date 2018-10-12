@@ -21,6 +21,7 @@ import playerBg from "./img/player-bg.png";
 import PlayerIcon from "./img/player.svg";
 import CollectionItem from "react-materialize/lib/CollectionItem";
 import MainTable from "../common/MainTable";
+import MatchesTable from "../common/MatchesTable";
 
 class Command extends Component {
   componentDidMount = () => {
@@ -80,23 +81,50 @@ class Command extends Component {
           </div>
         </div>
         <div className="container">
+          <Tabs key={1 + Date.now()}>
+            <Tab title={<div className="command-tab-wrap">Обзор</div>}>
+              {/* {internationalList} */}
+            </Tab>
+            <Tab title={<div className="command-tab-wrap">Состав</div>}>
+              {/* {arhiveList} */}
+            </Tab>
+            <Tab title={<div className="command-tab-wrap">Календарь</div>}>
+              {/* {arhiveList} */}
+            </Tab>
+            <Tab title={<div className="command-tab-wrap">Реультаты</div>}>
+              {/* {arhiveList} */}
+            </Tab>
+          </Tabs>
           <Row>
-            <MainTable
-              l={8}
-              // tournamentId={this.props.params.id.split(":")[0]}
-              goals={command ? true : ""}
-              missed={command ? true : ""}
-              title={
-                command && command.season.title ? command.season.title : ""
-              }
-              commands={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.commands
-                  : []
-              }
-            />
+            <Col s={12} l={8}>
+              <MainTable
+                l={12}
+                // tournamentId={this.props.params.id.split(":")[0]}
+                goals={command ? true : ""}
+                missed={command ? true : ""}
+                title={
+                  command && command.season.title ? command.season.title : ""
+                }
+                commands={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.commands
+                    : []
+                }
+              />
+              <MatchesTable
+                l={6}
+                title="Последние матчи"
+                games={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.lastgames
+                    : []
+                }
+              />
+            </Col>
             <Col s={12} l={4}>
-              Контакты
+              <div className="command-data z-depth-1">
+                <h2 className="command-header">Контакты</h2>
+              </div>
             </Col>
             <Col s={12} l={4}>
               <div className="command-data z-depth-1">

@@ -12,7 +12,7 @@ import {
 const MainTable = props => {
   return (
     <Col s={12} l={props.l}>
-      <div>
+      <div className="main-table">
         <div className="tournament-table-head">
           <h3>{props.title}</h3>
         </div>
