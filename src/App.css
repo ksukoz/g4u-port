@@ -622,6 +622,7 @@ footer.page-footer .footer-copyright {
   vertical-align: middle;
   text-align: center;
   margin: 0 1rem;
+  cursor: pointer;
 }
 
 .tournaments-tabs.tabs .tab a,
