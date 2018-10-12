@@ -15,81 +15,85 @@ const ResultsTable = props => {
   return (
     <Col s={12} l={props.l}>
       <div>
-        <Row>
-          <Input
-            s={3}
-            type="select"
-            name="tour"
-            value={props.stateTour}
-            onChange={props.onChangeHandler}
-            className="black-text"
-          >
-            <option value={0} disabled>
-              Тур
-            </option>
-            {props.tour ? (
-              props.tour.map(tourItem => (
-                <option key={tourItem} value={tourItem}>
-                  {tourItem}
-                </option>
-              ))
-            ) : (
-              <option value={0} disabled />
-            )}
-          </Input>
-          <Input
-            s={3}
-            type="select"
-            name="club"
-            value={props.stateClub}
-            onChange={props.onChangeHandler}
-            className="black-text"
-          >
-            <option value={0} disabled>
-              Команда
-            </option>
-            {props.clubs ? (
-              props.clubs.map(command => (
-                <option key={command.comId} value={command.comId}>
-                  {command.title}
-                </option>
-              ))
-            ) : (
-              <option value={0} disabled />
-            )}
-          </Input>
-          <Input
-            s={3}
-            type="select"
-            name="stadium"
-            // label="Materialize Select"
-            value={props.stateStadium}
-            onChange={props.onChangeHandler}
-            className="black-text"
-          >
-            <option value={0} disabled>
-              Стадион
-            </option>
-            {props.stadiums ? (
-              props.stadiums.map(stadium => (
-                <option key={stadium.id} value={stadium.id}>
-                  {stadium.title}
-                </option>
-              ))
-            ) : (
-              <option value={0} disabled />
-            )}
-          </Input>
-          <Col s={3}>
-            <Button
-              waves="green"
-              className="btn--outline"
-              onClick={props.onClearClickHadler}
+        {props.noFilter ? (
+          ""
+        ) : (
+          <Row>
+            <Input
+              s={3}
+              type="select"
+              name="tour"
+              value={props.stateTour}
+              onChange={props.onChangeHandler}
+              className="black-text"
             >
-              Сбросить
-            </Button>
-          </Col>
-        </Row>
+              <option value={0} disabled>
+                Тур
+              </option>
+              {props.tour ? (
+                props.tour.map(tourItem => (
+                  <option key={tourItem} value={tourItem}>
+                    {tourItem}
+                  </option>
+                ))
+              ) : (
+                <option value={0} disabled />
+              )}
+            </Input>
+            <Input
+              s={3}
+              type="select"
+              name="club"
+              value={props.stateClub}
+              onChange={props.onChangeHandler}
+              className="black-text"
+            >
+              <option value={0} disabled>
+                Команда
+              </option>
+              {props.clubs ? (
+                props.clubs.map(command => (
+                  <option key={command.comId} value={command.comId}>
+                    {command.title}
+                  </option>
+                ))
+              ) : (
+                <option value={0} disabled />
+              )}
+            </Input>
+            <Input
+              s={3}
+              type="select"
+              name="stadium"
+              // label="Materialize Select"
+              value={props.stateStadium}
+              onChange={props.onChangeHandler}
+              className="black-text"
+            >
+              <option value={0} disabled>
+                Стадион
+              </option>
+              {props.stadiums ? (
+                props.stadiums.map(stadium => (
+                  <option key={stadium.id} value={stadium.id}>
+                    {stadium.title}
+                  </option>
+                ))
+              ) : (
+                <option value={0} disabled />
+              )}
+            </Input>
+            <Col s={3}>
+              <Button
+                waves="green"
+                className="btn--outline"
+                onClick={props.onClearClickHadler}
+              >
+                Сбросить
+              </Button>
+            </Col>
+          </Row>
+        )}
       </div>
       <div className="z-depth-2 result-table-wrap">
         {props.gamelist.map((game, i) => (

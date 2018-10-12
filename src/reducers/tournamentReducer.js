@@ -17,7 +17,8 @@ import {
   GET_TOUR_GAME_MEDIA,
   GET_TOUR_PLAYER,
   GET_TOUR_COMMAND,
-  GET_TOUR_TEAM
+  GET_TOUR_TEAM,
+  GET_TOUR_COMMAND_CALENDAR
 } from "../actions/types";
 
 const initialState = {
@@ -36,7 +37,8 @@ const initialState = {
   media: null,
   player: null,
   command: null,
-  team: null
+  team: null,
+  commandCalendar: null
 };
 
 export default function(state = initialState, action) {
@@ -135,6 +137,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         team: action.payload
+      };
+    case GET_TOUR_COMMAND_CALENDAR:
+      return {
+        ...state,
+        commandCalendar: action.payload
       };
 
     default:

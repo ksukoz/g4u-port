@@ -24,6 +24,7 @@ import MainTable from "../common/MainTable";
 import MatchesTable from "../common/MatchesTable";
 import CommandOverview from "./CommandOverview";
 import CommandTeam from "./CommandTeam";
+import CommandCalendar from "./CommandCalendar";
 
 const initialState = {
   overview: false,
@@ -141,6 +142,11 @@ class Command extends Component {
           )}
           {this.state.team ? (
             <CommandTeam id={this.props.match.params.id} />
+          ) : (
+            ""
+          )}
+          {this.state.calendar ? (
+            <CommandCalendar id={this.props.match.params.id} />
           ) : (
             ""
           )}

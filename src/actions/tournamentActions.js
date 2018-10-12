@@ -19,7 +19,8 @@ import {
   GET_TOUR_GAME_MEDIA,
   GET_TOUR_PLAYER,
   GET_TOUR_COMMAND,
-  GET_TOUR_TEAM
+  GET_TOUR_TEAM,
+  GET_TOUR_COMMAND_CALENDAR
 } from "./types";
 
 export const getSeasonsInfo = id => dispatch => {
@@ -343,6 +344,24 @@ export const getTourTeam = id => dispatch => {
       } else {
         dispatch({
           type: GET_TOUR_TEAM,
+          payload: res.data.answer
+        });
+      }
+    });
+};
+
+export const getTourCommandCalendar = id => dispatch => {
+  axios
+    .get(`http://api.mygame4u.com/portal/commandcalendar?id=${id}`)
+    .then(res => {
+      if (res.data.error) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: res.data.message
+        });
+      } else {
+        dispatch({
+          type: GET_TOUR_COMMAND_CALENDAR,
           payload: res.data.answer
         });
       }
