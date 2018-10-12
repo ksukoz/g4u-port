@@ -1336,9 +1336,19 @@ footer.page-footer .footer-copyright {
   color: #fff;
 }
 
-.player-top-list .player-flex-header {
+.player-top-list .player-flex-header,
+.player-flex-collection {
   display: flex;
   justify-content: space-between;
+}
+
+.player-flex-collection {
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+
+.player-collection-title {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .player-top-list .player-top-data {
@@ -1349,8 +1359,8 @@ footer.page-footer .footer-copyright {
 }
 
 .player-top-list .player-top-img {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   background-color: #fff;
 }
@@ -1364,6 +1374,13 @@ footer.page-footer .footer-copyright {
 .player-top-list .player-top-number {
   font-size: 2.5rem;
   color: #f8fb00;
+}
+.player-top-list .collection-item {
+  border-bottom: none;
+}
+
+.command-top-title {
+  font-size: 1.6rem;
 }
 
 @media (max-width: 767px) {

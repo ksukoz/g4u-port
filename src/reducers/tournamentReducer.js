@@ -16,7 +16,8 @@ import {
   GET_TOUR_GAME_COMPOSITION,
   GET_TOUR_GAME_MEDIA,
   GET_TOUR_PLAYER,
-  GET_TOUR_COMMAND
+  GET_TOUR_COMMAND,
+  GET_TOUR_TEAM
 } from "../actions/types";
 
 const initialState = {
@@ -34,7 +35,8 @@ const initialState = {
   compoition: null,
   media: null,
   player: null,
-  command: null
+  command: null,
+  team: null
 };
 
 export default function(state = initialState, action) {
@@ -128,6 +130,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         command: action.payload
+      };
+    case GET_TOUR_TEAM:
+      return {
+        ...state,
+        team: action.payload
       };
 
     default:

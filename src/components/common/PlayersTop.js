@@ -2,7 +2,7 @@ import React from "react";
 import { Collection, CollectionItem, Col } from "react-materialize";
 
 const PlayersTop = props => {
-  return (
+  return props.type === "top" ? (
     <Collection
       className="player-top-list"
       header={
@@ -25,10 +25,58 @@ const PlayersTop = props => {
         </div>
       }
     >
-      <CollectionItem>Alvin</CollectionItem>
-      <CollectionItem>Alvin</CollectionItem>
-      <CollectionItem>Alvin</CollectionItem>
-      <CollectionItem>Alvin</CollectionItem>
+      {props.players
+        ? props.players.map((player, i) => (
+            <CollectionItem>
+              <span>
+                {i + 2}. {player.player.name}
+              </span>
+              <span>{player.player.points}</span>
+            </CollectionItem>
+          ))
+        : ""}
+    </Collection>
+  ) : (
+    <Collection
+      className="player-top-list"
+      header={
+        <div className="player-flex-header">
+          <div className="player-top-data">
+            <span className="player-top-number">
+              {props.player ? props.player.number : ""}
+            </span>
+            <span>
+              {props.player
+                ? `${props.player.name} ${props.player.surename}`
+                : ""}
+            </span>
+          </div>
+          <div className="player-top-img">
+            <img
+              src={props.player ? "//mygame4u.com" + props.player.photo : ""}
+              alt=""
+            />
+          </div>
+        </div>
+      }
+    >
+      {props.player ? (
+        <CollectionItem>
+          <div className="player-flex-collection">
+            <span className="player-collection-title">Позиция</span>
+            <span>{props.player.type}</span>
+          </div>
+          <div className="player-flex-collection">
+            <span className="player-collection-title">Возраст</span>
+            <span>{props.player.age}</span>
+          </div>
+          <Link to={`/player/${props.player.plId}`}>
+            Подробнее <i class="material-icons">add</i>
+          </Link>
+        </CollectionItem>
+      ) : (
+        ""
+      )}
     </Collection>
   );
 };

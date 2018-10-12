@@ -23,6 +23,7 @@ import CollectionItem from "react-materialize/lib/CollectionItem";
 import MainTable from "../common/MainTable";
 import MatchesTable from "../common/MatchesTable";
 import CommandOverview from "./CommandOverview";
+import CommandTeam from "./CommandTeam";
 
 const initialState = {
   overview: false,
@@ -135,6 +136,11 @@ class Command extends Component {
 
           {this.state.overview ? (
             <CommandOverview id={this.props.match.params.id} />
+          ) : (
+            ""
+          )}
+          {this.state.team ? (
+            <CommandTeam id={this.props.match.params.id} />
           ) : (
             ""
           )}

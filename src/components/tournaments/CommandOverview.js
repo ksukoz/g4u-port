@@ -55,18 +55,22 @@ class CommandOverview extends Component {
     return (
       <Row>
         <Col s={12} l={8}>
-          <MainTable
-            l={12}
-            // tournamentId={this.props.params.id.split(":")[0]}
-            goals={command ? true : ""}
-            missed={command ? true : ""}
-            title={command && command.season.title ? command.season.title : ""}
-            commands={
-              this.props.tournaments && this.props.tournaments.command
-                ? this.props.tournaments.command.commands
-                : []
-            }
-          />
+          <Row>
+            <MainTable
+              l={12}
+              // tournamentId={this.props.params.id.split(":")[0]}
+              goals={command ? true : ""}
+              missed={command ? true : ""}
+              title={
+                command && command.season.title ? command.season.title : ""
+              }
+              commands={
+                this.props.tournaments && this.props.tournaments.command
+                  ? this.props.tournaments.command.commands
+                  : []
+              }
+            />
+          </Row>
           <Row>
             <MatchesTable
               l={6}
@@ -87,39 +91,44 @@ class CommandOverview extends Component {
               }
             />
           </Row>
-          <Col s={12} l={6}>
-            <h2 className="command-top-title">Гол</h2>
-            <PlayersTop
-              header={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.goal[0]
-                  : ""
-              }
-              players={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.goal.slice(1)
-                  : []
-              }
-            />
-          </Col>
-          <Col s={12} l={6}>
-            <h2 className="command-top-title">Ассистенты</h2>
-            <PlayersTop
-              header={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.assist[0]
-                  : ""
-              }
-              players={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.assist.slice(1)
-                  : []
-              }
-            />
-          </Col>
+          <Row>
+            <Col s={12} l={6}>
+              <h2 className="command-top-title">Гол</h2>
+              <PlayersTop
+                type="top"
+                header={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.goal[0]
+                    : ""
+                }
+                players={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.goal.slice(1)
+                    : []
+                }
+              />
+            </Col>
+            <Col s={12} l={6}>
+              <h2 className="command-top-title">Ассистенты</h2>
+              <PlayersTop
+                type="top"
+                header={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.assist[0]
+                    : ""
+                }
+                players={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.assist.slice(1)
+                    : []
+                }
+              />
+            </Col>
+          </Row>
           {/* <Col s={12} l={6}>
             <h2 className="command-top-title">Гол + Пас</h2>
             <PlayersTop
+            type='top'
               header={
                 this.props.tournaments && this.props.tournaments.command
                   ? this.props.tournaments.command.top.goal[0]
@@ -135,6 +144,7 @@ class CommandOverview extends Component {
           <Col s={12} l={6}>
             <h2 className="command-top-title">Очки</h2>
             <PlayersTop
+            type='top'
               header={
                 this.props.tournaments && this.props.tournaments.command
                   ? this.props.tournaments.command.top.goal[0]
@@ -147,36 +157,40 @@ class CommandOverview extends Component {
               }
             />
           </Col> */}
-          <Col s={12} l={6}>
-            <h2 className="command-top-title">Матчи</h2>
-            <PlayersTop
-              header={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.game[0]
-                  : ""
-              }
-              players={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.game.slice(1)
-                  : []
-              }
-            />
-          </Col>
-          <Col s={12} l={6}>
-            <h2 className="command-top-title">Карточки</h2>
-            <PlayersTop
-              header={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.cart[0]
-                  : ""
-              }
-              players={
-                this.props.tournaments && this.props.tournaments.command
-                  ? this.props.tournaments.command.top.cart.slice(1)
-                  : []
-              }
-            />
-          </Col>
+          <Row>
+            <Col s={12} l={6}>
+              <h2 className="command-top-title">Матчи</h2>
+              <PlayersTop
+                type="top"
+                header={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.game[0]
+                    : ""
+                }
+                players={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.game.slice(1)
+                    : []
+                }
+              />
+            </Col>
+            <Col s={12} l={6}>
+              <h2 className="command-top-title">Карточки</h2>
+              <PlayersTop
+                type="top"
+                header={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.cart[0]
+                    : ""
+                }
+                players={
+                  this.props.tournaments && this.props.tournaments.command
+                    ? this.props.tournaments.command.top.cart.slice(1)
+                    : []
+                }
+              />
+            </Col>
+          </Row>
         </Col>
         <Col s={12} l={4}>
           <div className="command-data z-depth-1">

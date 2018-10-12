@@ -18,7 +18,8 @@ import {
   GET_TOUR_GAME_COMPOSITION,
   GET_TOUR_GAME_MEDIA,
   GET_TOUR_PLAYER,
-  GET_TOUR_COMMAND
+  GET_TOUR_COMMAND,
+  GET_TOUR_TEAM
 } from "./types";
 
 export const getSeasonsInfo = id => dispatch => {
@@ -328,4 +329,22 @@ export const getTourCommand = id => dispatch => {
       });
     }
   });
+};
+
+export const getTourTeam = id => dispatch => {
+  axios
+    .get(`http://api.mygame4u.com/portal/commandconsist?id=${id}`)
+    .then(res => {
+      if (res.data.error) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: res.data.message
+        });
+      } else {
+        dispatch({
+          type: GET_TOUR_TEAM,
+          payload: res.data.answer
+        });
+      }
+    });
 };

@@ -44,7 +44,7 @@ class TournamentMain extends Component {
               <span>{player.command ? player.command.title : ""}</span>
             </div>
           </div>
-          <span className="tournament-player-goal">{player.goal}</span>
+          <span className="tournament-player-goal">{player.points}</span>
         </CollectionItem>
       ));
 
@@ -61,7 +61,7 @@ class TournamentMain extends Component {
               <span>{player.command ? player.command.title : ""}</span>
             </div>
           </div>
-          <span className="tournament-player-goal">{player.goal}</span>
+          <span className="tournament-player-goal">{player.points}</span>
         </CollectionItem>
       ));
     }
