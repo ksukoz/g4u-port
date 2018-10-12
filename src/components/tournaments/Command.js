@@ -22,8 +22,27 @@ import PlayerIcon from "./img/player.svg";
 import CollectionItem from "react-materialize/lib/CollectionItem";
 import MainTable from "../common/MainTable";
 import MatchesTable from "../common/MatchesTable";
+import CommandOverview from "./CommandOverview";
+
+const initialState = {
+  overview: false,
+  team: false,
+  calendar: false,
+  results: false
+};
 
 class Command extends Component {
+  state = {
+    overview: true,
+    team: false,
+    calendar: false,
+    results: false
+  };
+
+  onClickHandler = name => e => {
+    this.setState({ ...initialState, [name]: true });
+  };
+
   componentDidMount = () => {
     this.props.getTourCommand(this.props.match.params.id);
   };
@@ -81,74 +100,44 @@ class Command extends Component {
           </div>
         </div>
         <div className="container">
-          <Tabs key={1 + Date.now()}>
-            <Tab title={<div className="command-tab-wrap">Обзор</div>}>
-              {/* {internationalList} */}
-            </Tab>
-            <Tab title={<div className="command-tab-wrap">Состав</div>}>
-              {/* {arhiveList} */}
-            </Tab>
-            <Tab title={<div className="command-tab-wrap">Календарь</div>}>
-              {/* {arhiveList} */}
-            </Tab>
-            <Tab title={<div className="command-tab-wrap">Реультаты</div>}>
-              {/* {arhiveList} */}
-            </Tab>
-          </Tabs>
-          <Row>
-            <Col s={12} l={8}>
-              <MainTable
-                l={12}
-                // tournamentId={this.props.params.id.split(":")[0]}
-                goals={command ? true : ""}
-                missed={command ? true : ""}
-                title={
-                  command && command.season.title ? command.season.title : ""
-                }
-                commands={
-                  this.props.tournaments && this.props.tournaments.command
-                    ? this.props.tournaments.command.commands
-                    : []
-                }
-              />
-              <MatchesTable
-                l={6}
-                title="Последние матчи"
-                games={
-                  this.props.tournaments && this.props.tournaments.command
-                    ? this.props.tournaments.command.lastgames
-                    : []
-                }
-              />
-            </Col>
-            <Col s={12} l={4}>
-              <div className="command-data z-depth-1">
-                <h2 className="command-header">Контакты</h2>
-              </div>
-            </Col>
-            <Col s={12} l={4}>
-              <div className="command-data z-depth-1">
-                <h2 className="command-header">Информация</h2>
-                <Collection className="command-data-list">
-                  <CollectionItem className="command-data-item">
-                    <span className="title">Количество игроков:</span>
-                    <span>{command ? command.info.countPl : ""}</span>
-                  </CollectionItem>
-                  <CollectionItem className="command-data-item">
-                    <span className="title">Средний возраст:</span>
-                    <span>{command ? command.info.average : ""}</span>
-                  </CollectionItem>
-                </Collection>
-              </div>
-            </Col>
+          <div className="tabs">
+            <div
+              className={`command-tab-wrap ${
+                this.state.overview ? "active" : ""
+              }`}
+              onClick={this.onClickHandler("overview")}
+            >
+              Обзор
+            </div>
+            <div
+              className={`command-tab-wrap ${this.state.team ? "active" : ""}`}
+              onClick={this.onClickHandler("team")}
+            >
+              Состав
+            </div>
+            <div
+              className={`command-tab-wrap ${
+                this.state.calendar ? "active" : ""
+              }`}
+              onClick={this.onClickHandler("calendar")}
+            >
+              Календарь
+            </div>
+            <div
+              className={`command-tab-wrap ${
+                this.state.results ? "active" : ""
+              }`}
+              onClick={this.onClickHandler("results")}
+            >
+              Результаты
+            </div>
+          </div>
 
-            <Col s={12} l={4}>
-              <div className="z-depth-1" style={{ borderRadius: 10 }}>
-                <h2 className="command-header">Состав</h2>
-                {playersArr.map(player => player)}
-              </div>
-            </Col>
-          </Row>
+          {this.state.overview ? (
+            <CommandOverview id={this.props.match.params.id} />
+          ) : (
+            ""
+          )}
         </div>
       </section>
     );

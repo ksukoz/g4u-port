@@ -595,8 +595,7 @@ footer.page-footer .footer-copyright {
   margin-bottom: 5rem;
 }
 
-.tournaments-tabs.tabs .indicator,
-.section-command .tabs .indicator {
+.tournaments-tabs.tabs .indicator {
   display: none;
 }
 
@@ -617,10 +616,17 @@ footer.page-footer .footer-copyright {
   font-size: 1.4rem;
 }
 
+.command-tab-wrap {
+  padding-top: calc(85px / 2 - 1.4rem);
+  font-size: 1.4rem;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 1rem;
+}
+
 .tournaments-tabs.tabs .tab a,
 .section-game a,
 .section-command .tabs,
-.section-command .tabs .tab,
 .section-command .tabs a {
   height: auto;
   color: rgba(0, 0, 0, 0.5);
@@ -630,6 +636,7 @@ footer.page-footer .footer-copyright {
   padding: 6rem 0;
   display: flex;
   justify-content: center;
+  width: max-content;
 }
 
 .tournaments-tabs.tabs .tab a div,
@@ -638,16 +645,14 @@ footer.page-footer .footer-copyright {
 }
 
 .tournaments-tabs.tabs .tab a:hover,
-.tournaments-tabs.tabs .tab a.active,
-.section-command .tabs .tab a:hover,
-.section-command .tabs .tab a.active {
+.tournaments-tabs.tabs .tab a.active {
   color: #000;
 }
 
 .tournaments-tabs.tabs .tab a:hover .img-wrap,
 .tournaments-tabs.tabs .tab a.active .img-wrap,
-.section-game .command-tab-wrap.active,
-.section-command .tabs .tab a.active .command-tab-wrap,
+.command-tab-wrap.active,
+.section-command .tabs .tab,
 .section-game .img-wrap.active,
 .section-game .img-wrap:hover {
   border-color: #2c9d54;
