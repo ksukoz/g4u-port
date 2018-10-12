@@ -1,4 +1,6 @@
 import React from "react";
+
+import { Link } from "react-router-dom";
 import { Collection, CollectionItem, Col } from "react-materialize";
 
 const PlayersTop = props => {
@@ -15,12 +17,7 @@ const PlayersTop = props => {
             <span>{props.header ? props.header.player.name : ""}</span>
           </div>
           <div className="player-top-img">
-            <img
-              src={
-                props.header ? "//mygame4u.com" + props.header.player.photo : ""
-              }
-              alt=""
-            />
+            <img src={props.header ? props.header.player.photo : ""} alt="" />
           </div>
         </div>
       }
@@ -52,10 +49,7 @@ const PlayersTop = props => {
             </span>
           </div>
           <div className="player-top-img">
-            <img
-              src={props.player ? "//mygame4u.com" + props.player.photo : ""}
-              alt=""
-            />
+            <img src={props.player ? props.player.photo : ""} alt="" />
           </div>
         </div>
       }
@@ -70,8 +64,11 @@ const PlayersTop = props => {
             <span className="player-collection-title">Возраст</span>
             <span>{props.player.age}</span>
           </div>
-          <Link to={`/player/${props.player.plId}`}>
-            Подробнее <i class="material-icons">add</i>
+          <Link
+            className="player-collection-link"
+            to={`/player/${props.player.plId}`}
+          >
+            Подробнее &#x2192;
           </Link>
         </CollectionItem>
       ) : (

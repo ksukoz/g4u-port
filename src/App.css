@@ -1342,13 +1342,17 @@ footer.page-footer .footer-copyright {
   justify-content: space-between;
 }
 
-.player-flex-collection {
+.player-flex-collection,
+.player-collection-link {
   font-size: 1.6rem;
   padding: 1rem 0;
 }
 
-.player-collection-title {
+.player-collection-title,
+.player-collection-link {
   color: rgba(0, 0, 0, 0.5);
+
+  display: inline-block;
 }
 
 .player-top-list .player-top-data {
