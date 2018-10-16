@@ -1472,6 +1472,16 @@ footer.page-footer .footer-copyright {
   margin-left: 7px;
 }
 
+.game-events-item-desc a {
+  color: #000;
+  transition: 0.3s;
+}
+
+.game-events-item-desc a:hover,
+.game-events-item-desc a:active {
+  color: #259a4e;
+}
+
 @media (max-width: 767px) {
   .section-tournament .nav-wrapper {
     overflow-x: scroll;

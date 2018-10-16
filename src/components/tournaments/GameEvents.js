@@ -34,9 +34,26 @@ class GameEvents extends Component {
             <div className="game-events-item game-events-item-left">
               <div className="game-events-item-desc">
                 <h2>
-                  {event.title}, {event.minute}'
+                  {event.plId && event.plId !== "0" ? (
+                    <Link to={`/player/${event.plId}`}>
+                      {event.title}, <b>{event.minute}'</b>
+                    </Link>
+                  ) : (
+                    <span>
+                      {event.title}, <b>{event.minute}'</b>
+                    </span>
+                  )}
                 </h2>
-                <p>{event.comment}</p>
+                <p>
+                  {event.asId && event.asId !== "0" ? (
+                    <Link to={`/player/${event.asId}`}>{event.astitle}</Link>
+                  ) : (
+                    <span>{event.astitle}</span>
+                  )}
+                  <Link to={`/player/${event.asId}`}>{event.astitle}</Link>
+                  <br />
+                  {event.comment}
+                </p>
               </div>
               <div className="game-events-item-type">
                 <img src={event.icon} alt="" />
@@ -49,9 +66,25 @@ class GameEvents extends Component {
               </div>
               <div className="game-events-item-desc">
                 <h2>
-                  {event.title}, {event.minute}'
+                  {event.plId && event.plId !== "0" ? (
+                    <Link to={`/player/${event.plId}`}>
+                      {event.title}, <b>{event.minute}'</b>
+                    </Link>
+                  ) : (
+                    <span>
+                      <b>{event.minute}'</b>, {event.title}
+                    </span>
+                  )}
                 </h2>
-                <p>{event.comment}</p>
+                <p>
+                  {event.asId && event.asId !== "0" ? (
+                    <Link to={`/player/${event.asId}`}>{event.astitle}</Link>
+                  ) : (
+                    <span>{event.astitle}</span>
+                  )}
+                  <br />
+                  {event.comment}
+                </p>
               </div>
             </div>
           )
