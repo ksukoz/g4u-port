@@ -1399,6 +1399,66 @@ footer.page-footer .footer-copyright {
   font-size: 1.6rem;
 }
 
+.game-events-list {
+  position: relative;
+}
+
+.game-events-list::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background-color: #259a4e;
+  left: calc(50% - 1px);
+}
+
+.game-events-item {
+  display: flex;
+  justify-content: flex-end;
+  width: calc(50% + 4rem);
+  padding: 2rem 0;
+}
+
+.game-events-item-right {
+  margin-left: auto;
+  justify-content: flex-start;
+}
+
+.game-events-item {
+  color: #000;
+}
+
+.game-events-item-type {
+  align-self: center;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  background-color: #259a4e;
+  border-radius: 50%;
+  margin: 0 2rem;
+}
+
+.game-events-item-left {
+  text-align: right;
+}
+
+.game-events-item-desc h2 {
+  font-size: 2.4rem;
+}
+
+.game-events-item-desc p {
+  font-size: 1.4rem;
+}
+
+.game-events-item-left .game-events-item-type {
+  margin-right: 1rem;
+}
+
+.game-events-item-right .game-events-item-type {
+  margin-left: 1rem;
+}
+
 @media (max-width: 767px) {
   .section-tournament .nav-wrapper {
     overflow-x: scroll;

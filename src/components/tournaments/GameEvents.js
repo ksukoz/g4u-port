@@ -24,65 +24,45 @@ class GameEvents extends Component {
   };
 
   render() {
+    const { events } = this.props.tournaments;
+    let eventsList;
+
+    if (events !== null) {
+      eventsList = events.events.map(
+        event =>
+          event.evType === "up" ? (
+            <div className="game-events-item game-events-item-left">
+              <div className="game-events-item-desc">
+                <h2>{event.title}</h2>
+                <p>{event.comment}</p>
+              </div>
+              <div className="game-events-item-type">
+                <img src={event.icon} alt="" />
+              </div>
+            </div>
+          ) : (
+            <div className="game-events-item game-events-item-right">
+              <div className="game-events-item-type">
+                <img src={event.icon} alt="" />
+              </div>
+              <div className="game-events-item-desc">
+                <h2>{event.title}</h2>
+                <p>{event.comment}</p>
+              </div>
+            </div>
+          )
+      );
+    }
+
     return (
-      <div className="game-media">
-        <Row>
-          <Col s={12}>
-            {/* <EventsGraph
-							end={
-								this.props.tournaments.media && this.props.tournaments.media.maxmin ? (
-									this.props.tournaments.media.maxmin
-								) : (
-									'60'
-								)
-							}
-							events={this.props.tournaments.media ? this.props.tournaments.media.events : []}
-						/> */}
-          </Col>
-        </Row>
-        {/* <Row>
-            <Col m={4}>
-                {composition ?(
-                    // console.log(composition.in)
-                    <Collection className="z-depth-1">
-                        {composition.in.map((item) => (
-                            // <ListItem img={item.photo} key={item.plId} />
-                            <CollectionItem key={item.plid}>
-                                <img src={item.photo} alt="" />
-                                <div>
-                                    <h3>{item.name}</h3>
-                                    <p>{item.type}</p>
-                                </div>
-                            </CollectionItem>
-                        ))}
-                    </Collection>
-                ) : (
-                    ''
-                )}
-            </Col> */}
-        {/* <Col m={4}>
-                {composition ? <img className="game-composition-field" src={composition.field} alt="" /> : ''}
+      <div className="game-events">
+        <div className="container">
+          <Row>
+            <Col s={12}>
+              <div className="game-events-list">{eventsList}</div>
             </Col>
-            <Col m={4}>
-                {composition ? (
-                    // console.log(composition.in)
-                    <Collection>
-                        {composition.out.map((item) => (
-                            // <ListItem img={item.photo} key={item.plId} />
-                            <CollectionItem key={item.plid}>
-                                <img src={item.photo} alt="" />
-                                <div>
-                                    <h3>{item.name}</h3>
-                                    <p>{item.type}</p>
-                                </div>
-                            </CollectionItem>
-                        ))}
-                    </Collection>
-                ) : (
-                    ''
-                )}
-            </Col> */}
-        {/* </Row> */}
+          </Row>
+        </div>
       </div>
     );
   }
