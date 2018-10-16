@@ -17,6 +17,7 @@ import {
   GET_TOUR_GAME,
   GET_TOUR_GAME_COMPOSITION,
   GET_TOUR_GAME_MEDIA,
+  GET_TOUR_GAME_EVENTS,
   GET_TOUR_PLAYER,
   GET_TOUR_COMMAND,
   GET_TOUR_TEAM,
@@ -295,6 +296,22 @@ export const getTourGameMedia = id => dispatch => {
     } else {
       dispatch({
         type: GET_TOUR_GAME_MEDIA,
+        payload: res.data.answer
+      });
+    }
+  });
+};
+
+export const getTourGameEvents = id => dispatch => {
+  axios.get(`http://api.mygame4u.com/portal/gameevents/${id}`).then(res => {
+    if (res.data.error) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: res.data.message
+      });
+    } else {
+      dispatch({
+        type: GET_TOUR_GAME_EVENTS,
         payload: res.data.answer
       });
     }

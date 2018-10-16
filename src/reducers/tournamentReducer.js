@@ -15,6 +15,7 @@ import {
   GET_TOUR_GAME,
   GET_TOUR_GAME_COMPOSITION,
   GET_TOUR_GAME_MEDIA,
+  GET_TOUR_GAME_EVENTS,
   GET_TOUR_PLAYER,
   GET_TOUR_COMMAND,
   GET_TOUR_TEAM,
@@ -36,6 +37,7 @@ const initialState = {
   game: null,
   compoition: null,
   media: null,
+  events: null,
   player: null,
   command: null,
   team: null,
@@ -124,6 +126,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         media: action.payload
+      };
+    case GET_TOUR_GAME_EVENTS:
+      return {
+        ...state,
+        events: action.payload
       };
     case GET_TOUR_PLAYER:
       return {
