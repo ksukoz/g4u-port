@@ -1410,6 +1410,7 @@ footer.page-footer .footer-copyright {
   width: 2px;
   background-color: #259a4e;
   left: calc(50% - 1px);
+  z-index: -1;
 }
 
 .game-events-item {
@@ -1455,8 +1456,20 @@ footer.page-footer .footer-copyright {
   margin-right: 1rem;
 }
 
+.game-events-item-left .game-events-item-type img {
+  margin-top: 7px;
+  width: 45px;
+  margin-right: 7px;
+}
+
 .game-events-item-right .game-events-item-type {
   margin-left: 1rem;
+}
+
+.game-events-item-right .game-events-item-type img {
+  margin-top: 7px;
+  width: 45px;
+  margin-left: 7px;
 }
 
 @media (max-width: 767px) {

@@ -33,7 +33,9 @@ class GameEvents extends Component {
           event.evType === "up" ? (
             <div className="game-events-item game-events-item-left">
               <div className="game-events-item-desc">
-                <h2>{event.title}</h2>
+                <h2>
+                  {event.title}, {event.minute}'
+                </h2>
                 <p>{event.comment}</p>
               </div>
               <div className="game-events-item-type">
@@ -46,7 +48,9 @@ class GameEvents extends Component {
                 <img src={event.icon} alt="" />
               </div>
               <div className="game-events-item-desc">
-                <h2>{event.title}</h2>
+                <h2>
+                  {event.title}, {event.minute}'
+                </h2>
                 <p>{event.comment}</p>
               </div>
             </div>
